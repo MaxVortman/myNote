@@ -56,7 +56,7 @@ namespace myNote.DataLayer.Sql
                 sqlConnection.Open();
                 using (var command = sqlConnection.CreateCommand())
                 {
-                    command.CommandText = "delete from users where Id = @Id";
+                    command.CommandText = "delete from Users where Id = @Id";
                     command.Parameters.AddWithValue("@Id", id);
                     command.ExecuteNonQuery();
                 }
