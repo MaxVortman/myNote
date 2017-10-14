@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using myNote.Model;
 using System.Data.SqlClient;
+using System.Data.Linq;
 
 namespace myNote.DataLayer.Sql
 {
@@ -19,53 +20,24 @@ namespace myNote.DataLayer.Sql
 
         public Group CreateGroup(Guid userId, string name)
         {
-            using (var sqlConnection = new SqlConnection(connectionString))
+            var db = new DataContext(connectionString);
+            var group = new Group
             {
-                sqlConnection.Open();
-                using (var command = sqlConnection.CreateCommand())
-                {
-                    command.CommandText = "insert into Groups (Id, UserId, Name) values (@Id, @UserId, @Name)";
-
-                    var group = new Group
-                    {
-                        Id = Guid.NewGuid(),
-                        Name = name
-                    };
-
-                    command.Parameters.AddWithValue("@Id", group.Id);
-                    command.Parameters.AddWithValue("@UserId", userId);
-                    command.Parameters.AddWithValue("@Name", group.Name);
-
-                    command.ExecuteNonQuery();
-
-                    return group;
-                }
-            }
+                Id = Guid.NewGuid(),
+                Name = name,
+                UserId = userId
+            };
+            db.GetTable<Group>().InsertOnSubmit(group);
+            db.SubmitChanges();
+            return group;
         }
 
         public IEnumerable<Group> GetUserGroups(Guid userId)
         {
-            using (var sqlConnection = new SqlConnection(connectionString))
-            {
-                sqlConnection.Open();
-                using (var command = sqlConnection.CreateCommand())
-                {
-                    command.CommandText = "select id, name from Groups where UserId = @userId";
-                    command.Parameters.AddWithValue("@userId", userId);
-
-                    using (var reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            yield return new Group
-                            {
-                                Name = reader.GetString(reader.GetOrdinal("Name")),
-                                Id = reader.GetGuid(reader.GetOrdinal("Id"))
-                            };
-                        }
-                    }
-                }
-            }
+            var db = new DataContext(connectionString);
+            return from g in db.GetTable<Group>()
+                   where g.UserId == userId
+                   select g;
         }
     }
 }
