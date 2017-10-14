@@ -68,9 +68,18 @@ namespace myNote.DataLayer.Sql
                               select n).FirstOrDefault();
             if (noteFromDb == default(Note))
                 throw new ArgumentException($"Заметка с id {note.Id} не найдена");
-            noteFromDb = note;
+            UpdateNote(note, noteFromDb);
             db.SubmitChanges();
             return noteFromDb;
+        }
+
+        private void UpdateNote(Note sourceNote, Note destinationNote)
+        {
+            destinationNote.Title = sourceNote.Title;
+            destinationNote.UserId = sourceNote.UserId;
+            destinationNote.CreationDate = sourceNote.CreationDate;
+            destinationNote.Content = sourceNote.Content;
+            destinationNote.ChangeDate = DateTime.Now;
         }
     }
 }

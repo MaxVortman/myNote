@@ -40,15 +40,14 @@ namespace myNote.DataLayer.Sql.Test
             const int CountOfGroups = 10;
             var user = new User { Name = "TestUser", Email = "dfa@ff.ghhjry" };
             const string groupName = "TestGroup";
+            var groups = new Group[CountOfGroups];
 
             //act
             var groupsRepository = new GroupsRepository(ConnectionString);
             var usersRepository = new UsersRepository(ConnectionString, groupsRepository);
 
             user = usersRepository.CreateUser(user);
-            tempUsersId.Add(user.Id);
-
-            var groups = new Group[CountOfGroups];
+            tempUsersId.Add(user.Id);            
 
             for (int i = 0; i < CountOfGroups; i++)
             {
@@ -56,6 +55,7 @@ namespace myNote.DataLayer.Sql.Test
             }
 
             var groupsFromDb = groupsRepository.GetUserGroups(user.Id).ToArray();
+
             //asserts
             Assert.AreEqual(CountOfGroups, groupsFromDb.Length);
             var isContains = false;
