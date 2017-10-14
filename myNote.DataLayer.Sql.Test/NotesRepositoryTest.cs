@@ -119,6 +119,22 @@ namespace myNote.DataLayer.Sql.Test
             Assert.AreEqual(note.Title, noteFromDb.Title);
         }
 
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void ShouldThrowExceptionWhenReceiveNote()
+        {
+            var notesRepository = new NotesRepository(ConnectionString);
+            notesRepository.GetNote(Guid.NewGuid());
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void ShouldThrowExceptionWhenUpdateNote()
+        {
+            var notesRepository = new NotesRepository(ConnectionString);
+            notesRepository.UpdateNote(new Note { Id = Guid.NewGuid() });
+        }
+
         [TestCleanup]
         public void CleanData()
         {

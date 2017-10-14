@@ -54,6 +54,14 @@ namespace myNote.DataLayer.Sql.Test
             Assert.AreEqual(category, user.UserGroups.Single().Name);
         }
 
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void ShouldThrowExceptionWhenReceiveUser()
+        {
+            var usersRepository = new UsersRepository(ConnectionString, new GroupsRepository(ConnectionString));
+            usersRepository.GetUser(Guid.NewGuid());
+        }
+
         [TestCleanup]
         public void CleanData()
         {
