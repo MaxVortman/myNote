@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "myNote.Model", "myNote.Mode
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "myNote.DataLayer", "myNote.DataLayer\myNote.DataLayer.csproj", "{B319740D-131D-4A9B-9852-2A802907598E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "myNote.DataLayer.Sql", "myNote.DataLayer.Sql\myNote.DataLayer.Sql.csproj", "{58FD7308-A1C1-4C0E-90F5-C9808943DE57}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "myNote.DataLayer.Sql.Test", "myNote.DataLayer.Sql.Test\myNote.DataLayer.Sql.Test.csproj", "{E0187999-E4E5-492A-B566-DCADA2048DC7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{B319740D-131D-4A9B-9852-2A802907598E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B319740D-131D-4A9B-9852-2A802907598E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B319740D-131D-4A9B-9852-2A802907598E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58FD7308-A1C1-4C0E-90F5-C9808943DE57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58FD7308-A1C1-4C0E-90F5-C9808943DE57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58FD7308-A1C1-4C0E-90F5-C9808943DE57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58FD7308-A1C1-4C0E-90F5-C9808943DE57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0187999-E4E5-492A-B566-DCADA2048DC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0187999-E4E5-492A-B566-DCADA2048DC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0187999-E4E5-492A-B566-DCADA2048DC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0187999-E4E5-492A-B566-DCADA2048DC7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

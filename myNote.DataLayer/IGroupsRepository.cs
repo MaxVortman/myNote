@@ -10,6 +10,6 @@ namespace myNote.DataLayer
     public interface IGroupsRepository
     {
         Group CreateGroup(Guid userId, string name);
-        IEnumerable<Group> GetUserGroups(Guid userId);
+        IEnumerable<Group> GetUserGroups(Guid userId);        
     }
 }

@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace myNote
+namespace myNote.Model
 {
     public class User
     {
@@ -17,5 +14,7 @@ namespace myNote
         public string Email { get; set; }
 
         public DateTime RegisterDate { get; set; }
+
+        public IEnumerable<Group> UserGroups { get; set; }
     }
 }
