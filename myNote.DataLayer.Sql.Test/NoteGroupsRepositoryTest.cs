@@ -93,6 +93,30 @@ namespace myNote.DataLayer.Sql.Test
             Assert.IsTrue(isContains);
         }
 
+        [TestMethod]
+        public void ShouldBeZeroNotes()
+        {
+            //arrange
+            const int Zero = 0;
+            const string GroupName = "TestGroup";
+            var user = new User
+            {
+                Email = "fd@ggd.gds",
+                Name = "TestUser"
+            };
+            var groupsRepository = new GroupsRepository(ConnectionString);
+            var usersRepository = new UsersRepository(ConnectionString, groupsRepository);
+            user = usersRepository.CreateUser(user);
+            tempUsersId.Add(user.Id);
+            var group = groupsRepository.CreateGroup(user.Id, GroupName);
+            //act
+            var noteGroupsRepository = new NoteGroupsRepository(ConnectionString);
+            var notes = noteGroupsRepository.GetAllNoteBy(group.Id);
+
+            //asserts
+            Assert.AreEqual(Zero, notes.Count());
+        }
+
         [TestCleanup]
         public void CleanData()
         {

@@ -78,7 +78,26 @@ namespace myNote.DataLayer.Sql.Test
             Assert.IsTrue(isContains);
         }
 
-        
+        [TestMethod]
+        public void ShouldBeZeroNotes()
+        {
+            //arrange
+            const int Zero = 0;
+            var user = new User
+            {
+                Email = "fd@ggd.gds",
+                Name = "TestUser"
+            };
+            var groupsRepository = new GroupsRepository(ConnectionString);
+            var usersRepository = new UsersRepository(ConnectionString, groupsRepository);
+            user = usersRepository.CreateUser(user);
+            tempUsersId.Add(user.Id);
+            //act
+            var groups = groupsRepository.GetUserGroups(user.Id);
+
+            //asserts
+            Assert.AreEqual(Zero, groups.Count());
+        }
 
         [TestCleanup]
         public void CleanData()

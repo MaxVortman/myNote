@@ -90,6 +90,28 @@ namespace myNote.DataLayer.Sql.Test
             Assert.IsTrue(isContains);
         }
 
+        [TestMethod]
+        public void ShouldBeZeroNotes()
+        {
+            //arrange
+            const int Zero = 0;
+            var user = new User
+            {
+                Email = "fd@ggd.gds",
+                Name = "TestUser"
+            };
+            var usersRepository = new UsersRepository(ConnectionString, new GroupsRepository(ConnectionString));
+            user = usersRepository.CreateUser(user);
+            tempUsersId.Add(user.Id);
+
+            //act
+            var sharesRepository = new SharesRepository(ConnectionString);
+            var notes = sharesRepository.GetAllUserSharesNotes(user.Id);
+
+            //asserts
+            Assert.AreEqual(Zero, notes.Count());
+        }
+
         [TestCleanup]
         public void CleanData()
         {

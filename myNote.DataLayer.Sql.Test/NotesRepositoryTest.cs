@@ -135,6 +135,27 @@ namespace myNote.DataLayer.Sql.Test
             notesRepository.UpdateNote(new Note { Id = Guid.NewGuid() });
         }
 
+        [TestMethod]
+        public void ShouldBeZeroNotes()
+        {
+            //arrange
+            const int Zero = 0;
+            var user = new User
+            {
+                Email = "fd@ggd.gds",
+                Name = "TestUser"
+            };
+            var usersRepository = new UsersRepository(ConnectionString, new GroupsRepository(ConnectionString));
+            user = usersRepository.CreateUser(user);
+            tempUsersId.Add(user.Id);
+            //act
+            var notesRepository = new NotesRepository(ConnectionString);
+            var notes = notesRepository.GetUserNotes(user.Id);
+
+            //asserts
+            Assert.AreEqual(Zero, notes.Count());
+        }
+
         [TestCleanup]
         public void CleanData()
         {
