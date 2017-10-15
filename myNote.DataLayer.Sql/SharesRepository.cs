@@ -26,12 +26,13 @@ namespace myNote.DataLayer.Sql
             return share;
         }
 
-        public IEnumerable<Share> GetAllUserShares(Guid userId)
+        public IEnumerable<Note> GetAllUserSharesNotes(Guid userId)
         {
             var db = new DataContext(connectionString);
+            var notesRepository = new NotesRepository(connectionString);
             return from s in db.GetTable<Share>()
                    where s.UserId == userId
-                   select s;
+                   select notesRepository.GetNote(s.NoteId);
         }
 
         public bool IsNoteShared(Guid noteId)

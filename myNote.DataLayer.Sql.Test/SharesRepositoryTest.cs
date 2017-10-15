@@ -34,7 +34,7 @@ namespace myNote.DataLayer.Sql.Test
 
             //asserts
             Assert.IsTrue(sharesRepository.IsNoteShared(note.Id));
-            Assert.IsNotNull(sharesRepository.GetAllUserShares(user.Id));
+            Assert.IsNotNull(sharesRepository.GetAllUserSharesNotes(user.Id));
         }
 
         [TestMethod]
@@ -66,7 +66,7 @@ namespace myNote.DataLayer.Sql.Test
             {
                 shares[i] = sharesRepository.CreateShare(notes[i]);
             }
-            var sharesFromDb = sharesRepository.GetAllUserShares(user.Id).ToArray();
+            var sharesFromDb = sharesRepository.GetAllUserSharesNotes(user.Id).ToArray();
 
             //asserts
             Assert.AreEqual(CountOfShares, sharesFromDb.Length);
@@ -76,7 +76,7 @@ namespace myNote.DataLayer.Sql.Test
                 isContains = false;
                 for (int j = 0; j < CountOfShares; j++)
                 {
-                    if (sharesFromDb[i].NoteId == shares[j].NoteId)
+                    if (sharesFromDb[i].Id == notes[j].Id)
                     {
                         isContains = true;
                         break;
