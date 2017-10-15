@@ -51,6 +51,7 @@
     <Compile Include="GroupsRepositoryTest.cs" />
     <Compile Include="NotesRepositoryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SharesRepositoryTest.cs" />
     <Compile Include="UsersRepositoryTest.cs" />
   </ItemGroup>
   <ItemGroup>
