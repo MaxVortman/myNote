@@ -9,7 +9,8 @@ namespace myNote.DataLayer
 {
     public interface INoteGroupsRepository
     {
-        NoteGroup GetNoteGroup(Guid noteId);
-        IEnumerable<NoteGroup> GetAllNoteGroupBy(Guid groupId);
+        NoteGroup CreateNoteGroup(Guid noteId, Guid groupId);
+        Group GetGroupBy(Guid noteId);
+        IEnumerable<Note> GetAllNoteBy(Guid groupId);
     }
 }

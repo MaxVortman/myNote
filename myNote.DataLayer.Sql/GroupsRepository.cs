@@ -39,5 +39,16 @@ namespace myNote.DataLayer.Sql
                    where g.UserId == userId
                    select g;
         }
+
+        public Group GetGroup(Guid groupId)
+        {
+            var db = new DataContext(connectionString);
+            var group = (from g in db.GetTable<Group>()
+                         where g.Id == groupId
+                         select g).FirstOrDefault();
+            if (group == default(Group))
+                throw new ArgumentException($"Нет группы с id {groupId}");
+            return group;
+        }
     }
 }
