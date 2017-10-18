@@ -17,7 +17,7 @@ namespace myNote.DataLayer.Sql
         public UsersRepository(string connectionString, IGroupsRepository groupsRepository)
         {
             this.connectionString = connectionString;
-            this.groupsRepository = groupsRepository;
+            this.groupsRepository = groupsRepository;            
         }
 
         public User CreateUser(User user)

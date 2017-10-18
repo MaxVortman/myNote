@@ -64,6 +64,6 @@ namespace myNote.Api.Controllers
         public IEnumerable<Group> GetUserGroups(Guid id)
         {
             return usersRepository.GetUser(id).UserGroups;
-        }
+        }        
     }
 }
