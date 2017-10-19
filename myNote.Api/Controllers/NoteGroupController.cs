@@ -34,5 +34,41 @@ namespace myNote.Api.Controllers
         {
             return noteGroupsRepository.CreateNoteGroup(noteId, groupId);
         }
+        /// <summary>
+        /// Получение группы заметки
+        /// </summary>
+        /// <param name="id">Идентификатор заметки</param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("api/notes/{id}/group")]
+        public Group Get(Guid id)
+        {
+            return noteGroupsRepository.GetGroupBy(id);
+        }
+
+        /// <summary>
+        /// Получение всех заметок в группе
+        /// </summary>
+        /// <param name="groupId">Идентификатор группы</param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("api/groups/{groupId}/notes")]
+        public IEnumerable<Note> GetAlNotesBy(Guid groupId)
+        {
+            return noteGroupsRepository.GetAllNoteBy(groupId);
+        }
+
+        /// <summary>
+        /// Получение всех заметок в группе
+        /// </summary>
+        /// <param name="userId">Идентификатор пользователя</param>
+        /// <param name="name">Название группы</param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("api/user/{userId}/groups/{name}/notes")]
+        public IEnumerable<Note> GetAlNotesBy(Guid userId, string name)
+        {
+            return noteGroupsRepository.GetAllNoteBy(userId, name);
+        }
     }
 }
