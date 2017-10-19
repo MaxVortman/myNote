@@ -62,6 +62,25 @@ namespace myNote.DataLayer.Sql.Test
             usersRepository.GetUser(Guid.NewGuid());
         }
 
+
+        [TestMethod]
+        public void ShouldUpdateUser()
+        {
+            //arrange
+            const string UserName = "UpdatedName";
+            var user = new User { Name = "test", Email = "fgha@fsf.re" };
+            var usersRpository = new UsersRepository(ConnectionString, new GroupsRepository(ConnectionString));
+            user = usersRpository.CreateUser(user);
+            tempUsersId.Add(user.Id);
+
+            //act
+            user.Name = UserName;
+            user = usersRpository.UpdateUser(user);
+
+            //asserts
+            Assert.AreEqual(UserName, user.Name);
+        }
+
         [TestCleanup]
         public void CleanData()
         {

@@ -55,5 +55,27 @@ namespace myNote.DataLayer.Sql
             user.UserGroups = groupsRepository.GetUserGroups(user.Id);
             return user;
         }
+
+        public User UpdateUser(User user)
+        {
+            var db = new DataContext(connectionString);
+
+            var userFromDb = (from u in db.GetTable<User>()
+                              where u.Id == user.Id
+                              select u).FirstOrDefault();
+            if (userFromDb == default(User))
+                throw new ArgumentException($"Пользователь с id {user.Id} не найден");
+            UpdateUserContent(user, userFromDb);
+            db.SubmitChanges();
+            return userFromDb;
+        }
+
+        private void UpdateUserContent(User sourceUser, User destinationUser)
+        {
+            destinationUser.Birthday = sourceUser.Birthday;
+            destinationUser.Email = sourceUser.Email;
+            destinationUser.Name = sourceUser.Name;
+            destinationUser.UserGroups = sourceUser.UserGroups;
+        }
     }
 }

@@ -12,5 +12,6 @@ namespace myNote.DataLayer
         User CreateUser(User user);
         User GetUser(Guid id);
         void DeleteUser(Guid id);
+        User UpdateUser(User user);
     }
 }

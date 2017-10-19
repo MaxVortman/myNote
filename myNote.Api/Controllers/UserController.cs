@@ -66,5 +66,16 @@ namespace myNote.Api.Controllers
         {
             return usersRepository.GetUser(id).UserGroups;
         }        
+        /// <summary>
+        /// Обновление данных о пользователе
+        /// </summary>
+        /// <param name="user">Новые данные пользователя</param>
+        /// <returns></returns>
+        [HttpPut]
+        [Route("api/users/update")]
+        public User Update([FromBody] User user)
+        {
+            return usersRepository.UpdateUser(user);
+        }
     }
 }
