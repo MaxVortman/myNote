@@ -1,4 +1,5 @@
-﻿using myNote.DataLayer.Sql;
+﻿using myNote.DataLayer;
+using myNote.DataLayer.Sql;
 using myNote.Model;
 using System;
 using System.Collections.Generic;
@@ -14,8 +15,8 @@ namespace myNote.Api.Controllers
     /// </summary>
     public class GroupController : ApiController
     {
-        private GroupsRepository groupsRepository;
-        private UsersRepository usersRepository;
+        private IGroupsRepository groupsRepository;
+        private IUsersRepository usersRepository;
         private const string ConnectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=test;Integrated Security=true";
 
         public GroupController()
