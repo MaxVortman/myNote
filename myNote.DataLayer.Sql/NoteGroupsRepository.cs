@@ -35,6 +35,17 @@ namespace myNote.DataLayer.Sql
                    select notesRepository.GetNote(ng.NoteId);
         }
 
+        public IEnumerable<Note> GetAllNoteBy(Guid userId, string name)
+        {
+            var db = new DataContext(connectionString);
+            var notesRepository = new NotesRepository(connectionString);
+            var groupsRepository = new GroupsRepository(connectionString);
+            var groupFromDb = groupsRepository.GetGroup(userId, name);
+            return from ng in db.GetTable<NoteGroup>()
+                   where ng.GroupId == groupFromDb.Id
+                   select notesRepository.GetNote(ng.NoteId);
+        }
+
         public Group GetGroupBy(Guid noteId)
         {
             var db = new DataContext(connectionString);

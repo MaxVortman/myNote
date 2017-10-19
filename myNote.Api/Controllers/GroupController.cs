@@ -28,13 +28,36 @@ namespace myNote.Api.Controllers
         /// Создание группы пользователя
         /// </summary>
         /// <param name="userId">Идентификатор пользователя</param>
-        /// <param name="name">Имя группы</param>
+        /// <param name="name">Название группы</param>
         /// <returns></returns>
         [HttpPost]
         [Route("api/users/{userId}/groups/{name}")]
         public Group Post(Guid userId, string name)
         {
             return groupsRepository.CreateGroup(userId, name);
+        }
+
+        /// <summary>
+        /// Удаление группы по ее идентификатору
+        /// </summary>
+        /// <param name="id">Идентификатор группы</param>
+        [HttpDelete]
+        [Route("api/groups/{id}")]
+        public void DeleteById(Guid id)
+        {
+            groupsRepository.DeleteGroup(id);
+        }
+
+        /// <summary>
+        /// Удаление группы
+        /// </summary>
+        /// <param name="userId">Идентификатор пользователя</param>
+        /// <param name="name">Название группы</param>
+        [HttpDelete]
+        [Route("api/users/{userId}/groups/{name}")]
+        public void Delete(Guid userId, string name)
+        {
+            groupsRepository.DeleteGroup(userId, name);
         }
     }
 }

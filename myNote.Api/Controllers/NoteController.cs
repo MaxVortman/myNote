@@ -47,7 +47,7 @@ namespace myNote.Api.Controllers
             return notesRepository.CreateNote(note);
         }
         /// <summary>
-        /// Удаление пользователя
+        /// Удаление заметки
         /// </summary>
         /// <param name="id">Идентификатор пользователя</param>
         [HttpDelete]

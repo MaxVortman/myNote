@@ -99,6 +99,104 @@ namespace myNote.DataLayer.Sql.Test
             Assert.AreEqual(Zero, groups.Count());
         }
 
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void ShouldDeleteGroupById()
+        {
+            //arrange
+            const string GroupName = "TestGroup";
+            var user = new User
+            {
+                Email = "fd@ggd.gds",
+                Name = "TestUser"
+            };
+            var groupsRepository = new GroupsRepository(ConnectionString);
+            var usersRepository = new UsersRepository(ConnectionString, groupsRepository);
+            user = usersRepository.CreateUser(user);
+            tempUsersId.Add(user.Id);
+            var group = groupsRepository.CreateGroup(user.Id, GroupName);
+
+            //act
+            var groupId = group.Id;
+            groupsRepository.DeleteGroup(groupId);
+            groupsRepository.GetGroup(groupId);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void ShouldDeleteGroupByName()
+        {
+            //arrange
+            const string GroupName = "TestGroup";
+            var user = new User
+            {
+                Email = "fd@ggd.gds",
+                Name = "TestUser"
+            };
+            var groupsRepository = new GroupsRepository(ConnectionString);
+            var usersRepository = new UsersRepository(ConnectionString, groupsRepository);
+            user = usersRepository.CreateUser(user);
+            tempUsersId.Add(user.Id);
+            var group = groupsRepository.CreateGroup(user.Id, GroupName);
+
+            //act
+            var groupId = group.Id;
+            groupsRepository.DeleteGroup(group.UserId, group.Name);
+            groupsRepository.GetGroup(groupId);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void MustThrowInvalidOperationExceptionWhenDeleteByName()
+        {
+            //arrange
+            const string GroupName = "TestGroup";
+            var user = new User
+            {
+                Email = "fd@ggd.gds",
+                Name = "TestUser"
+            };
+            var groupsRepository = new GroupsRepository(ConnectionString);
+            var usersRepository = new UsersRepository(ConnectionString, groupsRepository);
+            user = usersRepository.CreateUser(user);
+            tempUsersId.Add(user.Id);
+            var group = groupsRepository.CreateGroup(user.Id, GroupName);
+            var note = new Note { Title = "TestNote", UserId = user.Id };
+            var notesRepository = new NotesRepository(ConnectionString);
+            note = notesRepository.CreateNote(note);
+            var noteGroupsRepository = new NoteGroupsRepository(ConnectionString);
+            noteGroupsRepository.CreateNoteGroup(note.Id, group.Id);
+
+            //act
+            groupsRepository.DeleteGroup(group.UserId, group.Name);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void MustThrowInvalidOperationExceptionWhenDeleteById()
+        {
+            //arrange
+            const string GroupName = "TestGroup";
+            var user = new User
+            {
+                Email = "fd@ggd.gds",
+                Name = "TestUser"
+            };
+            var groupsRepository = new GroupsRepository(ConnectionString);
+            var usersRepository = new UsersRepository(ConnectionString, groupsRepository);
+            user = usersRepository.CreateUser(user);
+            tempUsersId.Add(user.Id);
+            var group = groupsRepository.CreateGroup(user.Id, GroupName);
+            var note = new Note { Title = "TestNote", UserId = user.Id };
+            var notesRepository = new NotesRepository(ConnectionString);
+            note = notesRepository.CreateNote(note);
+            var noteGroupsRepository = new NoteGroupsRepository(ConnectionString);
+            noteGroupsRepository.CreateNoteGroup(note.Id, group.Id);
+
+            //act
+            groupsRepository.DeleteGroup(group.Id);
+        }
+
         [TestCleanup]
         public void CleanData()
         {

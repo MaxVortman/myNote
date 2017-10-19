@@ -12,5 +12,6 @@ namespace myNote.DataLayer
         NoteGroup CreateNoteGroup(Guid noteId, Guid groupId);
         Group GetGroupBy(Guid noteId);
         IEnumerable<Note> GetAllNoteBy(Guid groupId);
+        IEnumerable<Note> GetAllNoteBy(Guid userId, string name);
     }
 }

@@ -50,5 +50,51 @@ namespace myNote.DataLayer.Sql
                 throw new ArgumentException($"Нет группы с id {groupId}");
             return group;
         }
+
+        public void DeleteGroup(Guid id)
+        {
+            var noteGroupsRepository = new NoteGroupsRepository(connectionString);
+            if (noteGroupsRepository.GetAllNoteBy(id).Count() != 0)
+                throw new InvalidOperationException("Невозможно удалить группу, в которой есть записи");
+            using (var sqlConnection = new SqlConnection(connectionString))
+            {
+                sqlConnection.Open();
+                using (var command = sqlConnection.CreateCommand())
+                {
+                    command.CommandText = "delete from Groups where Id = @Id";
+                    command.Parameters.AddWithValue("@Id", id);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void DeleteGroup(Guid userId, string name)
+        {
+            var noteGroupsRepository = new NoteGroupsRepository(connectionString);
+            if (noteGroupsRepository.GetAllNoteBy(userId, name).Count() != 0)
+                throw new InvalidOperationException("Невозможно удалить группу, в которой есть записи");
+            using (var sqlConnection = new SqlConnection(connectionString))
+            {
+                sqlConnection.Open();
+                using (var command = sqlConnection.CreateCommand())
+                {
+                    command.CommandText = "delete from Groups where UserId = @userId and Name = @name";
+                    command.Parameters.AddWithValue("@userId", userId);
+                    command.Parameters.AddWithValue("@name", name);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public Group GetGroup(Guid userId, string name)
+        {
+            var db = new DataContext(connectionString);
+            var group = (from g in db.GetTable<Group>()
+                         where g.UserId == userId && g.Name == name
+                         select g).FirstOrDefault();
+            if (group == default(Group))
+                throw new ArgumentException($"Нет группы с user id {userId} и name {name}");
+            return group;
+        }
     }
 }
