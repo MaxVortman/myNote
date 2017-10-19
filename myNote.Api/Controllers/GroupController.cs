@@ -31,7 +31,7 @@ namespace myNote.Api.Controllers
         /// <param name="name">Имя группы</param>
         /// <returns></returns>
         [HttpPost]
-        [Route("api/groups/{userId}/{name}")]
+        [Route("api/users/{userId}/groups/{name}")]
         public Group Post(Guid userId, string name)
         {
             return groupsRepository.CreateGroup(userId, name);
