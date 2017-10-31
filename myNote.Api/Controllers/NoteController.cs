@@ -1,4 +1,5 @@
-﻿using myNote.DataLayer;
+﻿using myNote.Api.Filters;
+using myNote.DataLayer;
 using myNote.DataLayer.Sql;
 using myNote.Model;
 using System;
@@ -67,6 +68,7 @@ namespace myNote.Api.Controllers
         /// <returns></returns>
         [HttpPut]
         [Route("api/notes/{id}")]
+        [ArgumentExceptionFilter]
         public Note Put([FromBody] Note note)
         {
             Logger.Log.Instance.Info($"Обновление заметки с id: {note.Id}");
@@ -77,7 +79,7 @@ namespace myNote.Api.Controllers
             catch (ArgumentException e)
             {
                 Logger.Log.Instance.Error(e.Message);
-                throw new HttpResponseException(HttpStatusCode.Forbidden);
+                throw new ArgumentException(e.Message);
             }
         }
 

@@ -105,6 +105,7 @@
     <Compile Include="Controllers\NoteGroupController.cs" />
     <Compile Include="Controllers\ShareController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Filters\ArgumentExceptionFilterAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

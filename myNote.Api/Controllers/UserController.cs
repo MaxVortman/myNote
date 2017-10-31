@@ -1,4 +1,5 @@
-﻿using myNote.DataLayer;
+﻿using myNote.Api.Filters;
+using myNote.DataLayer;
 using myNote.DataLayer.Sql;
 using myNote.Model;
 using System;
@@ -30,6 +31,7 @@ namespace myNote.Api.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("api/users/{id}")]
+        [ArgumentExceptionFilter]
         public User Get(Guid id)
         {
             try
@@ -39,7 +41,7 @@ namespace myNote.Api.Controllers
             catch (ArgumentException e)
             {
                 Logger.Log.Instance.Error(e.Message);
-                throw new HttpResponseException(HttpStatusCode.Forbidden);
+                throw new ArgumentException(e.Message);
             }
         }
         /// <summary>
@@ -49,6 +51,7 @@ namespace myNote.Api.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("api/users")]
+        [ArgumentExceptionFilter]
         public User Post([FromBody] User user)
         {
             Logger.Log.Instance.Info("Создание пользователя с именем: {0}", user.Name);
@@ -59,7 +62,7 @@ namespace myNote.Api.Controllers
             catch (ArgumentException e)
             {
                 Logger.Log.Instance.Error(e.Message);
-                throw new HttpResponseException(HttpStatusCode.Forbidden);
+                throw new ArgumentException(e.Message);
             }
         }
         /// <summary>
@@ -91,6 +94,7 @@ namespace myNote.Api.Controllers
         /// <returns></returns>
         [HttpPut]
         [Route("api/users/update")]
+        [ArgumentExceptionFilter]
         public User Update([FromBody] User user)
         {
             Logger.Log.Instance.Info("Изменение пользователя с именем: {0}", user.Name);
@@ -101,7 +105,7 @@ namespace myNote.Api.Controllers
             catch (ArgumentException e)
             {
                 Logger.Log.Instance.Error(e.Message);
-                throw new HttpResponseException(HttpStatusCode.Forbidden);
+                throw new ArgumentException(e.Message);
             }
         }
     }
