@@ -14,7 +14,11 @@ namespace myNote.Api.Filters
         {
             if (actionExecutedContext.Exception is ArgumentException)
             {
-                actionExecutedContext.Response = new HttpResponseMessage(HttpStatusCode.Forbidden);
+                actionExecutedContext.Response = new HttpResponseMessage(HttpStatusCode.Forbidden)
+                {
+                    Content = new StringContent(string.Format(actionExecutedContext.Exception.Message)),
+                    ReasonPhrase = actionExecutedContext.Exception.Message
+                };
             }
         }
     }
