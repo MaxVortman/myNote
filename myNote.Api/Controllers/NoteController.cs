@@ -44,7 +44,9 @@ namespace myNote.Api.Controllers
         [Route("api/notes")]
         public Note Post([FromBody] Note note)
         {
-            return notesRepository.CreateNote(note);
+            var result = notesRepository.CreateNote(note);
+            Logger.Log.Instance.Info($"Создание заметки с id: {result.Id}");
+            return result;
         }
         /// <summary>
         /// Удаление заметки
@@ -54,6 +56,7 @@ namespace myNote.Api.Controllers
         [Route("api/notes/{id}")]
         public void Delete(Guid id)
         {
+            Logger.Log.Instance.Info($"Удаление заметки с id: {id}");
             notesRepository.DeleteNote(id);
         }
 
@@ -66,7 +69,16 @@ namespace myNote.Api.Controllers
         [Route("api/notes/{id}")]
         public Note Put([FromBody] Note note)
         {
-            return notesRepository.UpdateNote(note);
+            Logger.Log.Instance.Info($"Обновление заметки с id: {note.Id}");
+            try
+            {
+                return notesRepository.UpdateNote(note);
+            }
+            catch (ArgumentException e)
+            {
+                Logger.Log.Instance.Error(e.Message);
+                throw new HttpResponseException(HttpStatusCode.Forbidden);
+            }
         }
 
         /// <summary>

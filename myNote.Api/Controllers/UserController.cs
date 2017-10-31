@@ -32,7 +32,15 @@ namespace myNote.Api.Controllers
         [Route("api/users/{id}")]
         public User Get(Guid id)
         {
-            return usersRepository.GetUser(id);
+            try
+            {
+                return usersRepository.GetUser(id);
+            }
+            catch (ArgumentException e)
+            {
+                Logger.Log.Instance.Error(e.Message);
+                throw new HttpResponseException(HttpStatusCode.Forbidden);
+            }
         }
         /// <summary>
         /// Создание пользователя
@@ -43,7 +51,16 @@ namespace myNote.Api.Controllers
         [Route("api/users")]
         public User Post([FromBody] User user)
         {
-            return usersRepository.CreateUser(user);
+            Logger.Log.Instance.Info("Создание пользователя с именем: {0}", user.Name);
+            try
+            {
+                return usersRepository.CreateUser(user);
+            }
+            catch (ArgumentException e)
+            {
+                Logger.Log.Instance.Error(e.Message);
+                throw new HttpResponseException(HttpStatusCode.Forbidden);
+            }
         }
         /// <summary>
         /// Удаление пользователя
@@ -53,6 +70,7 @@ namespace myNote.Api.Controllers
         [Route("api/users/{id}")]
         public void Delete(Guid id)
         {
+            Logger.Log.Instance.Info("Удаление пользователя с id: {0}", id);
             usersRepository.DeleteUser(id);
         }
         /// <summary>
@@ -75,7 +93,16 @@ namespace myNote.Api.Controllers
         [Route("api/users/update")]
         public User Update([FromBody] User user)
         {
-            return usersRepository.UpdateUser(user);
+            Logger.Log.Instance.Info("Изменение пользователя с именем: {0}", user.Name);
+            try
+            {
+                return usersRepository.UpdateUser(user);
+            }
+            catch (ArgumentException e)
+            {
+                Logger.Log.Instance.Error(e.Message);
+                throw new HttpResponseException(HttpStatusCode.Forbidden);
+            }
         }
     }
 }

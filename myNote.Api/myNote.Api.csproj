@@ -55,6 +55,9 @@
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.4.12\lib\net45\NLog.dll</HintPath>
+    </Reference>
     <Reference Include="Swashbuckle.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cd1bb07a5ac7c7bc, processorArchitecture=MSIL">
       <HintPath>..\packages\Swashbuckle.Core.5.6.0\lib\net40\Swashbuckle.Core.dll</HintPath>
     </Reference>
@@ -108,6 +111,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -128,6 +137,10 @@
     <ProjectReference Include="..\myNote.DataLayer\myNote.DataLayer.csproj">
       <Project>{b319740d-131d-4a9b-9852-2a802907598e}</Project>
       <Name>myNote.DataLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\myNote.Logger\myNote.Logger.csproj">
+      <Project>{1b049c4a-a0dc-4c3b-9701-5cf82f095ffb}</Project>
+      <Name>myNote.Logger</Name>
     </ProjectReference>
     <ProjectReference Include="..\myNote.Model\myNote.Model.csproj">
       <Project>{ceb47c4a-30db-4ec6-84ad-e07e8ad00514}</Project>

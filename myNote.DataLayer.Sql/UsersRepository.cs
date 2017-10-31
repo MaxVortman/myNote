@@ -23,6 +23,13 @@ namespace myNote.DataLayer.Sql
         public User CreateUser(User user)
         {
             var db = new DataContext(connectionString);
+            var checkUser = (from u in db.GetTable<User>()
+                             where u.Email == user.Email
+                             select u).FirstOrDefault();
+            if (checkUser != default(User))
+            {
+                throw new ArgumentException($"Пользователь с таким email ({user.Email}) уже существует.");
+            }
             user.Id = Guid.NewGuid();
             db.GetTable<User>().InsertOnSubmit(user);
             db.SubmitChanges();

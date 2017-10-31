@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "myNote.DataLayer.Sql.Test",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "myNote.Api", "myNote.Api\myNote.Api.csproj", "{DC2E1A68-38EB-4F18-96BB-C923BB51E77C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "myNote.Logger", "myNote.Logger\myNote.Logger.csproj", "{1B049C4A-A0DC-4C3B-9701-5CF82F095FFB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{DC2E1A68-38EB-4F18-96BB-C923BB51E77C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC2E1A68-38EB-4F18-96BB-C923BB51E77C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC2E1A68-38EB-4F18-96BB-C923BB51E77C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B049C4A-A0DC-4C3B-9701-5CF82F095FFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B049C4A-A0DC-4C3B-9701-5CF82F095FFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B049C4A-A0DC-4C3B-9701-5CF82F095FFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B049C4A-A0DC-4C3B-9701-5CF82F095FFB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

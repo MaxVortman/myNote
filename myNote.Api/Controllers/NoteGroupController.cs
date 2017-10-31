@@ -29,9 +29,10 @@ namespace myNote.Api.Controllers
         /// <param name="groupId">Идентификатор группы</param>
         /// <returns></returns>
         [HttpPost]
-        [Route("api/users/groups/{groupId}/notes/{noteId}")]
+        [Route("api/notegroups/group/{groupId}/note/{noteId}")]
         public NoteGroup Post(Guid noteId, Guid groupId)
         {
+            Logger.Log.Instance.Info($"Создание группы заметок с noteId: {noteId} и groupId: {groupId}");
             return noteGroupsRepository.CreateNoteGroup(noteId, groupId);
         }
         /// <summary>
@@ -40,7 +41,7 @@ namespace myNote.Api.Controllers
         /// <param name="id">Идентификатор заметки</param>
         /// <returns></returns>
         [HttpGet]
-        [Route("api/notes/{id}/group")]
+        [Route("api/notegroups/notes/{id}")]
         public Group Get(Guid id)
         {
             return noteGroupsRepository.GetGroupBy(id);
@@ -52,7 +53,7 @@ namespace myNote.Api.Controllers
         /// <param name="groupId">Идентификатор группы</param>
         /// <returns></returns>
         [HttpGet]
-        [Route("api/groups/{groupId}/notes")]
+        [Route("api/notegroups/group/{groupId}")]
         public IEnumerable<Note> GetAlNotesBy(Guid groupId)
         {
             return noteGroupsRepository.GetAllNoteBy(groupId);
@@ -65,7 +66,7 @@ namespace myNote.Api.Controllers
         /// <param name="name">Название группы</param>
         /// <returns></returns>
         [HttpGet]
-        [Route("api/user/{userId}/groups/{name}/notes")]
+        [Route("api/notegroups/user/{userId}/group/{name}")]
         public IEnumerable<Note> GetAlNotesBy(Guid userId, string name)
         {
             return noteGroupsRepository.GetAllNoteBy(userId, name);

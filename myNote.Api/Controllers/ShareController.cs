@@ -29,9 +29,10 @@ namespace myNote.Api.Controllers
         /// <param name="note">Заметка</param>
         /// <returns></returns>
         [HttpPost]
-        [Route("api/users/shares")]
+        [Route("api/shares")]
         public Share Post([FromBody] Note note)
         {
+            Logger.Log.Instance.Info("Создание раздачи заметки с id: {0}", note.Id);
             return sharesRepository.CreateShare(note);
         }
 
@@ -41,7 +42,7 @@ namespace myNote.Api.Controllers
         /// <param name="id">Идентификатор пользователя</param>
         /// <returns></returns>
         [HttpGet]
-        [Route("api/users/{id}/shares")]
+        [Route("api/shares/user/{id}")]
         public IEnumerable<Note> GetUserSharesNotes(Guid id)
         {
             return sharesRepository.GetAllUserSharesNotes(id);
