@@ -1,0 +1,79 @@
+﻿using myNote.Api.Filters;
+using myNote.DataLayer;
+using myNote.DataLayer.Sql;
+using myNote.Model;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+
+namespace myNote.Api.Controllers
+{
+    public class CredentialController : ApiController
+    {
+        private ICredentialsRepository credentialsRepository;
+        private const string ConnectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=test;Integrated Security=true";
+
+        public CredentialController()
+        {
+            credentialsRepository = new CredentialsRepository(ConnectionString, new UsersRepository(ConnectionString, new GroupsRepository(ConnectionString)));
+        }
+
+        /// <summary>
+        /// Регистрация нового пользователя
+        /// </summary>
+        /// <param name="credential">Логин и пароль</param>
+        /// <returns>Созданый пользователь</returns>
+        [HttpPost]
+        [Route("api/register")]
+        [ArgumentExceptionFilter]
+        public User Post([FromBody] Credential credential)
+        {
+            Logger.Log.Instance.Info("Создание пользователя с логином: {0}", credential.Login);
+            try
+            {
+                return credentialsRepository.Register(credential);
+            }
+            catch (ArgumentException e)
+            {
+                Logger.Log.Instance.Error(e.Message);
+                throw new ArgumentException(e.Message);
+            }
+        }
+
+        /// <summary>
+        /// Авторизация пользователя
+        /// </summary>
+        /// <param name="credential">Логин и пароль</param>
+        /// <returns>Пользователь</returns>
+        [HttpGet]
+        [Route("api/login")]
+        [ArgumentExceptionFilter]
+        public User Get([FromBody] Credential credential)
+        {
+            try
+            {
+                return credentialsRepository.Login(credential);
+            }
+            catch (ArgumentException e)
+            {
+                Logger.Log.Instance.Error(e.Message);
+                throw new ArgumentException(e.Message);
+            }
+        }
+
+        /// <summary>
+        /// Удаление пользователя
+        /// </summary>
+        /// <param name="login">Логин пользователя</param>
+        [HttpDelete]
+        [Route("api/delete/{login}")]
+        public void Delete(string login)
+        {
+            Logger.Log.Instance.Info("Удаление пользователя: {0}", login);
+            credentialsRepository.Delete(login);
+        }
+    }
+}

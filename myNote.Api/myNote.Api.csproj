@@ -100,6 +100,7 @@
   <ItemGroup>
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\CredentialController.cs" />
     <Compile Include="Controllers\GroupController.cs" />
     <Compile Include="Controllers\NoteController.cs" />
     <Compile Include="Controllers\NoteGroupController.cs" />
@@ -128,7 +129,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\myNote.DataLayer.Sql\myNote.DataLayer.Sql.csproj">

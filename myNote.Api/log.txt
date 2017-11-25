@@ -24,3 +24,5 @@
 2017-10-31 16:56:53.9766|INFO|myNote.Logger.Log|Создание раздачи заметки с id: 75cc3d2a-00ee-4d74-bbf7-0906729fd1ff
 2017-10-31 16:56:54.5212|INFO|myNote.Logger.Log|Создание раздачи заметки с id: 75cc3d2a-00ee-4d74-bbf7-0906729fd1ff
 2017-10-31 16:57:25.6790|INFO|myNote.Logger.Log|Удаление пользователя с id: b0af0f53-e0cd-4a8b-84c1-40a95541eb8d
+2017-11-26 01:47:11.0181|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-26 01:50:26.3330|INFO|myNote.Logger.Log|Удаление пользователя: Max

@@ -44,38 +44,7 @@ namespace myNote.Api.Controllers
                 throw new ArgumentException(e.Message);
             }
         }
-        /// <summary>
-        /// Создание пользователя
-        /// </summary>
-        /// <param name="user">Пользователь</param>
-        /// <returns></returns>
-        [HttpPost]
-        [Route("api/users")]
-        [ArgumentExceptionFilter]
-        public User Post([FromBody] User user)
-        {
-            Logger.Log.Instance.Info("Создание пользователя с именем: {0}", user.Name);
-            try
-            {
-                return usersRepository.CreateUser(user);
-            }
-            catch (ArgumentException e)
-            {
-                Logger.Log.Instance.Error(e.Message);
-                throw new ArgumentException(e.Message);
-            }
-        }
-        /// <summary>
-        /// Удаление пользователя
-        /// </summary>
-        /// <param name="id">Идентификатор пользователя</param>
-        [HttpDelete]
-        [Route("api/users/{id}")]
-        public void Delete(Guid id)
-        {
-            Logger.Log.Instance.Info("Удаление пользователя с id: {0}", id);
-            //usersRepository.DeleteUser(id);
-        }
+
         /// <summary>
         /// Получение групп пользователя
         /// </summary>
