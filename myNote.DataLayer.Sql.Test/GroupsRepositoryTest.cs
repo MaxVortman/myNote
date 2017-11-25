@@ -10,23 +10,19 @@ namespace myNote.DataLayer.Sql.Test
     public class GroupsRepositoryTest
     {
         private const string ConnectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=test;Integrated Security=true";
-        private readonly List<Guid> tempUsersId = new List<Guid>();
+        private readonly List<string> tempUsersLogin = new List<string>();
 
         [TestMethod]
         public void ShouldCreateGroup()
         {
             //arrange
-            var user = new User { Name = "TestUser", Email = "dghja@ff.ry" };
+            var user = HelpingClass.CreateUser();
             const string groupName = "TestGroup";
 
             //act
             var groupsRepository = new GroupsRepository(ConnectionString);
-            var usersRepository = new UsersRepository(ConnectionString, groupsRepository);
-
-            user = usersRepository.CreateUser(user);
-            tempUsersId.Add(user.Id);
+            tempUsersLogin.Add(user.Login);
             groupsRepository.CreateGroup(user.Id, groupName);
-
             var groupFromDb = groupsRepository.GetUserGroups(user.Id);
 
             //asserts
@@ -38,16 +34,13 @@ namespace myNote.DataLayer.Sql.Test
         {
             //arrange
             const int CountOfGroups = 10;
-            var user = new User { Name = "TestUser", Email = "dfa@ff.ghhjry" };
+            var user = HelpingClass.CreateUser();
             const string groupName = "TestGroup";
             var groups = new Group[CountOfGroups];
 
             //act
             var groupsRepository = new GroupsRepository(ConnectionString);
-            var usersRepository = new UsersRepository(ConnectionString, groupsRepository);
-
-            user = usersRepository.CreateUser(user);
-            tempUsersId.Add(user.Id);            
+            tempUsersLogin.Add(user.Login);            
 
             for (int i = 0; i < CountOfGroups; i++)
             {
@@ -83,15 +76,9 @@ namespace myNote.DataLayer.Sql.Test
         {
             //arrange
             const int Zero = 0;
-            var user = new User
-            {
-                Email = "fd@ggd.gds",
-                Name = "TestUser"
-            };
+            var user = HelpingClass.CreateUser();
             var groupsRepository = new GroupsRepository(ConnectionString);
-            var usersRepository = new UsersRepository(ConnectionString, groupsRepository);
-            user = usersRepository.CreateUser(user);
-            tempUsersId.Add(user.Id);
+            tempUsersLogin.Add(user.Login);
             //act
             var groups = groupsRepository.GetUserGroups(user.Id);
 
@@ -105,15 +92,9 @@ namespace myNote.DataLayer.Sql.Test
         {
             //arrange
             const string GroupName = "TestGroup";
-            var user = new User
-            {
-                Email = "fd@ggd.gds",
-                Name = "TestUser"
-            };
+            var user = HelpingClass.CreateUser();
             var groupsRepository = new GroupsRepository(ConnectionString);
-            var usersRepository = new UsersRepository(ConnectionString, groupsRepository);
-            user = usersRepository.CreateUser(user);
-            tempUsersId.Add(user.Id);
+            tempUsersLogin.Add(user.Login);
             var group = groupsRepository.CreateGroup(user.Id, GroupName);
 
             //act
@@ -128,15 +109,9 @@ namespace myNote.DataLayer.Sql.Test
         {
             //arrange
             const string GroupName = "TestGroup";
-            var user = new User
-            {
-                Email = "fd@ggd.gds",
-                Name = "TestUser"
-            };
+            var user = HelpingClass.CreateUser();
             var groupsRepository = new GroupsRepository(ConnectionString);
-            var usersRepository = new UsersRepository(ConnectionString, groupsRepository);
-            user = usersRepository.CreateUser(user);
-            tempUsersId.Add(user.Id);
+            tempUsersLogin.Add(user.Login);
             var group = groupsRepository.CreateGroup(user.Id, GroupName);
 
             //act
@@ -151,15 +126,9 @@ namespace myNote.DataLayer.Sql.Test
         {
             //arrange
             const string GroupName = "TestGroup";
-            var user = new User
-            {
-                Email = "fd@ggd.gds",
-                Name = "TestUser"
-            };
+            var user = HelpingClass.CreateUser();
             var groupsRepository = new GroupsRepository(ConnectionString);
-            var usersRepository = new UsersRepository(ConnectionString, groupsRepository);
-            user = usersRepository.CreateUser(user);
-            tempUsersId.Add(user.Id);
+            tempUsersLogin.Add(user.Login);
             var group = groupsRepository.CreateGroup(user.Id, GroupName);
             var note = new Note { Title = "TestNote", UserId = user.Id };
             var notesRepository = new NotesRepository(ConnectionString);
@@ -177,15 +146,9 @@ namespace myNote.DataLayer.Sql.Test
         {
             //arrange
             const string GroupName = "TestGroup";
-            var user = new User
-            {
-                Email = "fd@ggd.gds",
-                Name = "TestUser"
-            };
+            var user = HelpingClass.CreateUser();
             var groupsRepository = new GroupsRepository(ConnectionString);
-            var usersRepository = new UsersRepository(ConnectionString, groupsRepository);
-            user = usersRepository.CreateUser(user);
-            tempUsersId.Add(user.Id);
+            tempUsersLogin.Add(user.Login);
             var group = groupsRepository.CreateGroup(user.Id, GroupName);
             var note = new Note { Title = "TestNote", UserId = user.Id };
             var notesRepository = new NotesRepository(ConnectionString);
@@ -200,8 +163,9 @@ namespace myNote.DataLayer.Sql.Test
         [TestCleanup]
         public void CleanData()
         {
-            foreach (var id in tempUsersId)
-                new UsersRepository(ConnectionString, new GroupsRepository(ConnectionString)).DeleteUser(id);
+            var credentialsRepository = new CredentialsRepository(ConnectionString, new UsersRepository(ConnectionString, new GroupsRepository(ConnectionString)));
+            foreach (var login in tempUsersLogin)
+                credentialsRepository.Delete(login);
         }
     }
 }

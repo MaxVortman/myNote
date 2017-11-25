@@ -74,7 +74,7 @@ namespace myNote.Api.Controllers
         public void Delete(Guid id)
         {
             Logger.Log.Instance.Info("Удаление пользователя с id: {0}", id);
-            usersRepository.DeleteUser(id);
+            //usersRepository.DeleteUser(id);
         }
         /// <summary>
         /// Получение групп пользователя

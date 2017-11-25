@@ -11,13 +11,13 @@ namespace myNote.DataLayer.Sql.Test
     {
 
         private const string ConnectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=test;Integrated Security=true";
-        private readonly List<Guid> tempUsersId = new List<Guid>();
+        private readonly List<string> tempUsersLogin = new List<string>();
 
         [TestMethod]
         public void ShouldCreateNote()
         {
             //arrange
-            var user = new User { Name = "TestUser", Email = "dghja@ff.ry" };
+            var user = HelpingClass.CreateUser();
             var note = new Note
             {
                 Title = "TestNote"
@@ -27,9 +27,8 @@ namespace myNote.DataLayer.Sql.Test
             var usersRepository = new UsersRepository(ConnectionString, new GroupsRepository(ConnectionString));
             var notesRepository = new NotesRepository(ConnectionString);
 
-            user = usersRepository.CreateUser(user);
             note.UserId = user.Id;
-            tempUsersId.Add(user.Id);
+            tempUsersLogin.Add(user.Login);
             note = notesRepository.CreateNote(note);
             var noteFromDb = notesRepository.GetNote(note.Id);
 
@@ -42,18 +41,16 @@ namespace myNote.DataLayer.Sql.Test
         {
             //arrange
             const int CountOfNotes = 10;
-            var user = new User { Name = "TestUser", Email = "dfa@ff.ghhjry" };
+            var user = HelpingClass.CreateUser();
             const string noteTitle = "TestNote";
             var notes = new Note[CountOfNotes];
 
             
 
             //act
-            var usersRepository = new UsersRepository(ConnectionString, new GroupsRepository(ConnectionString));
             var notesRepository = new NotesRepository(ConnectionString);
 
-            user = usersRepository.CreateUser(user);
-            tempUsersId.Add(user.Id);
+            tempUsersLogin.Add(user.Login);
 
             for (int i = 0; i < CountOfNotes; i++)
             {
@@ -89,22 +86,22 @@ namespace myNote.DataLayer.Sql.Test
             Assert.IsTrue(isContains);
         }
 
+        
+
         [TestMethod]
         public void ShouldUpdateNote()
         {
             //arrange
-            var user = new User { Name = "TestUser", Email = "dfa@ff.ghhjry" };
+            var user = HelpingClass.CreateUser();
             var note = new Note
             {
                 Title = "TestNote"
             };
 
             //act
-            var usersRepository = new UsersRepository(ConnectionString, new GroupsRepository(ConnectionString));
             var notesRepository = new NotesRepository(ConnectionString);
 
-            user = usersRepository.CreateUser(user);
-            tempUsersId.Add(user.Id);
+            tempUsersLogin.Add(user.Login);
 
             note.UserId = user.Id;
 
@@ -140,14 +137,9 @@ namespace myNote.DataLayer.Sql.Test
         {
             //arrange
             const int Zero = 0;
-            var user = new User
-            {
-                Email = "fd@ggd.gds",
-                Name = "TestUser"
-            };
-            var usersRepository = new UsersRepository(ConnectionString, new GroupsRepository(ConnectionString));
-            user = usersRepository.CreateUser(user);
-            tempUsersId.Add(user.Id);
+            var user = HelpingClass.CreateUser();
+            tempUsersLogin.Add(user.Login);
+
             //act
             var notesRepository = new NotesRepository(ConnectionString);
             var notes = notesRepository.GetUserNotes(user.Id);
@@ -159,8 +151,9 @@ namespace myNote.DataLayer.Sql.Test
         [TestCleanup]
         public void CleanData()
         {
-            foreach (var id in tempUsersId)
-                new UsersRepository(ConnectionString, new GroupsRepository(ConnectionString)).DeleteUser(id);
+            var credentialsRepository = new CredentialsRepository(ConnectionString, new UsersRepository(ConnectionString, new GroupsRepository(ConnectionString)));
+            foreach (var login in tempUsersLogin)
+                credentialsRepository.Delete(login);
         }
     }
 }

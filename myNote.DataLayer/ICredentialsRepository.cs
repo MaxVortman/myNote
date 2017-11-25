@@ -7,11 +7,10 @@ using System.Threading.Tasks;
 
 namespace myNote.DataLayer
 {
-    public interface IUsersRepository
+    public interface ICredentialsRepository
     {
-        User CreateUser(User user);
-        User GetUser(Guid id);
-        User GetUser(string Login);
-        User UpdateUser(User user);
+        User Login(Credential credential);
+        User Register(Credential credential);
+        void Delete(string login);
     }
 }

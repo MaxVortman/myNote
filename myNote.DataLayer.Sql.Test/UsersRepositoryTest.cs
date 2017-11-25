@@ -3,6 +3,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using myNote.Model;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace myNote.DataLayer.Sql.Test
 {
@@ -10,43 +12,34 @@ namespace myNote.DataLayer.Sql.Test
     public class UsersRepositoryTest
     {
         private const string ConnectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=test;Integrated Security=true";
-        private readonly List<Guid> tempUsersId = new List<Guid>();
+        private readonly List<string> tempUsersLogin = new List<string>();
 
         [TestMethod]
         public void ShouldCreateUser()
         {
             //arrange
-            var user = new User
-            {
-                Name = "TestUser",
-                Email = "dfa@ff.ry"
-            };
+            var user = HelpingClass.CreateUser();
 
             //act
             var usersRepository = new UsersRepository(ConnectionString, new GroupsRepository(ConnectionString));
-
-            user = usersRepository.CreateUser(user);
-            tempUsersId.Add(user.Id);
+            tempUsersLogin.Add(user.Login);
             var userFromDb = usersRepository.GetUser(user.Id);
 
             //asserts
             Assert.AreEqual(user.Name, userFromDb.Name);
-        }
+        }        
 
         [TestMethod]
         public void ShouldCreateUserAndAddCategory()
         {
             //arrange
-            var user = new User { Name = "test", Email = "fgha@fsf.re" };
+            var user = HelpingClass.CreateUser();
             const string category = "testCategory";
 
             //act
             var categoriesRepository = new GroupsRepository(ConnectionString);
             var usersRepository = new UsersRepository(ConnectionString, categoriesRepository);
-            user = usersRepository.CreateUser(user);
-
-            tempUsersId.Add(user.Id);
-
+            tempUsersLogin.Add(user.Login);
             categoriesRepository.CreateGroup(user.Id, category);
             user = usersRepository.GetUser(user.Id);
 
@@ -68,10 +61,9 @@ namespace myNote.DataLayer.Sql.Test
         {
             //arrange
             const string UserName = "UpdatedName";
-            var user = new User { Name = "test", Email = "fgha@fsf.re" };
+            var user = HelpingClass.CreateUser();
             var usersRpository = new UsersRepository(ConnectionString, new GroupsRepository(ConnectionString));
-            user = usersRpository.CreateUser(user);
-            tempUsersId.Add(user.Id);
+            tempUsersLogin.Add(user.Login);
 
             //act
             user.Name = UserName;
@@ -84,8 +76,9 @@ namespace myNote.DataLayer.Sql.Test
         [TestCleanup]
         public void CleanData()
         {
-            foreach (var id in tempUsersId)
-                new UsersRepository(ConnectionString, new GroupsRepository(ConnectionString)).DeleteUser(id);
+            var credentialsRepository = new CredentialsRepository(ConnectionString, new UsersRepository(ConnectionString, new GroupsRepository(ConnectionString)));
+            foreach (var login in tempUsersLogin)
+                credentialsRepository.Delete(login);
         }
     }
 }

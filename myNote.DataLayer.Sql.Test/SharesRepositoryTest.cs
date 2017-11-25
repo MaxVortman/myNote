@@ -10,16 +10,14 @@ namespace myNote.DataLayer.Sql.Test
     public class SharesRepositoryTest
     {
         private const string ConnectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=test;Integrated Security=true";
-        private readonly List<Guid> tempUsersId = new List<Guid>();
+        private readonly List<string> tempUsersLogin = new List<string>();
 
         [TestMethod]
         public void ShouldCreateShare()
         {
             //arrange
-            var user = new User { Name = "TestUser", Email = "dghja@ff.ry" };
-            var usersRepository = new UsersRepository(ConnectionString, new GroupsRepository(ConnectionString));
-            user = usersRepository.CreateUser(user);
-            tempUsersId.Add(user.Id);
+            var user = HelpingClass.CreateUser();
+            tempUsersLogin.Add(user.Login);
             var note = new Note
             {
                 UserId = user.Id,
@@ -42,10 +40,8 @@ namespace myNote.DataLayer.Sql.Test
         {
             //arrange
             const int CountOfShares = 10;
-            var user = new User { Name = "TestUser", Email = "dfa@ff.ghhjry" };
-            var usersRepository = new UsersRepository(ConnectionString, new GroupsRepository(ConnectionString));
-            user = usersRepository.CreateUser(user);
-            tempUsersId.Add(user.Id);
+            var user = HelpingClass.CreateUser();
+            tempUsersLogin.Add(user.Login);
             const string noteTitle = "TestNote";
             var notes = new Note[CountOfShares];
             var notesRepository = new NotesRepository(ConnectionString);
@@ -95,14 +91,8 @@ namespace myNote.DataLayer.Sql.Test
         {
             //arrange
             const int Zero = 0;
-            var user = new User
-            {
-                Email = "fd@ggd.gds",
-                Name = "TestUser"
-            };
-            var usersRepository = new UsersRepository(ConnectionString, new GroupsRepository(ConnectionString));
-            user = usersRepository.CreateUser(user);
-            tempUsersId.Add(user.Id);
+            var user = HelpingClass.CreateUser();
+            tempUsersLogin.Add(user.Login);
 
             //act
             var sharesRepository = new SharesRepository(ConnectionString);
@@ -115,8 +105,9 @@ namespace myNote.DataLayer.Sql.Test
         [TestCleanup]
         public void CleanData()
         {
-            foreach (var id in tempUsersId)
-                new UsersRepository(ConnectionString, new GroupsRepository(ConnectionString)).DeleteUser(id);
+            var credentialsRepository = new CredentialsRepository(ConnectionString, new UsersRepository(ConnectionString, new GroupsRepository(ConnectionString)));
+            foreach (var login in tempUsersLogin)
+                credentialsRepository.Delete(login);
         }
     }
 }

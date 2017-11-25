@@ -10,6 +10,8 @@ namespace myNote.Model
         [Column(IsPrimaryKey = true)]
         public Guid Id { get; set; }
         [Column]
+        public string Login { get; set; }
+        [Column]
         public string Name { get; set; }
         [Column]
         public DateTime? Birthday { get; set; }

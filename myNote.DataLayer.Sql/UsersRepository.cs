@@ -36,20 +36,6 @@ namespace myNote.DataLayer.Sql
             return user;
         }
 
-        public void DeleteUser(Guid id)
-        {
-            using (var sqlConnection = new SqlConnection(connectionString))
-            {
-                sqlConnection.Open();
-                using (var command = sqlConnection.CreateCommand())
-                {
-                    command.CommandText = "delete from Users where Id = @Id";
-                    command.Parameters.AddWithValue("@Id", id);
-                    command.ExecuteNonQuery();
-                }
-            }
-        }
-
         public User GetUser(Guid id)
         {
             var db = new DataContext(connectionString);
@@ -59,6 +45,19 @@ namespace myNote.DataLayer.Sql
                         select u).FirstOrDefault();
             if (user == default(User))            
                 throw new ArgumentException($"Пользователь с id {id} не найден");
+            user.UserGroups = groupsRepository.GetUserGroups(user.Id);
+            return user;
+        }
+
+        public User GetUser(string login)
+        {
+            var db = new DataContext(connectionString);
+
+            var user = (from u in db.GetTable<User>()
+                        where u.Login == login
+                        select u).FirstOrDefault();
+            if (user == default(User))
+                throw new ArgumentException($"Пользователь {login} не найден");
             user.UserGroups = groupsRepository.GetUserGroups(user.Id);
             return user;
         }
