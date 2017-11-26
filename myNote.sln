@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26929.2
+VisualStudioVersion = 15.0.27019.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "myNote.Model", "myNote.Model\myNote.Model.csproj", "{CEB47C4A-30DB-4EC6-84AD-E07E8AD00514}"
 EndProject
@@ -14,6 +14,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "myNote.Api", "myNote.Api\myNote.Api.csproj", "{DC2E1A68-38EB-4F18-96BB-C923BB51E77C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "myNote.Logger", "myNote.Logger\myNote.Logger.csproj", "{1B049C4A-A0DC-4C3B-9701-5CF82F095FFB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "myNote.WPFClient", "myNote.WPFClient.View\myNote.WPFClient.csproj", "{6DF87D78-3F0B-47FD-BBC5-18EDFA806E90}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{1B049C4A-A0DC-4C3B-9701-5CF82F095FFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B049C4A-A0DC-4C3B-9701-5CF82F095FFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B049C4A-A0DC-4C3B-9701-5CF82F095FFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DF87D78-3F0B-47FD-BBC5-18EDFA806E90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DF87D78-3F0B-47FD-BBC5-18EDFA806E90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DF87D78-3F0B-47FD-BBC5-18EDFA806E90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DF87D78-3F0B-47FD-BBC5-18EDFA806E90}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
