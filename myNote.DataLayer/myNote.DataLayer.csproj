@@ -45,6 +45,7 @@
     <Compile Include="INoteGroupsRepository.cs" />
     <Compile Include="INotesRepository.cs" />
     <Compile Include="ISharesRepository.cs" />
+    <Compile Include="ITokensRepository.cs" />
     <Compile Include="IUsersRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
