@@ -19,16 +19,17 @@ namespace myNote.DataLayer.Sql.Test
             //arrange
             const string groupName = "TestGroup";
             var user = HelpingClass.CreateUser();
+            var token = HelpingClass.GetToken();
             var groupsRepository = new GroupsRepository(ConnectionString);
             var notesRepository = new NotesRepository(ConnectionString);
             tempUsersLogin.Add(user.Login);
             var note = new Note { Title = "TestNote", UserId = user.Id };
-            var group = groupsRepository.CreateGroup(user.Id, groupName);
-            note = notesRepository.CreateNote(note);
+            var group = groupsRepository.CreateGroup(user.Id, groupName, token);
+            note = notesRepository.CreateNote(note, token);
 
             //act
             var noteGroupsRepository = new NoteGroupsRepository(ConnectionString);
-            var noteGroups = noteGroupsRepository.CreateNoteGroup(note.Id, group.Id);
+            var noteGroups = noteGroupsRepository.CreateNoteGroup(note.Id, group.Id, token);
             var groupFromDb = noteGroupsRepository.GetGroupBy(noteGroups.NoteId);
 
             //asserts
@@ -42,6 +43,7 @@ namespace myNote.DataLayer.Sql.Test
             //arrange
             const int CountOfNotesGroups = 10;
             var user = HelpingClass.CreateUser();
+            var token = HelpingClass.GetToken();
             const string noteTitle = "TestNote";
             const string groupName = "TestGroup";
             var notes = new Note[CountOfNotesGroups];
@@ -55,15 +57,15 @@ namespace myNote.DataLayer.Sql.Test
                     Title = $"{noteTitle}{i}",
                     UserId = user.Id
                 };
-                notes[i] = notesRepository.CreateNote(notes[i]);
+                notes[i] = notesRepository.CreateNote(notes[i], token);
             }
-            var group = groupsRepository.CreateGroup(user.Id, groupName);
+            var group = groupsRepository.CreateGroup(user.Id, groupName, token);
 
             //act
             var noteGroupsRepository = new NoteGroupsRepository(ConnectionString);
             for (int i = 0; i < CountOfNotesGroups; i++)
             {
-                noteGroupsRepository.CreateNoteGroup(notes[i].Id, group.Id);
+                noteGroupsRepository.CreateNoteGroup(notes[i].Id, group.Id, token);
             }
             var notesFromDb = noteGroupsRepository.GetAllNoteBy(group.Id).ToArray();
 
@@ -98,7 +100,7 @@ namespace myNote.DataLayer.Sql.Test
             var user = HelpingClass.CreateUser();
             var groupsRepository = new GroupsRepository(ConnectionString);            
             tempUsersLogin.Add(user.Login);
-            var group = groupsRepository.CreateGroup(user.Id, GroupName);
+            var group = groupsRepository.CreateGroup(user.Id, GroupName, HelpingClass.GetToken());
             //act
             var noteGroupsRepository = new NoteGroupsRepository(ConnectionString);
             var notes = noteGroupsRepository.GetAllNoteBy(group.Id);
@@ -110,7 +112,7 @@ namespace myNote.DataLayer.Sql.Test
         [TestCleanup]
         public void CleanData()
         {
-            var credentialsRepository = new CredentialsRepository(ConnectionString, new UsersRepository(ConnectionString, new GroupsRepository(ConnectionString)));
+            var credentialsRepository = new CredentialsRepository(ConnectionString, new UsersRepository(ConnectionString, new GroupsRepository(ConnectionString)), new TokensRepository(ConnectionString));
             foreach (var login in tempUsersLogin)
                 credentialsRepository.Delete(login);
         }

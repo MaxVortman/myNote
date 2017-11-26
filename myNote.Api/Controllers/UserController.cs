@@ -32,11 +32,11 @@ namespace myNote.Api.Controllers
         [HttpGet]
         [Route("api/users/{id}")]
         [ArgumentExceptionFilter]
-        public User Get(Guid id)
+        public User Get(Guid id, [FromBody]Token accessToken)
         {
             try
             {
-                return usersRepository.GetUser(id);
+                return usersRepository.GetUser(id, accessToken);
             }
             catch (ArgumentException e)
             {
@@ -52,9 +52,9 @@ namespace myNote.Api.Controllers
         /// <returns>Группы пользователя</returns>
         [HttpGet]
         [Route("api/users/{id}/groups")]
-        public IEnumerable<Group> GetUserGroups(Guid id)
+        public IEnumerable<Group> GetUserGroups(Guid id, [FromBody]Token accessToken)
         {
-            return usersRepository.GetUser(id).UserGroups;
+            return usersRepository.GetUser(id, accessToken).UserGroups;
         }        
         /// <summary>
         /// Обновление данных о пользователе
@@ -64,12 +64,12 @@ namespace myNote.Api.Controllers
         [HttpPut]
         [Route("api/users/update")]
         [ArgumentExceptionFilter]
-        public User Update([FromBody] User user)
+        public User Update([FromBody] User user, [FromBody]Token accessToken)
         {
             Logger.Log.Instance.Info("Изменение пользователя с именем: {0}", user.Name);
             try
             {
-                return usersRepository.UpdateUser(user);
+                return usersRepository.UpdateUser(user, accessToken);
             }
             catch (ArgumentException e)
             {

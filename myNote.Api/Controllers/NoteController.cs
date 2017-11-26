@@ -43,9 +43,9 @@ namespace myNote.Api.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("api/notes")]
-        public Note Post([FromBody] Note note)
+        public Note Post([FromBody] Note note, [FromBody]Token accessToken)
         {
-            var result = notesRepository.CreateNote(note);
+            var result = notesRepository.CreateNote(note, accessToken);
             Logger.Log.Instance.Info($"Создание заметки с id: {result.Id}");
             return result;
         }
@@ -55,10 +55,10 @@ namespace myNote.Api.Controllers
         /// <param name="id">Идентификатор пользователя</param>
         [HttpDelete]
         [Route("api/notes/{id}")]
-        public void Delete(Guid id)
+        public void Delete(Guid id, [FromBody]Token accessToken)
         {
             Logger.Log.Instance.Info($"Удаление заметки с id: {id}");
-            notesRepository.DeleteNote(id);
+            notesRepository.DeleteNote(id, accessToken);
         }
 
         /// <summary>
@@ -69,12 +69,12 @@ namespace myNote.Api.Controllers
         [HttpPut]
         [Route("api/notes/{id}")]
         [ArgumentExceptionFilter]
-        public Note Put([FromBody] Note note)
+        public Note Put([FromBody] Note note, [FromBody]Token accessToken)
         {
             Logger.Log.Instance.Info($"Обновление заметки с id: {note.Id}");
             try
             {
-                return notesRepository.UpdateNote(note);
+                return notesRepository.UpdateNote(note, accessToken);
             }
             catch (ArgumentException e)
             {

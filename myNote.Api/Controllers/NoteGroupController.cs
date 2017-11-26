@@ -30,10 +30,10 @@ namespace myNote.Api.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("api/notegroups/group/{groupId}/note/{noteId}")]
-        public NoteGroup Post(Guid noteId, Guid groupId)
+        public NoteGroup Post(Guid noteId, Guid groupId, [FromBody]Token accessToken)
         {
             Logger.Log.Instance.Info($"Создание группы заметок с noteId: {noteId} и groupId: {groupId}");
-            return noteGroupsRepository.CreateNoteGroup(noteId, groupId);
+            return noteGroupsRepository.CreateNoteGroup(noteId, groupId, accessToken);
         }
         /// <summary>
         /// Получение группы заметки

@@ -11,11 +11,24 @@ namespace myNote.DataLayer.Sql.Test
     static class HelpingClass
     {
         private const string ConnectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=test;Integrated Security=true";
+        private static UsersRepository usersRepository = new UsersRepository(ConnectionString, new GroupsRepository(ConnectionString));
+        private static CredentialsRepository credentialsRepository = new CredentialsRepository(ConnectionString, usersRepository, new TokensRepository(ConnectionString));
 
         internal static User CreateUser()
         {
-            var credentialsRepository = new CredentialsRepository(ConnectionString, new UsersRepository(ConnectionString, new GroupsRepository(ConnectionString)));
-            return credentialsRepository.Register(new Credential { Login = "TestUser", Password = HelpingClass.GetPassword() });
+            var credential = GetCredential();
+            credentialsRepository.Register(credential);
+            return usersRepository.GetUser(credential.Login);
+        }
+
+        internal static Token GetToken()
+        {
+            return credentialsRepository.Login(GetCredential());
+        }
+
+        internal static Credential GetCredential()
+        {
+            return new Credential { Login = "TestUser", Password = HelpingClass.GetPassword() };
         }
 
         internal static byte[] GetPassword()

@@ -66,11 +66,8 @@ namespace myNote.DataLayer.Sql
             return user;
         }
 
-        public User GetUser(string login, Token accessToken)
+        public User GetUser(string login)
         {
-            //access check
-            new TokensRepository(connectionString).CompareToken(accessToken);
-
             var db = new DataContext(connectionString);
 
             var user = (from u in db.GetTable<User>()

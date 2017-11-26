@@ -23,7 +23,7 @@ namespace myNote.DataLayer.Sql.Test
             //act
             var usersRepository = new UsersRepository(ConnectionString, new GroupsRepository(ConnectionString));
             tempUsersLogin.Add(user.Login);
-            var userFromDb = usersRepository.GetUser(user.Id);
+            var userFromDb = usersRepository.GetUser(user.Id, HelpingClass.GetToken());
 
             //asserts
             Assert.AreEqual(user.Name, userFromDb.Name);
@@ -34,14 +34,15 @@ namespace myNote.DataLayer.Sql.Test
         {
             //arrange
             var user = HelpingClass.CreateUser();
+            var token = HelpingClass.GetToken();
             const string category = "testCategory";
 
             //act
             var categoriesRepository = new GroupsRepository(ConnectionString);
             var usersRepository = new UsersRepository(ConnectionString, categoriesRepository);
             tempUsersLogin.Add(user.Login);
-            categoriesRepository.CreateGroup(user.Id, category);
-            user = usersRepository.GetUser(user.Id);
+            categoriesRepository.CreateGroup(user.Id, category, token);
+            user = usersRepository.GetUser(user.Id, token);
 
             //asserts
             Assert.AreEqual(category, user.UserGroups.Single().Name);
@@ -52,7 +53,7 @@ namespace myNote.DataLayer.Sql.Test
         public void ShouldThrowExceptionWhenReceiveUser()
         {
             var usersRepository = new UsersRepository(ConnectionString, new GroupsRepository(ConnectionString));
-            usersRepository.GetUser(Guid.NewGuid());
+            usersRepository.GetUser(Guid.NewGuid(), HelpingClass.GetToken());
         }
 
 
@@ -67,7 +68,7 @@ namespace myNote.DataLayer.Sql.Test
 
             //act
             user.Name = UserName;
-            user = usersRpository.UpdateUser(user);
+            user = usersRpository.UpdateUser(user, HelpingClass.GetToken());
 
             //asserts
             Assert.AreEqual(UserName, user.Name);
@@ -76,7 +77,7 @@ namespace myNote.DataLayer.Sql.Test
         [TestCleanup]
         public void CleanData()
         {
-            var credentialsRepository = new CredentialsRepository(ConnectionString, new UsersRepository(ConnectionString, new GroupsRepository(ConnectionString)));
+            var credentialsRepository = new CredentialsRepository(ConnectionString, new UsersRepository(ConnectionString, new GroupsRepository(ConnectionString)), new TokensRepository(ConnectionString));
             foreach (var login in tempUsersLogin)
                 credentialsRepository.Delete(login);
         }

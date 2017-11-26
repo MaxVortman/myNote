@@ -11,7 +11,7 @@ namespace myNote.DataLayer
     {
         User CreateUser(User user);
         User GetUser(Guid id, Token accessToken);
-        User GetUser(string Login, Token accessToken);
+        User GetUser(string Login);
         User UpdateUser(User user, Token accessToken);
     }
 }

@@ -17,6 +17,7 @@ namespace myNote.DataLayer.Sql.Test
         {
             //arrange
             var user = HelpingClass.CreateUser();
+            var token = HelpingClass.GetToken();
             tempUsersLogin.Add(user.Login);
             var note = new Note
             {
@@ -24,11 +25,11 @@ namespace myNote.DataLayer.Sql.Test
                 Title = "TestNote"
             };
             var notesRepository = new NotesRepository(ConnectionString);
-            note = notesRepository.CreateNote(note);
+            note = notesRepository.CreateNote(note, token);
 
             //act
             var sharesRepository = new SharesRepository(ConnectionString);
-            sharesRepository.CreateShare(note);
+            sharesRepository.CreateShare(note, token);
 
             //asserts
             Assert.IsTrue(sharesRepository.IsNoteShared(note.Id));
@@ -41,6 +42,7 @@ namespace myNote.DataLayer.Sql.Test
             //arrange
             const int CountOfShares = 10;
             var user = HelpingClass.CreateUser();
+            var token = HelpingClass.GetToken();
             tempUsersLogin.Add(user.Login);
             const string noteTitle = "TestNote";
             var notes = new Note[CountOfShares];
@@ -52,7 +54,7 @@ namespace myNote.DataLayer.Sql.Test
                     Title = $"{noteTitle}{i}",
                     UserId = user.Id
                 };
-                notes[i] = notesRepository.CreateNote(notes[i]);
+                notes[i] = notesRepository.CreateNote(notes[i], token);
             }
 
             //act
@@ -60,7 +62,7 @@ namespace myNote.DataLayer.Sql.Test
             var sharesRepository = new SharesRepository(ConnectionString);
             for (int i = 0; i < CountOfShares; i++)
             {
-                shares[i] = sharesRepository.CreateShare(notes[i]);
+                shares[i] = sharesRepository.CreateShare(notes[i], token);
             }
             var sharesFromDb = sharesRepository.GetAllUserSharesNotes(user.Id).ToArray();
 
@@ -105,7 +107,7 @@ namespace myNote.DataLayer.Sql.Test
         [TestCleanup]
         public void CleanData()
         {
-            var credentialsRepository = new CredentialsRepository(ConnectionString, new UsersRepository(ConnectionString, new GroupsRepository(ConnectionString)));
+            var credentialsRepository = new CredentialsRepository(ConnectionString, new UsersRepository(ConnectionString, new GroupsRepository(ConnectionString)), new TokensRepository(ConnectionString));
             foreach (var login in tempUsersLogin)
                 credentialsRepository.Delete(login);
         }

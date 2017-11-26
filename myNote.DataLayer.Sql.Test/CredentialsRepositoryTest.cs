@@ -22,12 +22,13 @@ namespace myNote.DataLayer.Sql.Test
 
             //act
             var usersRepository = new UsersRepository(ConnectionString, new GroupsRepository(ConnectionString));
-            var credentialsRepository = new CredentialsRepository(ConnectionString, usersRepository);
-            var user = credentialsRepository.Register(credential);
+            var credentialsRepository = new CredentialsRepository(ConnectionString, usersRepository, new TokensRepository(ConnectionString));
+            credentialsRepository.Register(credential);
+            var token = credentialsRepository.Login(credential);
             var userFromDb = usersRepository.GetUser(credential.Login);
 
             //asserts
-            Assert.AreEqual(user.Id, userFromDb.Id);
+            Assert.AreEqual(credential.Login, userFromDb.Login);
         }
 
         [TestMethod]
@@ -37,20 +38,21 @@ namespace myNote.DataLayer.Sql.Test
             var credential = new Credential { Login = "TestLogin", Password = HelpingClass.GetPassword() };
             tempUsersLogin.Add(credential.Login);
             var usersRepository = new UsersRepository(ConnectionString, new GroupsRepository(ConnectionString));
-            var credentialsRepository = new CredentialsRepository(ConnectionString, usersRepository);
-            var user = credentialsRepository.Register(credential);
+            var credentialsRepository = new CredentialsRepository(ConnectionString, usersRepository, new TokensRepository(ConnectionString));
+            credentialsRepository.Register(credential);
 
             //act
-            var userFromDb = credentialsRepository.Login(credential);
+            var token = credentialsRepository.Login(credential);
+            var userFromDb = usersRepository.GetUser(credential.Login);
 
             //asserts
-            Assert.AreEqual(user.Id, userFromDb.Id);
+            Assert.AreEqual(credential.Login, userFromDb.Login);
         }        
 
         [TestCleanup]
         public void CleanData()
         {
-            var credentialsRepository = new CredentialsRepository(ConnectionString, new UsersRepository(ConnectionString, new GroupsRepository(ConnectionString)));
+            var credentialsRepository = new CredentialsRepository(ConnectionString, new UsersRepository(ConnectionString, new GroupsRepository(ConnectionString)), new TokensRepository(ConnectionString));
             foreach (var login in tempUsersLogin)
                 credentialsRepository.Delete(login);
         }

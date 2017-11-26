@@ -30,10 +30,10 @@ namespace myNote.Api.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("api/shares")]
-        public Share Post([FromBody] Note note)
+        public Share Post([FromBody] Note note, [FromBody]Token accessToken)
         {
             Logger.Log.Instance.Info("Создание раздачи заметки с id: {0}", note.Id);
-            return sharesRepository.CreateShare(note);
+            return sharesRepository.CreateShare(note, accessToken);
         }
 
         /// <summary>

@@ -10,7 +10,7 @@ namespace myNote.Model
     [Table(Name = "Tokens")]
     public class Token
     {
-        [Column]
+        [Column(IsPrimaryKey = true)]
         public Guid UserId { get; set; }
         [Column (Name = "TokenKey")]
         public string Key { get; set; }

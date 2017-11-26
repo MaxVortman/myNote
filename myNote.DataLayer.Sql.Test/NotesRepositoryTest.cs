@@ -29,7 +29,7 @@ namespace myNote.DataLayer.Sql.Test
 
             note.UserId = user.Id;
             tempUsersLogin.Add(user.Login);
-            note = notesRepository.CreateNote(note);
+            note = notesRepository.CreateNote(note, HelpingClass.GetToken());
             var noteFromDb = notesRepository.GetNote(note.Id);
 
             Assert.AreEqual(note.Title, noteFromDb.Title);
@@ -42,6 +42,7 @@ namespace myNote.DataLayer.Sql.Test
             //arrange
             const int CountOfNotes = 10;
             var user = HelpingClass.CreateUser();
+            var token = HelpingClass.GetToken();
             const string noteTitle = "TestNote";
             var notes = new Note[CountOfNotes];
 
@@ -59,7 +60,7 @@ namespace myNote.DataLayer.Sql.Test
 
             for (int i = 0; i < CountOfNotes; i++)
             {
-                notes[i] = notesRepository.CreateNote(notes[i]);
+                notes[i] = notesRepository.CreateNote(notes[i], token);
             }
 
             var notesFromDb = notesRepository.GetUserNotes(user.Id).ToArray();
@@ -93,6 +94,7 @@ namespace myNote.DataLayer.Sql.Test
         {
             //arrange
             var user = HelpingClass.CreateUser();
+            var token = HelpingClass.GetToken();
             var note = new Note
             {
                 Title = "TestNote"
@@ -105,10 +107,10 @@ namespace myNote.DataLayer.Sql.Test
 
             note.UserId = user.Id;
 
-            note = notesRepository.CreateNote(note);
+            note = notesRepository.CreateNote(note, token);
 
             note.Title = "UpdatedTestNote";
-            notesRepository.UpdateNote(note);
+            notesRepository.UpdateNote(note, token);
 
             var noteFromDb = notesRepository.GetNote(note.Id);
 
@@ -128,8 +130,10 @@ namespace myNote.DataLayer.Sql.Test
         [ExpectedException(typeof(ArgumentException))]
         public void ShouldThrowExceptionWhenUpdateNote()
         {
+            var user = HelpingClass.CreateUser();
+            tempUsersLogin.Add(user.Login);
             var notesRepository = new NotesRepository(ConnectionString);
-            notesRepository.UpdateNote(new Note { Id = Guid.NewGuid() });
+            notesRepository.UpdateNote(new Note { Id = Guid.NewGuid() }, HelpingClass.GetToken());
         }
 
         [TestMethod]
@@ -151,7 +155,7 @@ namespace myNote.DataLayer.Sql.Test
         [TestCleanup]
         public void CleanData()
         {
-            var credentialsRepository = new CredentialsRepository(ConnectionString, new UsersRepository(ConnectionString, new GroupsRepository(ConnectionString)));
+            var credentialsRepository = new CredentialsRepository(ConnectionString, new UsersRepository(ConnectionString, new GroupsRepository(ConnectionString)), new TokensRepository(ConnectionString));
             foreach (var login in tempUsersLogin)
                 credentialsRepository.Delete(login);
         }
