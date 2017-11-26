@@ -52,6 +52,8 @@ namespace myNote.DataLayer.Sql.Test
         [ExpectedException(typeof(ArgumentException))]
         public void ShouldThrowExceptionWhenReceiveUser()
         {
+            var user = HelpingClass.CreateUser();
+            tempUsersLogin.Add(user.Login);
             var usersRepository = new UsersRepository(ConnectionString, new GroupsRepository(ConnectionString));
             usersRepository.GetUser(Guid.NewGuid(), HelpingClass.GetToken());
         }

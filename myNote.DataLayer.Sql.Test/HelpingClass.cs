@@ -21,6 +21,13 @@ namespace myNote.DataLayer.Sql.Test
             return usersRepository.GetUser(credential.Login);
         }
 
+        internal static User CreateAnotherUser()
+        {
+            var credential = new Credential { Login = "TestUser2", Password = GetPassword() };
+            credentialsRepository.Register(credential);
+            return usersRepository.GetUser(credential.Login);
+        }
+
         internal static Token GetToken()
         {
             return credentialsRepository.Login(GetCredential());
