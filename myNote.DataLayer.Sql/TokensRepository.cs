@@ -17,15 +17,37 @@ namespace myNote.DataLayer.Sql
             this.connectionString = connectionString;
         }
 
-        public Token GetToken(Guid userId)
+        public void CompareToken(Token expectedToken)
         {
             var db = new DataContext(connectionString);
-            var token = (from t in db.GetTable<Token>()
-                         where t.UserId == userId
+            var actualToken = (from t in db.GetTable<Token>()
+                         where t.UserId == expectedToken.UserId
                          select t).FirstOrDefault();
-            if (token == default(Token))
+            if (actualToken == default(Token))
                 throw new ArgumentException("Wrong UserId");
+            if (actualToken.Key != expectedToken.Key)
+                throw new ArgumentException("Invalid Token");
+        }
+
+        public Token CreateToken(Guid userId)
+        {
+            var db = new DataContext(connectionString);
+            var token = new Token { UserId = userId, Key = CreateKey(userId) };
+            db.GetTable<Token>().InsertOnSubmit(token);
+            db.SubmitChanges();
             return token;
+        }
+
+        private string CreateKey(Guid userId)
+        {
+            return userId + DateTime.Now.ToString(@"MM\/dd\/yyyy\_HH:mm");
+        }
+
+        public void CompareToken(Token accessToken, Guid userId)
+        {
+            if (accessToken.UserId != userId)
+                throw new ArgumentException("You don't have access");
+            CompareToken(accessToken);
         }
     }
 }

@@ -11,15 +11,27 @@ namespace myNote.DataLayer.Sql
 {
     public class NotesRepository : INotesRepository
     {
+        #region Private Properties
+
         private readonly string connectionString;
+
+        #endregion
+
+        #region Constructor
 
         public NotesRepository(string connectionString)
         {
             this.connectionString = connectionString;
         }
 
-        public Note CreateNote(Note note)
+        #endregion
+
+        #region Create Note
+
+        public Note CreateNote(Note note, Token accessToken)
         {
+            new TokensRepository(connectionString).CompareToken(accessToken, note.UserId);
+
             var db = new DataContext(connectionString);
             note.Id = Guid.NewGuid();
             db.GetTable<Note>().InsertOnSubmit(note);
@@ -27,8 +39,14 @@ namespace myNote.DataLayer.Sql
             return note;
         }
 
-        public void DeleteNote(Guid id)
+        #endregion
+
+        #region Delete Note
+
+        public void DeleteNote(Guid id, Token accessToken)
         {
+            new TokensRepository(connectionString).CompareToken(accessToken, GetNote(id).UserId);
+
             using (var sqlConnection = new SqlConnection(connectionString))
             {
                 sqlConnection.Open();
@@ -40,6 +58,10 @@ namespace myNote.DataLayer.Sql
                 }
             }
         }
+
+        #endregion
+
+        #region Get Note
 
         public Note GetNote(Guid noteId)
         {
@@ -60,8 +82,14 @@ namespace myNote.DataLayer.Sql
                    select n;
         }
 
-        public Note UpdateNote(Note note)
+        #endregion
+
+        #region Update Note
+
+        public Note UpdateNote(Note note, Token accessToken)
         {
+            new TokensRepository(connectionString).CompareToken(accessToken, note.UserId);
+
             var db = new DataContext(connectionString);
             var noteFromDb = (from n in db.GetTable<Note>()
                               where n.Id == note.Id
@@ -81,5 +109,7 @@ namespace myNote.DataLayer.Sql
             destinationNote.Content = sourceNote.Content;
             destinationNote.ChangeDate = DateTime.Now;
         }
+
+        #endregion
     }
 }

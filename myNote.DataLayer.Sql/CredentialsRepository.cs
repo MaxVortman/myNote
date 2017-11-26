@@ -13,11 +13,13 @@ namespace myNote.DataLayer.Sql
     {
 
         private readonly string connectionString;
+        private readonly ITokensRepository tokensRepository;
         private readonly IUsersRepository usersRepository;
 
-        public CredentialsRepository(string connectionString, IUsersRepository usersRepository)
+        public CredentialsRepository(string connectionString, IUsersRepository usersRepository, ITokensRepository tokensRepository)
         {
             this.connectionString = connectionString;
+            this.tokensRepository = tokensRepository;
             this.usersRepository = usersRepository;
         }
 
@@ -35,21 +37,21 @@ namespace myNote.DataLayer.Sql
             }
         }
 
-        public User Login(Credential credential)
+        public Token Login(Credential credential)
         {
             if (!CheckForAvailability(credential))
                 throw new ArgumentException("User with this Login is not registered or password is invalid");
-            return usersRepository.GetUser(credential.Login);
+            return tokensRepository.CreateToken(usersRepository.GetUser(credential.Login).Id);
         }
 
-        public User Register(Credential credential)
+        public void Register(Credential credential)
         {
             if (CheckForAvailability(credential))
                 throw new ArgumentException("User with this Login already registered");
             var db = new DataContext(connectionString);
             db.GetTable<Credential>().InsertOnSubmit(credential);
             db.SubmitChanges();
-            return usersRepository.CreateUser(new User { Login = credential.Login });
+            usersRepository.CreateUser(new User { Login = credential.Login });
         }
 
         private bool CheckForAvailability(Credential credential)

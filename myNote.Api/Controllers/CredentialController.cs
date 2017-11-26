@@ -18,7 +18,7 @@ namespace myNote.Api.Controllers
 
         public CredentialController()
         {
-            credentialsRepository = new CredentialsRepository(ConnectionString, new UsersRepository(ConnectionString, new GroupsRepository(ConnectionString)));
+            credentialsRepository = new CredentialsRepository(ConnectionString, new UsersRepository(ConnectionString, new GroupsRepository(ConnectionString)), new TokensRepository(ConnectionString));
         }
 
         /// <summary>
@@ -29,12 +29,12 @@ namespace myNote.Api.Controllers
         [HttpPost]
         [Route("api/register")]
         [ArgumentExceptionFilter]
-        public User Post([FromBody] Credential credential)
+        public void Post([FromBody] Credential credential)
         {
             Logger.Log.Instance.Info("Создание пользователя с логином: {0}", credential.Login);
             try
             {
-                return credentialsRepository.Register(credential);
+                credentialsRepository.Register(credential);
             }
             catch (ArgumentException e)
             {
@@ -51,7 +51,7 @@ namespace myNote.Api.Controllers
         [HttpGet]
         [Route("api/login")]
         [ArgumentExceptionFilter]
-        public User Get([FromBody] Credential credential)
+        public Token Get([FromBody] Credential credential)
         {
             try
             {

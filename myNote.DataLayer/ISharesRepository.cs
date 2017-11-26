@@ -9,7 +9,7 @@ namespace myNote.DataLayer
 {
     public interface ISharesRepository
     {
-        Share CreateShare(Note note);
+        Share CreateShare(Note note, Token accessToken);
         IEnumerable<Note> GetAllUserSharesNotes(Guid userId);
         bool IsNoteShared(Guid noteId);
     }

@@ -9,8 +9,8 @@ namespace myNote.DataLayer
 {
     public interface ICredentialsRepository
     {
-        User Login(Credential credential);
-        User Register(Credential credential);
+        Token Login(Credential credential);
+        void Register(Credential credential);
         void Delete(string login);
     }
 }

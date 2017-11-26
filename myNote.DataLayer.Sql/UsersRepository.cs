@@ -11,14 +11,24 @@ namespace myNote.DataLayer.Sql
 {
     public class UsersRepository : IUsersRepository
     {
+        #region Private Properties
+
         private readonly string connectionString;
         private readonly IGroupsRepository groupsRepository;
+
+        #endregion
+
+        #region Constructor
 
         public UsersRepository(string connectionString, IGroupsRepository groupsRepository)
         {
             this.connectionString = connectionString;
             this.groupsRepository = groupsRepository;            
         }
+
+        #endregion
+
+        #region Create User
 
         public User CreateUser(User user)
         {
@@ -36,8 +46,15 @@ namespace myNote.DataLayer.Sql
             return user;
         }
 
-        public User GetUser(Guid id)
+        #endregion
+
+        #region Get User
+
+        public User GetUser(Guid id, Token accessToken)
         {
+            //access check
+            new TokensRepository(connectionString).CompareToken(accessToken);
+
             var db = new DataContext(connectionString);
 
             var user = (from u in db.GetTable<User>()
@@ -49,8 +66,11 @@ namespace myNote.DataLayer.Sql
             return user;
         }
 
-        public User GetUser(string login)
+        public User GetUser(string login, Token accessToken)
         {
+            //access check
+            new TokensRepository(connectionString).CompareToken(accessToken);
+
             var db = new DataContext(connectionString);
 
             var user = (from u in db.GetTable<User>()
@@ -62,8 +82,15 @@ namespace myNote.DataLayer.Sql
             return user;
         }
 
-        public User UpdateUser(User user)
+        #endregion
+
+        #region Update User
+
+        public User UpdateUser(User user, Token accessToken)
         {
+            //access check
+            new TokensRepository(connectionString).CompareToken(accessToken, user.Id);
+
             var db = new DataContext(connectionString);
 
             var userFromDb = (from u in db.GetTable<User>()
@@ -83,5 +110,7 @@ namespace myNote.DataLayer.Sql
             destinationUser.Name = sourceUser.Name;
             destinationUser.UserGroups = sourceUser.UserGroups;
         }
+
+        #endregion
     }
 }

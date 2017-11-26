@@ -10,8 +10,8 @@ namespace myNote.DataLayer
     public interface IUsersRepository
     {
         User CreateUser(User user);
-        User GetUser(Guid id);
-        User GetUser(string Login);
-        User UpdateUser(User user);
+        User GetUser(Guid id, Token accessToken);
+        User GetUser(string Login, Token accessToken);
+        User UpdateUser(User user, Token accessToken);
     }
 }

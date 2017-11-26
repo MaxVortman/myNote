@@ -11,15 +11,27 @@ namespace myNote.DataLayer.Sql
 {
     public class GroupsRepository : IGroupsRepository
     {
+        #region Private Properties
+
         private readonly string connectionString;
-            
+
+        #endregion
+
+        #region Constructor
+
         public GroupsRepository(string connectionString)
         {
             this.connectionString = connectionString;
         }
 
-        public Group CreateGroup(Guid userId, string name)
+        #endregion
+
+        #region Create Group
+
+        public Group CreateGroup(Guid userId, string name, Token accessToken)
         {
+            new TokensRepository(connectionString).CompareToken(accessToken, userId);
+
             var db = new DataContext(connectionString);
             var group = new Group
             {
@@ -31,6 +43,10 @@ namespace myNote.DataLayer.Sql
             db.SubmitChanges();
             return group;
         }
+
+        #endregion
+
+        #region Get Group
 
         public IEnumerable<Group> GetUserGroups(Guid userId)
         {
@@ -51,8 +67,25 @@ namespace myNote.DataLayer.Sql
             return group;
         }
 
-        public void DeleteGroup(Guid id)
+        public Group GetGroup(Guid userId, string name)
         {
+            var db = new DataContext(connectionString);
+            var group = (from g in db.GetTable<Group>()
+                         where g.UserId == userId && g.Name == name
+                         select g).FirstOrDefault();
+            if (group == default(Group))
+                throw new ArgumentException($"Нет группы с user id {userId} и name {name}");
+            return group;
+        }
+
+        #endregion
+
+        #region Delete Group
+
+        public void DeleteGroup(Guid id, Token accessToken)
+        {
+            new TokensRepository(connectionString).CompareToken(accessToken, GetGroup(id).UserId);
+
             var noteGroupsRepository = new NoteGroupsRepository(connectionString);
             if (noteGroupsRepository.GetAllNoteBy(id).Count() != 0)
                 throw new InvalidOperationException("Невозможно удалить группу, в которой есть записи");
@@ -68,8 +101,10 @@ namespace myNote.DataLayer.Sql
             }
         }
 
-        public void DeleteGroup(Guid userId, string name)
+        public void DeleteGroup(Guid userId, string name, Token accessToken)
         {
+            new TokensRepository(connectionString).CompareToken(accessToken, userId);
+
             var noteGroupsRepository = new NoteGroupsRepository(connectionString);
             if (noteGroupsRepository.GetAllNoteBy(userId, name).Count() != 0)
                 throw new InvalidOperationException("Невозможно удалить группу, в которой есть записи");
@@ -86,15 +121,6 @@ namespace myNote.DataLayer.Sql
             }
         }
 
-        public Group GetGroup(Guid userId, string name)
-        {
-            var db = new DataContext(connectionString);
-            var group = (from g in db.GetTable<Group>()
-                         where g.UserId == userId && g.Name == name
-                         select g).FirstOrDefault();
-            if (group == default(Group))
-                throw new ArgumentException($"Нет группы с user id {userId} и name {name}");
-            return group;
-        }
+        #endregion
     }
 }

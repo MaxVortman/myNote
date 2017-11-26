@@ -10,21 +10,37 @@ namespace myNote.DataLayer.Sql
 {
     public class SharesRepository : ISharesRepository
     {
+        #region Private Properties
+
         private readonly string connectionString;
+
+        #endregion
+
+        #region Constructor
 
         public SharesRepository(string connectionString)
         {
             this.connectionString = connectionString;
         }
 
-        public Share CreateShare(Note note)
+        #endregion
+
+        #region Create Share
+
+        public Share CreateShare(Note note, Token accessToken)
         {
+            new TokensRepository(connectionString).CompareToken(accessToken, note.UserId);
+
             var db = new DataContext(connectionString);
             var share = new Share { NoteId = note.Id, UserId = note.UserId };
             db.GetTable<Share>().InsertOnSubmit(share);
             db.SubmitChanges();
             return share;
         }
+
+        #endregion
+
+        #region Get Shares
 
         public IEnumerable<Note> GetAllUserSharesNotes(Guid userId)
         {
@@ -35,6 +51,10 @@ namespace myNote.DataLayer.Sql
                    select notesRepository.GetNote(s.NoteId);
         }
 
+        #endregion
+
+        #region Helping methods
+
         public bool IsNoteShared(Guid noteId)
         {
             var db = new DataContext(connectionString);
@@ -42,5 +62,7 @@ namespace myNote.DataLayer.Sql
                     where s.NoteId == noteId
                     select s).FirstOrDefault() == default(Share) ? false : true;
         }
+
+        #endregion
     }
 }

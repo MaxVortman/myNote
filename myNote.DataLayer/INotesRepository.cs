@@ -9,10 +9,10 @@ namespace myNote.DataLayer
 {
     public interface INotesRepository
     {
-        Note CreateNote(Note note);
-        void DeleteNote(Guid id);
+        Note CreateNote(Note note, Token accessToken);
+        void DeleteNote(Guid id, Token accessToken);
         IEnumerable<Note> GetUserNotes(Guid userId);
-        Note UpdateNote(Note note);
+        Note UpdateNote(Note note, Token accessToken);
         Note GetNote(Guid noteId);
     }
 }

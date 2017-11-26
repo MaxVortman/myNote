@@ -9,6 +9,8 @@ namespace myNote.DataLayer
 {
     public interface ITokensRepository
     {
-        Token GetToken(Guid userId);
+        Token CreateToken(Guid userId);
+        void CompareToken(Token expectedToken, Guid userId);
+        void CompareToken(Token expectedToken);
     }
 }
