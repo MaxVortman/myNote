@@ -1,4 +1,4 @@
-﻿using myNote.WPFClient.View.DataModels;
+﻿using myNote.WPFClient.DataModels;
 using myNote.WPFClient.View.Pages;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace myNote.WPFClient.View.ValueConverters
+namespace myNote.WPFClient.ValueConverters
 {
     public class ApplicationPageValueConverter : BaseValueConverter<ApplicationPageValueConverter>
     {

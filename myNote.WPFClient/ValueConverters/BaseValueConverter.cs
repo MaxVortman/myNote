@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Data;
 using System.Windows.Markup;
 
-namespace myNote.WPFClient.View.ValueConverters
+namespace myNote.WPFClient.ValueConverters
 {
     public abstract class BaseValueConverter<T> : MarkupExtension, IValueConverter
         where T : class, new()

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace myNote.WPFClient.View.ViewModel.Base
+namespace myNote.WPFClient.ViewModel.Base
 {
     [AddINotifyPropertyChangedInterface]
     public class BaseViewModel : INotifyPropertyChanged

@@ -1,4 +1,4 @@
-﻿using myNote.WPFClient.View.ViewModel;
+﻿using myNote.WPFClient.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;

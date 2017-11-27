@@ -1,7 +1,7 @@
-﻿using myNote.WPFClient.View.ViewModel.Base;
+﻿using myNote.WPFClient.ViewModel.Base;
 using System.Windows.Input;
 
-namespace myNote.WPFClient.View.ViewModel
+namespace myNote.WPFClient.ViewModel
 {
     public class LoginPageViewModel : BaseViewModel
     {

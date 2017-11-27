@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:myNote.WPFClient.View"
-        xmlns:converters="clr-namespace:myNote.WPFClient.View.ValueConverters"
+        xmlns:converters="clr-namespace:myNote.WPFClient.ValueConverters"
         mc:Ignorable="d"
         Title="MainWindow" Height="500" Width="700">
     <Window.Resources>

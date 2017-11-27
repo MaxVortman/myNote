@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace myNote.WPFClient.View.ViewModel.Base
+namespace myNote.WPFClient.ViewModel.Base
 {
     public class RelayCommand : ICommand
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace myNote.WPFClient.View.DataModels
+namespace myNote.WPFClient.DataModels
 {
     public enum ApplicationPage
     {

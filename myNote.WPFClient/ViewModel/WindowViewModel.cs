@@ -1,5 +1,5 @@
-﻿using myNote.WPFClient.View.DataModels;
-using myNote.WPFClient.View.ViewModel.Base;
+﻿using myNote.WPFClient.DataModels;
+using myNote.WPFClient.ViewModel.Base;
 
 namespace myNote.WPFClient.ViewModel
 {
