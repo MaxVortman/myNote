@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "myNote.Api", "myNote.Api\my
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "myNote.Logger", "myNote.Logger\myNote.Logger.csproj", "{1B049C4A-A0DC-4C3B-9701-5CF82F095FFB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "myNote.WPFClient", "myNote.WPFClient.View\myNote.WPFClient.csproj", "{6DF87D78-3F0B-47FD-BBC5-18EDFA806E90}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "myNote.WPFClient", "myNote.WPFClient\myNote.WPFClient.csproj", "{6DF87D78-3F0B-47FD-BBC5-18EDFA806E90}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

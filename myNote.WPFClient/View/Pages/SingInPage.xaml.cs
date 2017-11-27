@@ -1,5 +1,4 @@
-﻿using myNote.WPFClient.View.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,15 +16,13 @@ using System.Windows.Shapes;
 namespace myNote.WPFClient.View.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для LoginPage.xaml
+    /// Логика взаимодействия для SingInPage.xaml
     /// </summary>
-    public partial class LoginPage : Page
+    public partial class SingInPage : Page
     {
-        public LoginPage()
+        public SingInPage()
         {
             InitializeComponent();
-
-            this.DataContext = new LoginPageViewModel();
         }
     }
 }

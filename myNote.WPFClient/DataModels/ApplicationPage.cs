@@ -8,6 +8,8 @@ namespace myNote.WPFClient.View.DataModels
 {
     public enum ApplicationPage
     {
-        Login = 0,
+        Register = 0,
+        Login = 1,
+
     }
 }

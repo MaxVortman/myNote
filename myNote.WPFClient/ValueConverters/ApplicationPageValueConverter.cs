@@ -17,8 +17,11 @@ namespace myNote.WPFClient.View.ValueConverters
             // Find the appropriate page
             switch ((ApplicationPage)value)
             {
+                case ApplicationPage.Register:
+                    return new SingUpPage();
+
                 case ApplicationPage.Login:
-                    return new LoginPage();
+                    return new SingInPage();
 
                 default:
                     Debugger.Break();
