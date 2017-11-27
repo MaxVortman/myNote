@@ -25,7 +25,7 @@ namespace myNote.WPFClient.View
         {
             InitializeComponent();
 
-            this.DataContext = new WindowViewModel();
+            this.DataContext = IoC.IoC.Application;
         }
     }
 }

@@ -18,11 +18,7 @@ namespace myNote.WPFClient.ViewModel.Base
 
         #region Public event
 
-        public event EventHandler CanExecuteChanged
-        {
-            add { CommandManager.RequerySuggested += value; }
-            remove { CommandManager.RequerySuggested -= value; }
-        }
+        public event EventHandler CanExecuteChanged;
 
         #endregion
 

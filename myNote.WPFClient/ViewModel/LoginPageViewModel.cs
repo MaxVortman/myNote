@@ -13,6 +13,9 @@ namespace myNote.WPFClient.ViewModel
         /// <summary>
         /// Command of button, which change page for sing in
         /// </summary>
-        public ICommand LoginButtonClickCommand { get; set; } = new RelayCommand((obj) => { });
+        public ICommand LoginButtonClickCommand { get; set; } = new RelayCommand((obj) => 
+        {
+            IoC.IoC.Application.GoToPage(DataModels.ApplicationPage.Login);
+        });
     }
 }

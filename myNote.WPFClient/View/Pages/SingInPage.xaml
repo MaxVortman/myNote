@@ -14,7 +14,7 @@
                 <TextBlock HorizontalAlignment="Center" Margin="0 0 0 30">Sing In</TextBlock>
                 <TextBox Tag="Login"></TextBox>
                 <TextBox Tag="Password"></TextBox>
-                <Button Margin="0 30 0 0" HorizontalAlignment="Center" Command="{Binding SingInButtonClickCommand}">Login</Button>
+                <Button Margin="0 30 0 0" HorizontalAlignment="Center" Command="{Binding LoginButtonClickCommand}">Login</Button>
             </StackPanel>
         </Border>
     </Grid>
