@@ -2,3 +2,15 @@
 Имя параметра: max@gmail.com
 2017-10-31 16:30:44.0675|ERROR|myNote.Logger.Log|Пользователь с таким email (max@gmail.com) уже существует.
 2017-10-31 16:46:54.0946|ERROR|myNote.Logger.Log|Пользователь с таким email (max@gmail.com) уже существует.
+2017-11-28 23:55:30.3129|ERROR|myNote.Logger.Log|User with this Login is not registered or password is invalid
+2017-11-29 00:48:55.8049|ERROR|myNote.Logger.Log|User with this Login Max is not registered or password VG??H???;?%??x-? is invalid
+2017-11-29 00:52:39.0062|ERROR|myNote.Logger.Log|User with this Login Max is not registered or password VG??H??;?%??x-? is invalid
+2017-11-29 00:52:59.9148|ERROR|myNote.Logger.Log|User with this Login Max already registered
+2017-11-29 00:54:10.5309|ERROR|myNote.Logger.Log|User with this Login Max is not registered or password VG??H??;?%??x-? is invalid
+2017-11-29 01:07:26.4962|ERROR|myNote.Logger.Log|User with this Login Max is not registered or password VG??H??;?%??x-? is invalid
+2017-11-29 01:14:06.5179|ERROR|myNote.Logger.Log|User with this Login Max is not registered or password VG??H??;?%??x-? is invalid
+2017-11-29 01:25:11.3743|ERROR|myNote.Logger.Log|User with this Login Max is not registered or password VG??H??;?%??x-? is invalid
+2017-11-29 01:27:05.9103|ERROR|myNote.Logger.Log|User with this Login Max already registered
+2017-11-29 01:27:39.5315|ERROR|myNote.Logger.Log|User with this Login Max is not registered or password VG??H??;?%??x-? is invalid
+2017-11-29 01:29:49.4679|ERROR|myNote.Logger.Log|User with this Login Max is not registered or password s4Qs?4??l?,yOX? is invalid
+2017-11-29 01:30:29.0683|ERROR|myNote.Logger.Log|User with this Login Max already registered

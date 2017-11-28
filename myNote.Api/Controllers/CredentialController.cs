@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Text;
 using System.Web.Http;
 
 namespace myNote.Api.Controllers
@@ -48,7 +49,7 @@ namespace myNote.Api.Controllers
         /// </summary>
         /// <param name="credential">Логин и пароль</param>
         /// <returns>Пользователь</returns>
-        [HttpGet]
+        [HttpPut]
         [Route("api/login")]
         [ArgumentExceptionFilter]
         public Token Get([FromBody] Credential credential)
@@ -68,7 +69,7 @@ namespace myNote.Api.Controllers
         /// Удаление пользователя
         /// </summary>
         /// <param name="login">Логин пользователя</param>
-        [HttpDelete]
+        [HttpPut]
         [Route("api/delete/{login}")]
         public void Delete(string login, [FromBody] Token accessToken)
         {

@@ -10,8 +10,14 @@ namespace myNote.Model
     [Table(Name = "Credentials")]
     public class Credential
     {
+        /// <summary>
+        /// User's Login
+        /// </summary>
         [Column(IsPrimaryKey = true)]
         public string Login { get; set; }
+        /// <summary>
+        /// Encrypted User's Password
+        /// </summary>
         [Column]
         public byte[] Password { get; set; }
     }

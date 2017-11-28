@@ -60,9 +60,6 @@
     <Compile Include="UsersRepositoryTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\myNote.DataLayer.Sql\myNote.DataLayer.Sql.csproj">
       <Project>{58fd7308-a1c1-4c0e-90f5-c9808943de57}</Project>
       <Name>myNote.DataLayer.Sql</Name>
@@ -75,6 +72,9 @@
       <Project>{ceb47c4a-30db-4ec6-84ad-e07e8ad00514}</Project>
       <Name>myNote.Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

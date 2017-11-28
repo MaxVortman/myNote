@@ -24,10 +24,12 @@ namespace myNote.WPFClient.IoC
         /// A shortcut to access the <see cref="ApplicationViewModel"/>
         /// </summary>
         public static WindowViewModel Application => IoC.Get<WindowViewModel>();
+        /// <summary>
+        /// Link of api resources
+        /// </summary>
+        public const string ConnectionString = @"http://localhost:64625/api/";
 
         #endregion
-
-        #region Construction
 
         /// <summary>
         /// Sets up the IoC container, binds all information required and is ready for use
@@ -48,8 +50,6 @@ namespace myNote.WPFClient.IoC
             // Bind to a single instance of Application view model
             Kernel.Bind<WindowViewModel>().ToConstant(new WindowViewModel());
         }
-
-        #endregion
 
         /// <summary>
         /// Get's a service from the IoC, of the specified type

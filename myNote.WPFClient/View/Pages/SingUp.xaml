@@ -12,8 +12,8 @@
         <Border CornerRadius="10" HorizontalAlignment="Center" VerticalAlignment="Center" Width="330">
             <StackPanel>
                 <TextBlock HorizontalAlignment="Center" Margin="0 0 0 30">Sing Up</TextBlock>
-                <TextBox Tag="Login"></TextBox>
-                <TextBox Tag="Password"></TextBox>
+                <TextBox Tag="Login" Text="{Binding Login}"></TextBox>
+                <TextBox Tag="Password" Text="{Binding Password}"></TextBox>
                 <Button Margin="0 30 0 0" HorizontalAlignment="Center" Command="{Binding SingUpButtonClickCommand}">Next</Button>
                 <Button Margin="0 10 0 0" HorizontalAlignment="Center" Command="{Binding LoginButtonClickCommand}">I already have an account</Button>
             </StackPanel>

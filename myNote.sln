@@ -17,7 +17,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "myNote.Model", "myNote.Mode
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "myNote.WPFClient", "myNote.WPFClient\myNote.WPFClient.csproj", "{6DF87D78-3F0B-47FD-BBC5-18EDFA806E90}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "myNote.WPFClient.Test", "myNote.WPFClient.Test\myNote.WPFClient.Test.csproj", "{8E1E9701-AEA1-43C3-BC48-25D7B5833501}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "myNote.WPFClient.Test", "myNote.WPFClient.Test\myNote.WPFClient.Test.csproj", "{4D4AC364-D9A7-451B-82F4-2B7F5BFCB5FE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,10 +53,10 @@ Global
 		{6DF87D78-3F0B-47FD-BBC5-18EDFA806E90}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6DF87D78-3F0B-47FD-BBC5-18EDFA806E90}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6DF87D78-3F0B-47FD-BBC5-18EDFA806E90}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8E1E9701-AEA1-43C3-BC48-25D7B5833501}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8E1E9701-AEA1-43C3-BC48-25D7B5833501}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8E1E9701-AEA1-43C3-BC48-25D7B5833501}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8E1E9701-AEA1-43C3-BC48-25D7B5833501}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D4AC364-D9A7-451B-82F4-2B7F5BFCB5FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D4AC364-D9A7-451B-82F4-2B7F5BFCB5FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D4AC364-D9A7-451B-82F4-2B7F5BFCB5FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D4AC364-D9A7-451B-82F4-2B7F5BFCB5FE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

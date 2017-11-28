@@ -30,3 +30,34 @@
 2017-11-26 12:30:49.9118|INFO|myNote.Logger.Log|Удаление пользователя: Max
 2017-11-26 15:01:13.9227|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
 2017-11-26 15:08:37.6473|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-28 21:21:23.2819|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-28 23:28:29.3599|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-28 23:31:41.0613|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-28 23:32:29.4987|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-28 23:36:58.7747|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-28 23:55:30.3129|ERROR|myNote.Logger.Log|User with this Login is not registered or password is invalid
+2017-11-28 23:55:30.3129|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-29 00:48:55.6119|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-29 00:48:55.8049|ERROR|myNote.Logger.Log|User with this Login Max is not registered or password VG??H???;?%??x-? is invalid
+2017-11-29 00:52:39.0062|ERROR|myNote.Logger.Log|User with this Login Max is not registered or password VG??H??;?%??x-? is invalid
+2017-11-29 00:52:39.0142|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-29 00:52:59.8768|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-29 00:52:59.9148|ERROR|myNote.Logger.Log|User with this Login Max already registered
+2017-11-29 00:54:10.5309|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-29 00:54:10.5309|ERROR|myNote.Logger.Log|User with this Login Max is not registered or password VG??H??;?%??x-? is invalid
+2017-11-29 01:07:26.4522|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-29 01:07:26.4962|ERROR|myNote.Logger.Log|User with this Login Max is not registered or password VG??H??;?%??x-? is invalid
+2017-11-29 01:14:06.5179|ERROR|myNote.Logger.Log|User with this Login Max is not registered or password VG??H??;?%??x-? is invalid
+2017-11-29 01:14:06.5179|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-29 01:25:11.3743|ERROR|myNote.Logger.Log|User with this Login Max is not registered or password VG??H??;?%??x-? is invalid
+2017-11-29 01:25:11.3743|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-29 01:27:05.8603|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-29 01:27:05.9103|ERROR|myNote.Logger.Log|User with this Login Max already registered
+2017-11-29 01:27:39.5315|ERROR|myNote.Logger.Log|User with this Login Max is not registered or password VG??H??;?%??x-? is invalid
+2017-11-29 01:27:39.5315|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-29 01:29:49.4679|ERROR|myNote.Logger.Log|User with this Login Max is not registered or password s4Qs?4??l?,yOX? is invalid
+2017-11-29 01:29:49.4679|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-29 01:30:29.0328|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-29 01:30:29.0683|ERROR|myNote.Logger.Log|User with this Login Max already registered
+2017-11-29 01:33:40.6903|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-29 01:33:40.9823|INFO|myNote.Logger.Log|Удаление пользователя: Max

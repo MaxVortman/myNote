@@ -47,7 +47,7 @@ namespace myNote.DataLayer.Sql.Test
 
             //asserts
             Assert.AreEqual(credential.Login, userFromDb.Login);
-        }        
+        }
 
         [TestCleanup]
         public void CleanData()
