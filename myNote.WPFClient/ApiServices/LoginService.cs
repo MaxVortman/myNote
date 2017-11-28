@@ -11,7 +11,7 @@ namespace myNote.WPFClient.ApiServices
 
         private readonly HttpClient _client;
 
-        public LoginService(string connectionString)
+        public LoginService(string connectionString = IoC.IoC.ConnectionString)
         {
             _client = new HttpClient
             {

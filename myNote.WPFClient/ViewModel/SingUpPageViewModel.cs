@@ -9,7 +9,7 @@ using System.Windows.Input;
 
 namespace myNote.WPFClient.ViewModel
 {
-    public class LoginPageViewModel : BaseViewModel
+    public class SingUpPageViewModel : BaseViewModel
     {
         #region Credential properties
         /// <summary>
@@ -40,32 +40,19 @@ namespace myNote.WPFClient.ViewModel
 
         #endregion
 
-        #region Helping Methods
-        /// <summary>
-        /// Creating credential method by login and password, which entered in textboxes
-        /// </summary>
-        /// <returns>User's Credential model</returns>
-        private Credential GetCredential()
-        {
-            if (string.IsNullOrEmpty(Login) || string.IsNullOrEmpty(Password))
-                throw new ArgumentException("U didn't enter a login and password");
-            return new Credential { Login = Login, Password = PasswordCrypter.GetPasswordMD5Hash(Password) };
-        }
-
-        #endregion
-
         #region Constructor
         /// <summary>
         /// Default Constructor
         /// </summary>
-        public LoginPageViewModel()
+        public SingUpPageViewModel()
         {
             //Initialize Sing Up Command
             SingUpButtonClickCommand = new RelayCommand((obj) =>
             {
                 try
                 {
-                    new LoginService(IoC.IoC.ConnectionString).Register(GetCredential());
+                    new LoginService(IoC.IoC.ConnectionString).Register(PasswordCrypter.GetCredential(Login, Password));
+                    IoC.IoC.Application.GoToPage(DataModels.ApplicationPage.Login);
                 }
                 catch (HttpRequestException e)
                 {

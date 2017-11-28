@@ -19,6 +19,8 @@ namespace myNote.WPFClient.ValueConverters
                 case ApplicationPage.Login:
                     return new SingInPage();
 
+                case ApplicationPage.Main:
+                    return new MainPage();
                 default:
                     Debugger.Break();
                     return null;

@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using myNote.WPFClient.ViewModel;
+using System.Windows.Controls;
 
 namespace myNote.WPFClient.View.Pages
 {
@@ -10,6 +11,8 @@ namespace myNote.WPFClient.View.Pages
         public SingInPage()
         {
             InitializeComponent();
+
+            DataContext = new SingInPageViewModel();
         }
     }
 }

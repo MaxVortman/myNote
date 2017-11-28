@@ -61,3 +61,5 @@
 2017-11-29 01:30:29.0683|ERROR|myNote.Logger.Log|User with this Login Max already registered
 2017-11-29 01:33:40.6903|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
 2017-11-29 01:33:40.9823|INFO|myNote.Logger.Log|Удаление пользователя: Max
+2017-11-29 02:09:42.8903|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-29 02:11:37.6184|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
