@@ -11,20 +11,20 @@ namespace myNote.DataLayer.Sql.Test
     public class CredentialsRepositoryTest
     {
         private const string ConnectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=test;Integrated Security=true";
-        private readonly List<string> tempUsersLogin = new List<string>();
+        private readonly Dictionary<string, Token> tempUsersLogin = new Dictionary<string, Token>();
 
         [TestMethod]
         public void ShouldRegister()
         {
             //arrange
-            var credential = new Credential { Login = "TestLogin", Password = HelpingClass.GetPassword() };
-            tempUsersLogin.Add(credential.Login);
+            var credential = new Credential { Login = "TestLogin", Password = CreatingUserClass.GetPassword() };
 
             //act
             var usersRepository = new UsersRepository(ConnectionString, new GroupsRepository(ConnectionString));
             var credentialsRepository = new CredentialsRepository(ConnectionString, usersRepository, new TokensRepository(ConnectionString));
             credentialsRepository.Register(credential);
             var token = credentialsRepository.Login(credential);
+            tempUsersLogin.Add(credential.Login, token);
             var userFromDb = usersRepository.GetUser(credential.Login);
 
             //asserts
@@ -35,14 +35,14 @@ namespace myNote.DataLayer.Sql.Test
         public void ShouldLogin()
         {
             //arrange
-            var credential = new Credential { Login = "TestLogin", Password = HelpingClass.GetPassword() };
-            tempUsersLogin.Add(credential.Login);
+            var credential = new Credential { Login = "TestLogin", Password = CreatingUserClass.GetPassword() };
             var usersRepository = new UsersRepository(ConnectionString, new GroupsRepository(ConnectionString));
             var credentialsRepository = new CredentialsRepository(ConnectionString, usersRepository, new TokensRepository(ConnectionString));
             credentialsRepository.Register(credential);
 
             //act
             var token = credentialsRepository.Login(credential);
+            tempUsersLogin.Add(credential.Login, token);
             var userFromDb = usersRepository.GetUser(credential.Login);
 
             //asserts
@@ -53,8 +53,8 @@ namespace myNote.DataLayer.Sql.Test
         public void CleanData()
         {
             var credentialsRepository = new CredentialsRepository(ConnectionString, new UsersRepository(ConnectionString, new GroupsRepository(ConnectionString)), new TokensRepository(ConnectionString));
-            foreach (var login in tempUsersLogin)
-                credentialsRepository.Delete(login);
+            foreach (var keyvalue in tempUsersLogin)
+                credentialsRepository.Delete(keyvalue.Key, keyvalue.Value);
         }
     }
 }

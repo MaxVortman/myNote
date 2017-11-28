@@ -23,8 +23,10 @@ namespace myNote.DataLayer.Sql
             this.usersRepository = usersRepository;
         }
 
-        public void Delete(string login)
+        public void Delete(string login, Token accessToken)
         {
+            new TokensRepository(connectionString).CompareToken(accessToken, new UsersRepository(connectionString, new GroupsRepository(connectionString)).GetUser(login).Id);
+
             using (var sqlConnection = new SqlConnection(connectionString))
             {
                 sqlConnection.Open();

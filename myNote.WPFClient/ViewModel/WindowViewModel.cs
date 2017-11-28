@@ -11,6 +11,8 @@ namespace myNote.WPFClient.ViewModel
         public ApplicationPage CurrentPage { get; set; } = ApplicationPage.Register;
 
 
+        #region Navigation method
+
         /// <summary>
         /// Navigates to the specified page
         /// </summary>
@@ -24,5 +26,7 @@ namespace myNote.WPFClient.ViewModel
             // Fire off a CurrentPage changed event
             OnPropertyChanged(nameof(CurrentPage));
         }
+
+        #endregion
     }
 }

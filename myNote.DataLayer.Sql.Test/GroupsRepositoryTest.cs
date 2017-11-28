@@ -10,19 +10,21 @@ namespace myNote.DataLayer.Sql.Test
     public class GroupsRepositoryTest
     {
         private const string ConnectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=test;Integrated Security=true";
-        private readonly List<string> tempUsersLogin = new List<string>();
+        private readonly Dictionary<string, Token> tempUsersLogin = new Dictionary<string, Token>();
 
         [TestMethod]
         public void ShouldCreateGroup()
         {
             //arrange
-            var user = HelpingClass.CreateUser();
+            var factory = new CreatingUserClass("Test");
+            var user = factory.User;
+            var token = factory.Token;
+            tempUsersLogin.Add(user.Login, token);
             const string groupName = "TestGroup";
 
             //act
             var groupsRepository = new GroupsRepository(ConnectionString);
-            tempUsersLogin.Add(user.Login);
-            groupsRepository.CreateGroup(user.Id, groupName, HelpingClass.GetToken());
+            groupsRepository.CreateGroup(user.Id, groupName, token);
             var groupFromDb = groupsRepository.GetUserGroups(user.Id);
 
             //asserts
@@ -34,14 +36,15 @@ namespace myNote.DataLayer.Sql.Test
         {
             //arrange
             const int CountOfGroups = 10;
-            var user = HelpingClass.CreateUser();
-            var token = HelpingClass.GetToken();
+            var factory = new CreatingUserClass("Test");
+            var user = factory.User;
+            var token = factory.Token;
+            tempUsersLogin.Add(user.Login, token);
             const string groupName = "TestGroup";
             var groups = new Group[CountOfGroups];
 
             //act
-            var groupsRepository = new GroupsRepository(ConnectionString);
-            tempUsersLogin.Add(user.Login);            
+            var groupsRepository = new GroupsRepository(ConnectionString);          
 
             for (int i = 0; i < CountOfGroups; i++)
             {
@@ -77,9 +80,12 @@ namespace myNote.DataLayer.Sql.Test
         {
             //arrange
             const int Zero = 0;
-            var user = HelpingClass.CreateUser();
+            var factory = new CreatingUserClass("Test");
+            var user = factory.User;
+            var token = factory.Token;
+            tempUsersLogin.Add(user.Login, token);
             var groupsRepository = new GroupsRepository(ConnectionString);
-            tempUsersLogin.Add(user.Login);
+
             //act
             var groups = groupsRepository.GetUserGroups(user.Id);
 
@@ -93,10 +99,11 @@ namespace myNote.DataLayer.Sql.Test
         {
             //arrange
             const string GroupName = "TestGroup";
-            var user = HelpingClass.CreateUser();
-            var token = HelpingClass.GetToken();
+            var factory = new CreatingUserClass("Test");
+            var user = factory.User;
+            var token = factory.Token;
+            tempUsersLogin.Add(user.Login, token);
             var groupsRepository = new GroupsRepository(ConnectionString);
-            tempUsersLogin.Add(user.Login);
             var group = groupsRepository.CreateGroup(user.Id, GroupName, token);
 
             //act
@@ -111,10 +118,11 @@ namespace myNote.DataLayer.Sql.Test
         {
             //arrange
             const string GroupName = "TestGroup";
-            var user = HelpingClass.CreateUser();
-            var token = HelpingClass.GetToken();
+            var factory = new CreatingUserClass("Test");
+            var user = factory.User;
+            var token = factory.Token;
+            tempUsersLogin.Add(user.Login, token);
             var groupsRepository = new GroupsRepository(ConnectionString);
-            tempUsersLogin.Add(user.Login);
             var group = groupsRepository.CreateGroup(user.Id, GroupName, token);
 
             //act
@@ -129,10 +137,11 @@ namespace myNote.DataLayer.Sql.Test
         {
             //arrange
             const string GroupName = "TestGroup";
-            var user = HelpingClass.CreateUser();
-            var token = HelpingClass.GetToken();
+            var factory = new CreatingUserClass("Test");
+            var user = factory.User;
+            var token = factory.Token;
+            tempUsersLogin.Add(user.Login, token);
             var groupsRepository = new GroupsRepository(ConnectionString);
-            tempUsersLogin.Add(user.Login);
             var group = groupsRepository.CreateGroup(user.Id, GroupName, token);
             var note = new Note { Title = "TestNote", UserId = user.Id };
             var notesRepository = new NotesRepository(ConnectionString);
@@ -150,10 +159,11 @@ namespace myNote.DataLayer.Sql.Test
         {
             //arrange
             const string GroupName = "TestGroup";
-            var user = HelpingClass.CreateUser();
-            var token = HelpingClass.GetToken();
+            var factory = new CreatingUserClass("Test");
+            var user = factory.User;
+            var token = factory.Token;
+            tempUsersLogin.Add(user.Login, token);
             var groupsRepository = new GroupsRepository(ConnectionString);
-            tempUsersLogin.Add(user.Login);
             var group = groupsRepository.CreateGroup(user.Id, GroupName, token);
             var note = new Note { Title = "TestNote", UserId = user.Id };
             var notesRepository = new NotesRepository(ConnectionString);
@@ -169,8 +179,8 @@ namespace myNote.DataLayer.Sql.Test
         public void CleanData()
         {
             var credentialsRepository = new CredentialsRepository(ConnectionString, new UsersRepository(ConnectionString, new GroupsRepository(ConnectionString)), new TokensRepository(ConnectionString));
-            foreach (var login in tempUsersLogin)
-                credentialsRepository.Delete(login);
+            foreach (var keyvalue in tempUsersLogin)
+                credentialsRepository.Delete(keyvalue.Key, keyvalue.Value);
         }
     }
 }

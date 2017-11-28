@@ -11,13 +11,16 @@ namespace myNote.DataLayer.Sql.Test
     {
 
         private const string ConnectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=test;Integrated Security=true";
-        private readonly List<string> tempUsersLogin = new List<string>();
+        private readonly Dictionary<string, Token> tempUsersLogin = new Dictionary<string, Token>();
 
         [TestMethod]
         public void ShouldCreateNote()
         {
             //arrange
-            var user = HelpingClass.CreateUser();
+            var factory = new CreatingUserClass("Test");
+            var user = factory.User;
+            var token = factory.Token;
+            tempUsersLogin.Add(user.Login, token);
             var note = new Note
             {
                 Title = "TestNote"
@@ -28,8 +31,7 @@ namespace myNote.DataLayer.Sql.Test
             var notesRepository = new NotesRepository(ConnectionString);
 
             note.UserId = user.Id;
-            tempUsersLogin.Add(user.Login);
-            note = notesRepository.CreateNote(note, HelpingClass.GetToken());
+            note = notesRepository.CreateNote(note, token);
             var noteFromDb = notesRepository.GetNote(note.Id);
 
             Assert.AreEqual(note.Title, noteFromDb.Title);
@@ -41,8 +43,10 @@ namespace myNote.DataLayer.Sql.Test
         {
             //arrange
             const int CountOfNotes = 10;
-            var user = HelpingClass.CreateUser();
-            var token = HelpingClass.GetToken();
+            var factory = new CreatingUserClass("Test");
+            var user = factory.User;
+            var token = factory.Token;
+            tempUsersLogin.Add(user.Login, token);
             const string noteTitle = "TestNote";
             var notes = new Note[CountOfNotes];
 
@@ -50,8 +54,6 @@ namespace myNote.DataLayer.Sql.Test
 
             //act
             var notesRepository = new NotesRepository(ConnectionString);
-
-            tempUsersLogin.Add(user.Login);
 
             for (int i = 0; i < CountOfNotes; i++)
             {
@@ -93,8 +95,10 @@ namespace myNote.DataLayer.Sql.Test
         public void ShouldUpdateNote()
         {
             //arrange
-            var user = HelpingClass.CreateUser();
-            var token = HelpingClass.GetToken();
+            var factory = new CreatingUserClass("Test");
+            var user = factory.User;
+            var token = factory.Token;
+            tempUsersLogin.Add(user.Login, token);
             var note = new Note
             {
                 Title = "TestNote"
@@ -102,8 +106,6 @@ namespace myNote.DataLayer.Sql.Test
 
             //act
             var notesRepository = new NotesRepository(ConnectionString);
-
-            tempUsersLogin.Add(user.Login);
 
             note.UserId = user.Id;
 
@@ -130,10 +132,12 @@ namespace myNote.DataLayer.Sql.Test
         [ExpectedException(typeof(ArgumentException))]
         public void ShouldThrowExceptionWhenUpdateNote()
         {
-            var user = HelpingClass.CreateUser();
-            tempUsersLogin.Add(user.Login);
+            var factory = new CreatingUserClass("Test");
+            var user = factory.User;
+            var token = factory.Token;
+            tempUsersLogin.Add(user.Login, token);
             var notesRepository = new NotesRepository(ConnectionString);
-            notesRepository.UpdateNote(new Note { Id = Guid.NewGuid() }, HelpingClass.GetToken());
+            notesRepository.UpdateNote(new Note { Id = Guid.NewGuid() }, token);
         }
 
         [TestMethod]
@@ -141,8 +145,10 @@ namespace myNote.DataLayer.Sql.Test
         {
             //arrange
             const int Zero = 0;
-            var user = HelpingClass.CreateUser();
-            tempUsersLogin.Add(user.Login);
+            var factory = new CreatingUserClass("Test");
+            var user = factory.User;
+            var token = factory.Token;
+            tempUsersLogin.Add(user.Login, token);
 
             //act
             var notesRepository = new NotesRepository(ConnectionString);
@@ -156,8 +162,8 @@ namespace myNote.DataLayer.Sql.Test
         public void CleanData()
         {
             var credentialsRepository = new CredentialsRepository(ConnectionString, new UsersRepository(ConnectionString, new GroupsRepository(ConnectionString)), new TokensRepository(ConnectionString));
-            foreach (var login in tempUsersLogin)
-                credentialsRepository.Delete(login);
+            foreach (var keyvalue in tempUsersLogin)
+                credentialsRepository.Delete(keyvalue.Key, keyvalue.Value);
         }
     }
 }

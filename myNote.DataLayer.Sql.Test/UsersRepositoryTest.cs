@@ -12,18 +12,20 @@ namespace myNote.DataLayer.Sql.Test
     public class UsersRepositoryTest
     {
         private const string ConnectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=test;Integrated Security=true";
-        private readonly List<string> tempUsersLogin = new List<string>();
+        private readonly Dictionary<string, Token> tempUsersLogin = new Dictionary<string, Token>();
 
         [TestMethod]
         public void ShouldCreateUser()
         {
             //arrange
-            var user = HelpingClass.CreateUser();
+            var factory = new CreatingUserClass("Test");
+            var user = factory.User;
+            var token = factory.Token;
+            tempUsersLogin.Add(user.Login, token);
 
             //act
             var usersRepository = new UsersRepository(ConnectionString, new GroupsRepository(ConnectionString));
-            tempUsersLogin.Add(user.Login);
-            var userFromDb = usersRepository.GetUser(user.Id, HelpingClass.GetToken());
+            var userFromDb = usersRepository.GetUser(user.Id, token);
 
             //asserts
             Assert.AreEqual(user.Name, userFromDb.Name);
@@ -33,14 +35,15 @@ namespace myNote.DataLayer.Sql.Test
         public void ShouldCreateUserAndAddCategory()
         {
             //arrange
-            var user = HelpingClass.CreateUser();
-            var token = HelpingClass.GetToken();
+            var factory = new CreatingUserClass("Test");
+            var user = factory.User;
+            var token = factory.Token;
+            tempUsersLogin.Add(user.Login, token);
             const string category = "testCategory";
 
             //act
             var categoriesRepository = new GroupsRepository(ConnectionString);
             var usersRepository = new UsersRepository(ConnectionString, categoriesRepository);
-            tempUsersLogin.Add(user.Login);
             categoriesRepository.CreateGroup(user.Id, category, token);
             user = usersRepository.GetUser(user.Id, token);
 
@@ -52,10 +55,12 @@ namespace myNote.DataLayer.Sql.Test
         [ExpectedException(typeof(ArgumentException))]
         public void ShouldThrowExceptionWhenReceiveUser()
         {
-            var user = HelpingClass.CreateUser();
-            tempUsersLogin.Add(user.Login);
+            var factory = new CreatingUserClass("Test");
+            var user = factory.User;
+            var token = factory.Token;
+            tempUsersLogin.Add(user.Login, token);
             var usersRepository = new UsersRepository(ConnectionString, new GroupsRepository(ConnectionString));
-            usersRepository.GetUser(Guid.NewGuid(), HelpingClass.GetToken());
+            usersRepository.GetUser(Guid.NewGuid(), token);
         }
 
 
@@ -64,13 +69,15 @@ namespace myNote.DataLayer.Sql.Test
         {
             //arrange
             const string UserName = "UpdatedName";
-            var user = HelpingClass.CreateUser();
+            var factory = new CreatingUserClass("Test");
+            var user = factory.User;
+            var token = factory.Token;
+            tempUsersLogin.Add(user.Login, token);
             var usersRpository = new UsersRepository(ConnectionString, new GroupsRepository(ConnectionString));
-            tempUsersLogin.Add(user.Login);
 
             //act
             user.Name = UserName;
-            user = usersRpository.UpdateUser(user, HelpingClass.GetToken());
+            user = usersRpository.UpdateUser(user, token);
 
             //asserts
             Assert.AreEqual(UserName, user.Name);
@@ -80,8 +87,8 @@ namespace myNote.DataLayer.Sql.Test
         public void CleanData()
         {
             var credentialsRepository = new CredentialsRepository(ConnectionString, new UsersRepository(ConnectionString, new GroupsRepository(ConnectionString)), new TokensRepository(ConnectionString));
-            foreach (var login in tempUsersLogin)
-                credentialsRepository.Delete(login);
+            foreach (var keyvalue in tempUsersLogin)
+                credentialsRepository.Delete(keyvalue.Key, keyvalue.Value);
         }
     }
 }

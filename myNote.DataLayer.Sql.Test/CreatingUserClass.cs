@@ -8,35 +8,54 @@ using System.Threading.Tasks;
 
 namespace myNote.DataLayer.Sql.Test
 {
-    static class HelpingClass
+    class CreatingUserClass
     {
+
+        #region Private Members
+
         private const string ConnectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=test;Integrated Security=true";
+        private readonly string login;
+        private readonly Credential credential;
         private static UsersRepository usersRepository = new UsersRepository(ConnectionString, new GroupsRepository(ConnectionString));
         private static CredentialsRepository credentialsRepository = new CredentialsRepository(ConnectionString, usersRepository, new TokensRepository(ConnectionString));
+        private Token token;
+        private User user;
 
-        internal static User CreateUser()
+        #endregion
+
+        #region Public Properties
+
+        public Token Token { get { return token ?? (token = GetToken()); } }
+        public User User { get { return user ?? (user = CreateUser()); } }
+
+        #endregion
+
+        #region Constructor
+
+        public CreatingUserClass(string login)
         {
-            var credential = GetCredential();
+            this.login = login;
+            credential = new Credential { Login = login, Password = GetPassword() };
+        }
+
+        #endregion
+
+        #region Initial Properties Methods
+
+        private User CreateUser()
+        {
             credentialsRepository.Register(credential);
             return usersRepository.GetUser(credential.Login);
         }
 
-        internal static User CreateAnotherUser()
+        private Token GetToken()
         {
-            var credential = new Credential { Login = "TestUser2", Password = GetPassword() };
-            credentialsRepository.Register(credential);
-            return usersRepository.GetUser(credential.Login);
+            return credentialsRepository.Login(credential);
         }
 
-        internal static Token GetToken()
-        {
-            return credentialsRepository.Login(GetCredential());
-        }
+        #endregion
 
-        internal static Credential GetCredential()
-        {
-            return new Credential { Login = "TestUser", Password = HelpingClass.GetPassword() };
-        }
+        #region Helping method
 
         internal static byte[] GetPassword()
         {
@@ -44,5 +63,7 @@ namespace myNote.DataLayer.Sql.Test
             var password = "TestPassword";
             return md5.ComputeHash(Encoding.ASCII.GetBytes(password));
         }
+
+        #endregion
     }
 }

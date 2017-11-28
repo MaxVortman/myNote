@@ -70,10 +70,10 @@ namespace myNote.Api.Controllers
         /// <param name="login">Логин пользователя</param>
         [HttpDelete]
         [Route("api/delete/{login}")]
-        public void Delete(string login)
+        public void Delete(string login, [FromBody] Token accessToken)
         {
             Logger.Log.Instance.Info("Удаление пользователя: {0}", login);
-            credentialsRepository.Delete(login);
+            credentialsRepository.Delete(login, accessToken);
         }
     }
 }

@@ -10,15 +10,16 @@ namespace myNote.DataLayer.Sql.Test
     public class SharesRepositoryTest
     {
         private const string ConnectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=test;Integrated Security=true";
-        private readonly List<string> tempUsersLogin = new List<string>();
+        private readonly Dictionary<string, Token> tempUsersLogin = new Dictionary<string, Token>();
 
         [TestMethod]
         public void ShouldCreateShare()
         {
             //arrange
-            var user = HelpingClass.CreateUser();
-            var token = HelpingClass.GetToken();
-            tempUsersLogin.Add(user.Login);
+            var factory = new CreatingUserClass("Test");
+            var user = factory.User;
+            var token = factory.Token;
+            tempUsersLogin.Add(user.Login, token);
             var note = new Note
             {
                 UserId = user.Id,
@@ -41,9 +42,10 @@ namespace myNote.DataLayer.Sql.Test
         {
             //arrange
             const int CountOfShares = 10;
-            var user = HelpingClass.CreateUser();
-            var token = HelpingClass.GetToken();
-            tempUsersLogin.Add(user.Login);
+            var factory = new CreatingUserClass("Test");
+            var user = factory.User;
+            var token = factory.Token;
+            tempUsersLogin.Add(user.Login, token);
             const string noteTitle = "TestNote";
             var notes = new Note[CountOfShares];
             var notesRepository = new NotesRepository(ConnectionString);
@@ -93,8 +95,10 @@ namespace myNote.DataLayer.Sql.Test
         {
             //arrange
             const int Zero = 0;
-            var user = HelpingClass.CreateUser();
-            tempUsersLogin.Add(user.Login);
+            var factory = new CreatingUserClass("Test");
+            var user = factory.User;
+            var token = factory.Token;
+            tempUsersLogin.Add(user.Login, token);
 
             //act
             var sharesRepository = new SharesRepository(ConnectionString);
@@ -108,8 +112,8 @@ namespace myNote.DataLayer.Sql.Test
         public void CleanData()
         {
             var credentialsRepository = new CredentialsRepository(ConnectionString, new UsersRepository(ConnectionString, new GroupsRepository(ConnectionString)), new TokensRepository(ConnectionString));
-            foreach (var login in tempUsersLogin)
-                credentialsRepository.Delete(login);
+            foreach (var keyvalue in tempUsersLogin)
+                credentialsRepository.Delete(keyvalue.Key, keyvalue.Value);
         }
     }
 }

@@ -1,12 +1,8 @@
 ﻿using myNote.WPFClient.DataModels;
 using myNote.WPFClient.View.Pages;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace myNote.WPFClient.ValueConverters
 {

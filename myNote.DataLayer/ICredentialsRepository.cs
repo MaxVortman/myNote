@@ -11,6 +11,6 @@ namespace myNote.DataLayer
     {
         Token Login(Credential credential);
         void Register(Credential credential);
-        void Delete(string login);
+        void Delete(string login, Token accessToken);
     }
 }
