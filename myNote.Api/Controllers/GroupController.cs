@@ -29,6 +29,7 @@ namespace myNote.Api.Controllers
         /// </summary>
         /// <param name="userId">Идентификатор пользователя</param>
         /// <param name="name">Название группы</param>
+        /// <param name="accessToken">Токен доступа</param>
         /// <returns></returns>
         [HttpPost]
         [Route("api/groups/{name}/user/{userId}")]
@@ -43,6 +44,7 @@ namespace myNote.Api.Controllers
         /// Удаление группы по ее идентификатору
         /// </summary>
         /// <param name="id">Идентификатор группы</param>
+        /// <param name="accessToken">Токен доступа</param>
         [HttpDelete]
         [Route("api/groups/{id}")]
         public void DeleteById(Guid id, [FromBody]Token accessToken)
@@ -56,6 +58,7 @@ namespace myNote.Api.Controllers
         /// </summary>
         /// <param name="userId">Идентификатор пользователя</param>
         /// <param name="name">Название группы</param>
+        /// <param name="accessToken">Токен доступа</param>
         [HttpDelete]
         [Route("api/groups/{name}/user/{userId}")]
         public void Delete(string name, Guid userId, [FromBody]Token accessToken)

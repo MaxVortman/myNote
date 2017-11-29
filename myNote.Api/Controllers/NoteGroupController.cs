@@ -27,6 +27,7 @@ namespace myNote.Api.Controllers
         /// </summary>
         /// <param name="noteId">Идентификатор заметки</param>
         /// <param name="groupId">Идентификатор группы</param>
+        /// <param name="accessToken">Токен доступа</param>
         /// <returns></returns>
         [HttpPost]
         [Route("api/notegroups/group/{groupId}/note/{noteId}")]

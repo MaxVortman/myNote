@@ -69,6 +69,7 @@ namespace myNote.Api.Controllers
         /// Удаление пользователя
         /// </summary>
         /// <param name="login">Логин пользователя</param>
+        /// <param name="accessToken">Токен доступа</param>
         [HttpPut]
         [Route("api/delete/{login}")]
         public void Delete(string login, [FromBody] Token accessToken)

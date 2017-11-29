@@ -2,6 +2,7 @@
 using myNote.DataLayer;
 using myNote.DataLayer.Sql;
 using myNote.Model;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,7 @@ namespace myNote.Api.Controllers
         /// Получение пользователя по уникальному идентификатору
         /// </summary>
         /// <param name="id">Идентификатор пользователя</param>
+        /// <param name="accessToken">Токен доступа</param>
         /// <returns></returns>
         [HttpGet]
         [Route("api/users/{id}")]
@@ -49,6 +51,7 @@ namespace myNote.Api.Controllers
         /// Получение групп пользователя
         /// </summary>
         /// <param name="id">Идентификатор пользователя</param>
+        /// <param name="accessToken">Токен доступа</param>
         /// <returns>Группы пользователя</returns>
         [HttpGet]
         [Route("api/users/{id}/groups")]
@@ -59,13 +62,15 @@ namespace myNote.Api.Controllers
         /// <summary>
         /// Обновление данных о пользователе
         /// </summary>
-        /// <param name="user">Новые данные пользователя</param>
+        /// <param name="userAndToken">Новые данные пользователя и токен доступа в json</param>
         /// <returns></returns>
         [HttpPut]
         [Route("api/users/update")]
         [ArgumentExceptionFilter]
-        public User Update([FromBody] User user, [FromBody]Token accessToken)
+        public User Update([FromBody] JObject userAndToken)
         {
+            var user = userAndToken["user"].ToObject<User>();
+            var accessToken = userAndToken["accessToken"].ToObject<Token>();
             Logger.Log.Instance.Info("Изменение пользователя с именем: {0}", user.Name);
             try
             {

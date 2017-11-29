@@ -1,6 +1,7 @@
 ﻿using myNote.DataLayer;
 using myNote.DataLayer.Sql;
 using myNote.Model;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,12 +27,14 @@ namespace myNote.Api.Controllers
         /// <summary>
         /// Создание раздачи заметки
         /// </summary>
-        /// <param name="note">Заметка</param>
+        /// <param name="noteAndToken">Заметка и токен доступа</param>
         /// <returns></returns>
         [HttpPost]
         [Route("api/shares")]
-        public Share Post([FromBody] Note note, [FromBody]Token accessToken)
+        public Share Post([FromBody] JObject noteAndToken)
         {
+            var note = noteAndToken["note"].ToObject<Note>();
+            var accessToken = noteAndToken["accessToken"].ToObject<Token>();
             Logger.Log.Instance.Info("Создание раздачи заметки с id: {0}", note.Id);
             return sharesRepository.CreateShare(note, accessToken);
         }
