@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using myNote.ClientService;
 using myNote.Model;
-using myNote.WPFClient.ApiServices;
 
 namespace myNote.WPFClient.Test
 {

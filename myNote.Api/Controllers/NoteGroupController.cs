@@ -55,7 +55,7 @@ namespace myNote.Api.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("api/notegroups/group/{groupId}")]
-        public IEnumerable<Note> GetAlNotesBy(Guid groupId)
+        public IEnumerable<Note> GetAllNotesBy(Guid groupId)
         {
             return noteGroupsRepository.GetAllNoteBy(groupId);
         }

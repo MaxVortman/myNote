@@ -6,7 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace myNote.WPFClient.ApiServices
+namespace myNote.ClientService
 {
     public static class PasswordCrypter
     {

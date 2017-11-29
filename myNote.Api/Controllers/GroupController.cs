@@ -32,10 +32,10 @@ namespace myNote.Api.Controllers
         /// <param name="accessToken">Токен доступа</param>
         /// <returns></returns>
         [HttpPost]
-        [Route("api/groups/{name}/user/{userId}")]
-        public Group Post(string name, Guid userId, [FromBody]Token accessToken)
+        [Route("api/groups/{name}")]
+        public Group Post(string name, [FromBody]Token accessToken)
         {
-            var result = groupsRepository.CreateGroup(userId, name, accessToken);
+            var result = groupsRepository.CreateGroup(name, accessToken);
             Logger.Log.Instance.Info($"Создание группы с id: {result.Id}");
             return result;
         }
@@ -45,7 +45,7 @@ namespace myNote.Api.Controllers
         /// </summary>
         /// <param name="id">Идентификатор группы</param>
         /// <param name="accessToken">Токен доступа</param>
-        [HttpDelete]
+        [HttpPut]
         [Route("api/groups/{id}")]
         public void DeleteById(Guid id, [FromBody]Token accessToken)
         {
@@ -59,12 +59,12 @@ namespace myNote.Api.Controllers
         /// <param name="userId">Идентификатор пользователя</param>
         /// <param name="name">Название группы</param>
         /// <param name="accessToken">Токен доступа</param>
-        [HttpDelete]
-        [Route("api/groups/{name}/user/{userId}")]
-        public void Delete(string name, Guid userId, [FromBody]Token accessToken)
+        [HttpPut]
+        [Route("api/groups/{name}")]
+        public void Delete(string name, [FromBody]Token accessToken)
         {
-            Logger.Log.Instance.Info($"Удаление группы с userId: {userId} и именем: {name}");
-            groupsRepository.DeleteGroup(userId, name, accessToken);
+            Logger.Log.Instance.Info($"Удаление группы с userId: {accessToken.UserId} и именем: {name}");
+            groupsRepository.DeleteGroup(name, accessToken);
         }
     }
 }

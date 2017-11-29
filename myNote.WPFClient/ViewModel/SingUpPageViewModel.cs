@@ -1,5 +1,5 @@
-﻿using myNote.Model;
-using myNote.WPFClient.ApiServices;
+﻿using myNote.ClientService;
+using myNote.Model;
 using myNote.WPFClient.ViewModel.Base;
 using System;
 using System.Net.Http;
@@ -51,7 +51,7 @@ namespace myNote.WPFClient.ViewModel
             {
                 try
                 {
-                    new LoginService().Register(PasswordCrypter.GetCredential(Login, Password));
+                    new LoginService(IoC.IoC.ConnectionString).Register(PasswordCrypter.GetCredential(Login, Password));
                     IoC.IoC.Application.GoToPage(DataModels.ApplicationPage.Login);
                 }
                 catch (HttpRequestException e)

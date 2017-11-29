@@ -44,7 +44,7 @@ namespace myNote.DataLayer.Sql.Test
             //act
             var categoriesRepository = new GroupsRepository(ConnectionString);
             var usersRepository = new UsersRepository(ConnectionString, categoriesRepository);
-            categoriesRepository.CreateGroup(user.Id, category, token);
+            categoriesRepository.CreateGroup(category, token);
             user = usersRepository.GetUser(user.Id, token);
 
             //asserts

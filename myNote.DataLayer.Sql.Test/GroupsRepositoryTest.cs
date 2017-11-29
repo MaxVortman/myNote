@@ -24,7 +24,7 @@ namespace myNote.DataLayer.Sql.Test
 
             //act
             var groupsRepository = new GroupsRepository(ConnectionString);
-            groupsRepository.CreateGroup(user.Id, groupName, token);
+            groupsRepository.CreateGroup(groupName, token);
             var groupFromDb = groupsRepository.GetUserGroups(user.Id);
 
             //asserts
@@ -48,7 +48,7 @@ namespace myNote.DataLayer.Sql.Test
 
             for (int i = 0; i < CountOfGroups; i++)
             {
-                groups[i] = groupsRepository.CreateGroup(user.Id, groupName + i, token);
+                groups[i] = groupsRepository.CreateGroup(groupName + i, token);
             }
 
             var groupsFromDb = groupsRepository.GetUserGroups(user.Id).ToArray();
@@ -104,7 +104,7 @@ namespace myNote.DataLayer.Sql.Test
             var token = factory.Token;
             tempUsersLogin.Add(user.Login, token);
             var groupsRepository = new GroupsRepository(ConnectionString);
-            var group = groupsRepository.CreateGroup(user.Id, GroupName, token);
+            var group = groupsRepository.CreateGroup(GroupName, token);
 
             //act
             var groupId = group.Id;
@@ -123,11 +123,11 @@ namespace myNote.DataLayer.Sql.Test
             var token = factory.Token;
             tempUsersLogin.Add(user.Login, token);
             var groupsRepository = new GroupsRepository(ConnectionString);
-            var group = groupsRepository.CreateGroup(user.Id, GroupName, token);
+            var group = groupsRepository.CreateGroup(GroupName, token);
 
             //act
             var groupId = group.Id;
-            groupsRepository.DeleteGroup(group.UserId, group.Name, token);
+            groupsRepository.DeleteGroup(group.Name, token);
             groupsRepository.GetGroup(groupId);
         }
 
@@ -142,7 +142,7 @@ namespace myNote.DataLayer.Sql.Test
             var token = factory.Token;
             tempUsersLogin.Add(user.Login, token);
             var groupsRepository = new GroupsRepository(ConnectionString);
-            var group = groupsRepository.CreateGroup(user.Id, GroupName, token);
+            var group = groupsRepository.CreateGroup(GroupName, token);
             var note = new Note { Title = "TestNote", UserId = user.Id };
             var notesRepository = new NotesRepository(ConnectionString);
             note = notesRepository.CreateNote(note, token);
@@ -150,7 +150,7 @@ namespace myNote.DataLayer.Sql.Test
             noteGroupsRepository.CreateNoteGroup(note.Id, group.Id, token);
 
             //act
-            groupsRepository.DeleteGroup(group.UserId, group.Name, token);
+            groupsRepository.DeleteGroup(group.Name, token);
         }
 
         [TestMethod]
@@ -164,7 +164,7 @@ namespace myNote.DataLayer.Sql.Test
             var token = factory.Token;
             tempUsersLogin.Add(user.Login, token);
             var groupsRepository = new GroupsRepository(ConnectionString);
-            var group = groupsRepository.CreateGroup(user.Id, GroupName, token);
+            var group = groupsRepository.CreateGroup(GroupName, token);
             var note = new Note { Title = "TestNote", UserId = user.Id };
             var notesRepository = new NotesRepository(ConnectionString);
             note = notesRepository.CreateNote(note, token);

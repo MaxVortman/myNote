@@ -129,3 +129,8 @@
 2017-11-29 19:12:52.9407|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
 2017-11-29 19:12:53.0437|INFO|myNote.Logger.Log|Создание заметки с id: b39f99ec-765c-4548-8f16-a2c9459cd2cd
 2017-11-29 19:12:53.0752|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 22:01:31.9833|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-29 22:01:32.4791|INFO|myNote.Logger.Log|Удаление пользователя: Max
+2017-11-29 22:01:32.5291|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 22:01:32.6376|INFO|myNote.Logger.Log|Создание заметки с id: 5d10664b-d473-4035-b911-453ee38a96c2
+2017-11-29 22:01:32.6706|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest

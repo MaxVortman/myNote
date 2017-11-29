@@ -1,4 +1,4 @@
-﻿using myNote.WPFClient.ApiServices;
+﻿using myNote.ClientService;
 using myNote.WPFClient.ViewModel.Base;
 using System;
 using System.Collections.Generic;
@@ -41,7 +41,7 @@ namespace myNote.WPFClient.ViewModel
             {
                 try
                 {
-                    UserData.UserDataContent.Token = await new LoginService().LoginAsync(PasswordCrypter.GetCredential(Login, Password));
+                    UserData.UserDataContent.Token = await new LoginService(IoC.IoC.ConnectionString).LoginAsync(PasswordCrypter.GetCredential(Login, Password));
                     IoC.IoC.Application.GoToPage(DataModels.ApplicationPage.Main);
                 }
                 catch (HttpRequestException e)

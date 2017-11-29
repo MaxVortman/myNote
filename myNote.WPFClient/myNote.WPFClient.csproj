@@ -104,9 +104,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ApiServices\LoginService.cs" />
-    <Compile Include="ApiServices\NoteService.cs" />
-    <Compile Include="ApiServices\PasswordCrypter.cs" />
     <Compile Include="DataModels\ApplicationPage.cs" />
     <Compile Include="IoC\IoC.cs" />
     <Compile Include="Settings.cs" />
@@ -189,6 +186,10 @@
     <ProjectReference Include="..\myNote.Api\myNote.Api.csproj">
       <Project>{dc2e1a68-38eb-4f18-96bb-c923bb51e77c}</Project>
       <Name>myNote.Api</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\myNote.ClientService\myNote.ClientService.csproj">
+      <Project>{d67bb77f-64e0-4a5e-89f3-9c964d86040e}</Project>
+      <Name>myNote.ClientService</Name>
     </ProjectReference>
     <ProjectReference Include="..\myNote.Model\myNote.Model.csproj">
       <Project>{ceb47c4a-30db-4ec6-84ad-e07e8ad00514}</Project>

@@ -1,4 +1,5 @@
-﻿using myNote.Model;
+﻿using myNote.ClientService.Base;
+using myNote.Model;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -8,26 +9,11 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace myNote.WPFClient.ApiServices
+namespace myNote.ClientService
 {
-    public class NoteService
+    public class NoteService : BaseService
     {
-        private readonly HttpClient client;
-        #region Default Constructor
-        /// <summary>
-        /// Default Constructor
-        /// </summary>
-        /// <param name="connectionString">Lint of connection to server</param>
-        public NoteService(string connectionString = IoC.IoC.ConnectionString)
-        {
-            client = new HttpClient
-            {
-                BaseAddress = new Uri(connectionString)
-            };
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-        }
-        #endregion
-
+        public NoteService(string connectionString) : base(connectionString) { }
         /// <summary>
         /// Creating new note
         /// </summary>
@@ -63,6 +49,19 @@ namespace myNote.WPFClient.ApiServices
         public async Task<Note> UpdateNoteAsync(Note newNote, Token accessToken)
         {           
             var response = await client.PutAsJsonAsync("notes/update", new { note = newNote, accessToken});
+            if (!response.IsSuccessStatusCode)
+                throw new HttpRequestException(response.StatusCode.ToString() + "\n" + response.ReasonPhrase);
+            return await response.Content.ReadAsAsync<Note>();
+        }
+
+        /// <summary>
+        /// Get Note by id
+        /// </summary>
+        /// <param name="noteId">note id</param>
+        /// <returns></returns>
+        public async Task<Note> GetUserNote(Guid noteId)
+        {
+            var response = await client.GetAsync($@"notes/{noteId}");
             if (!response.IsSuccessStatusCode)
                 throw new HttpRequestException(response.StatusCode.ToString() + "\n" + response.ReasonPhrase);
             return await response.Content.ReadAsAsync<Note>();

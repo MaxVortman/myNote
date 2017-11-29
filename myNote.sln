@@ -17,7 +17,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "myNote.Model", "myNote.Mode
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "myNote.WPFClient", "myNote.WPFClient\myNote.WPFClient.csproj", "{6DF87D78-3F0B-47FD-BBC5-18EDFA806E90}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "myNote.WPFClient.Test", "myNote.WPFClient.Test\myNote.WPFClient.Test.csproj", "{4D4AC364-D9A7-451B-82F4-2B7F5BFCB5FE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "myNote.ClientService.Test", "myNote.WPFClient.Test\myNote.ClientService.Test.csproj", "{4D4AC364-D9A7-451B-82F4-2B7F5BFCB5FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "myNote.ClientService", "myNote.ClientService\myNote.ClientService.csproj", "{D67BB77F-64E0-4A5E-89F3-9C964D86040E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{4D4AC364-D9A7-451B-82F4-2B7F5BFCB5FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D4AC364-D9A7-451B-82F4-2B7F5BFCB5FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D4AC364-D9A7-451B-82F4-2B7F5BFCB5FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D67BB77F-64E0-4A5E-89F3-9C964D86040E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D67BB77F-64E0-4A5E-89F3-9C964D86040E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D67BB77F-64E0-4A5E-89F3-9C964D86040E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D67BB77F-64E0-4A5E-89F3-9C964D86040E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

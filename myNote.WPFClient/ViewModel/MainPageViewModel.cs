@@ -1,5 +1,5 @@
-﻿using myNote.Model;
-using myNote.WPFClient.ApiServices;
+﻿using myNote.ClientService;
+using myNote.Model;
 using myNote.WPFClient.ViewModel.Base;
 using System;
 using System.Collections.Generic;
@@ -52,7 +52,7 @@ namespace myNote.WPFClient.ViewModel
             {
                 try
                 {
-                    var noteClient = new NoteService();
+                    var noteClient = new NoteService(IoC.IoC.ConnectionString);
                     var note = await noteClient.CreateNoteAsync(new Note { Title = NewNoteTitle, Content = NewNoteContent, UserId = UserData.UserDataContent.Token.UserId }, UserData.UserDataContent.Token);
                     Notes.Add(note);
                 }
@@ -66,7 +66,7 @@ namespace myNote.WPFClient.ViewModel
             {
                 try
                 {
-                    var noteClient = new NoteService();
+                    var noteClient = new NoteService(IoC.IoC.ConnectionString);
                     var notes = await noteClient.GetUserNotesAsync(UserData.UserDataContent.Token.UserId);
                     Notes = new ObservableCollection<Note>(notes);
                 }

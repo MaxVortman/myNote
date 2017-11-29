@@ -28,16 +28,16 @@ namespace myNote.DataLayer.Sql
 
         #region Create Group
 
-        public Group CreateGroup(Guid userId, string name, Token accessToken)
+        public Group CreateGroup(string name, Token accessToken)
         {
-            new TokensRepository(connectionString).CompareToken(accessToken, userId);
+            new TokensRepository(connectionString).CompareToken(accessToken);
 
             var db = new DataContext(connectionString);
             var group = new Group
             {
                 Id = Guid.NewGuid(),
                 Name = name,
-                UserId = userId
+                UserId = accessToken.UserId
             };
             db.GetTable<Group>().InsertOnSubmit(group);
             db.SubmitChanges();
@@ -101,12 +101,12 @@ namespace myNote.DataLayer.Sql
             }
         }
 
-        public void DeleteGroup(Guid userId, string name, Token accessToken)
+        public void DeleteGroup(string name, Token accessToken)
         {
-            new TokensRepository(connectionString).CompareToken(accessToken, userId);
+            new TokensRepository(connectionString).CompareToken(accessToken);
 
             var noteGroupsRepository = new NoteGroupsRepository(connectionString);
-            if (noteGroupsRepository.GetAllNoteBy(userId, name).Count() != 0)
+            if (noteGroupsRepository.GetAllNoteBy(accessToken.UserId, name).Count() != 0)
                 throw new InvalidOperationException("Невозможно удалить группу, в которой есть записи");
             using (var sqlConnection = new SqlConnection(connectionString))
             {
@@ -114,7 +114,7 @@ namespace myNote.DataLayer.Sql
                 using (var command = sqlConnection.CreateCommand())
                 {
                     command.CommandText = "delete from Groups where UserId = @userId and Name = @name";
-                    command.Parameters.AddWithValue("@userId", userId);
+                    command.Parameters.AddWithValue("@userId", accessToken.UserId);
                     command.Parameters.AddWithValue("@name", name);
                     command.ExecuteNonQuery();
                 }

@@ -31,7 +31,7 @@ namespace myNote.Api.Controllers
         /// <param name="id">Идентификатор пользователя</param>
         /// <param name="accessToken">Токен доступа</param>
         /// <returns></returns>
-        [HttpGet]
+        [HttpPut]
         [Route("api/users/{id}")]
         [ArgumentExceptionFilter]
         public User Get(Guid id, [FromBody]Token accessToken)
@@ -53,7 +53,7 @@ namespace myNote.Api.Controllers
         /// <param name="id">Идентификатор пользователя</param>
         /// <param name="accessToken">Токен доступа</param>
         /// <returns>Группы пользователя</returns>
-        [HttpGet]
+        [HttpPut]
         [Route("api/users/{id}/groups")]
         public IEnumerable<Group> GetUserGroups(Guid id, [FromBody]Token accessToken)
         {

@@ -1,45 +1,41 @@
-﻿using myNote.Model;
+﻿using myNote.ClientService.Base;
+using myNote.Model;
 using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
-namespace myNote.WPFClient.ApiServices
+namespace myNote.ClientService
 {
-    public class LoginService
+    public class LoginService : BaseService
     {
-
-        private readonly HttpClient client;
-        #region Constructor
+        public LoginService(string connectionString) : base(connectionString) { }
         /// <summary>
-        /// Default Constructor
+        /// Register new user
         /// </summary>
-        /// <param name="connectionString">Link of connection to server</param>
-        public LoginService(string connectionString = IoC.IoC.ConnectionString)
-        {
-            client = new HttpClient
-            {
-                BaseAddress = new Uri(connectionString)
-            };
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-        }
-
-        #endregion
-
+        /// <param name="credential">user's credential</param>
         public void Register(Credential credential)
         {
             var response = client.PostAsJsonAsync("register", credential).Result;
             if (!response.IsSuccessStatusCode)
                 throw new HttpRequestException(response.StatusCode.ToString() + "\n" + response.ReasonPhrase);
         }
-
+        /// <summary>
+        /// Delete the user
+        /// </summary>
+        /// <param name="login">user's login</param>
+        /// <param name="token">user's token</param>
         public void Delete(string login, Token token)
         {
             var responseMessage = client.PutAsJsonAsync($@"delete/{login}", token).Result;
             if(!responseMessage.IsSuccessStatusCode)
                 throw new HttpRequestException(responseMessage.StatusCode.ToString() + "\n" + responseMessage.ReasonPhrase);
         }
-
+        /// <summary>
+        /// Login the user
+        /// </summary>
+        /// <param name="credential">user's credential</param>
+        /// <returns>new user's access token</returns>
         public async Task<Token> LoginAsync(Credential credential)
         {             
             var response = await client.PutAsJsonAsync("login", credential);

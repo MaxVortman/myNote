@@ -25,7 +25,7 @@ namespace myNote.DataLayer.Sql.Test
             var groupsRepository = new GroupsRepository(ConnectionString);
             var notesRepository = new NotesRepository(ConnectionString);
             var note = new Note { Title = "TestNote", UserId = user.Id };
-            var group = groupsRepository.CreateGroup(user.Id, groupName, token);
+            var group = groupsRepository.CreateGroup(groupName, token);
             note = notesRepository.CreateNote(note, token);
 
             //act
@@ -61,7 +61,7 @@ namespace myNote.DataLayer.Sql.Test
                 };
                 notes[i] = notesRepository.CreateNote(notes[i], token);
             }
-            var group = groupsRepository.CreateGroup(user.Id, groupName, token);
+            var group = groupsRepository.CreateGroup(groupName, token);
 
             //act
             var noteGroupsRepository = new NoteGroupsRepository(ConnectionString);
@@ -104,7 +104,7 @@ namespace myNote.DataLayer.Sql.Test
             var token = factory.Token;
             tempUsersLogin.Add(user.Login, token);
             var groupsRepository = new GroupsRepository(ConnectionString);            
-            var group = groupsRepository.CreateGroup(user.Id, GroupName, token);
+            var group = groupsRepository.CreateGroup(GroupName, token);
             //act
             var noteGroupsRepository = new NoteGroupsRepository(ConnectionString);
             var notes = noteGroupsRepository.GetAllNoteBy(group.Id);
