@@ -32,7 +32,7 @@ namespace myNote.ClientService.Test
 
             //act
             var noteGroupService = new NoteGroupService(ConnectionString);
-            var noteGroup = noteGroupService.CreateNoteGroup(new NoteGroup { NoteId = note.Id, GroupId = group.Id }, token).Result;
+            var noteGroup = noteGroupService.CreateNoteGroupAsync(new NoteGroup { NoteId = note.Id, GroupId = group.Id }, token).Result;
         }
 
         [TestMethod]
@@ -52,7 +52,7 @@ namespace myNote.ClientService.Test
             var group = groupService.CreateGroupAsync(NAME, token).Result;
 
             var noteGroupService = new NoteGroupService(ConnectionString);
-            var noteGroup = noteGroupService.CreateNoteGroup(new NoteGroup { NoteId = note.Id, GroupId = group.Id }, token).Result;
+            var noteGroup = noteGroupService.CreateNoteGroupAsync(new NoteGroup { NoteId = note.Id, GroupId = group.Id }, token).Result;
 
             //act
             var groupFromApi = noteGroupService.GetGroupAsync(note.Id).Result;
@@ -78,7 +78,7 @@ namespace myNote.ClientService.Test
             var group = groupService.CreateGroupAsync(NAME, token).Result;
 
             var noteGroupService = new NoteGroupService(ConnectionString);
-            var noteGroup = noteGroupService.CreateNoteGroup(new NoteGroup { NoteId = note.Id, GroupId = group.Id }, token).Result;
+            var noteGroup = noteGroupService.CreateNoteGroupAsync(new NoteGroup { NoteId = note.Id, GroupId = group.Id }, token).Result;
 
             //act
             var notesFromApi = noteGroupService.GetNotesInGroupAsync(group.Id, token).Result;
@@ -105,7 +105,7 @@ namespace myNote.ClientService.Test
             var group = groupService.CreateGroupAsync(NAME, token).Result;
 
             var noteGroupService = new NoteGroupService(ConnectionString);
-            var noteGroup = noteGroupService.CreateNoteGroup(new NoteGroup { NoteId = note.Id, GroupId = group.Id }, token).Result;
+            var noteGroup = noteGroupService.CreateNoteGroupAsync(new NoteGroup { NoteId = note.Id, GroupId = group.Id }, token).Result;
 
             //act
             var notesFromApi = noteGroupService.GetNotesInGroupAsync(NAME, token).Result;
