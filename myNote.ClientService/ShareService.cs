@@ -18,7 +18,7 @@ namespace myNote.ClientService
         /// <param name="note">user's note, which he want share</param>
         /// <param name="accessToken">user's access token</param>
         /// <returns>share object</returns>
-        public async Task<Share> CreateShare(Note note, Token accessToken)
+        public async Task<Share> CreateShareAsync(Note note, Token accessToken)
         {
             var response = await client.PostAsJsonAsync($@"shares", new { note, accessToken});
             if (!response.IsSuccessStatusCode)
@@ -26,16 +26,16 @@ namespace myNote.ClientService
             return await response.Content.ReadAsAsync<Share>();
         }
         /// <summary>
-        /// Get all user's share
+        /// Get all user's share note
         /// </summary>
         /// <param name="id">user's id</param>
         /// <returns>shares enumerable</returns>
-        public async Task<IEnumerable<Share>> GetUserShares(Guid id)
+        public async Task<IEnumerable<Note>> GetUserSharesAsync(Guid id)
         {
             var response = await client.GetAsync($@"shares/user/{id}");
             if (!response.IsSuccessStatusCode)
                 throw new HttpRequestException(response.StatusCode.ToString() + "\n" + response.ReasonPhrase);
-            return await response.Content.ReadAsAsync<IEnumerable<Share>>();
+            return await response.Content.ReadAsAsync<IEnumerable<Note>>();
         }
     }
 }

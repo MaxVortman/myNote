@@ -74,6 +74,7 @@
     <Compile Include="LoginServiceTest.cs" />
     <Compile Include="NoteServiceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShareServiceTest.cs" />
     <Compile Include="UserServiceTest.cs" />
   </ItemGroup>
   <ItemGroup>
