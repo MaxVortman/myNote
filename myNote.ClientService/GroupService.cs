@@ -16,11 +16,11 @@ namespace myNote.ClientService
         /// Create new user's group
         /// </summary>
         /// <param name="name">group name</param>
-        /// <param name="accessToken"></param>
+        /// <param name="accessToken"></param>  
         /// <returns></returns>
         public async Task<Group> CreateGroup(string name, Token accessToken)
         {
-            var response = await client.PutAsJsonAsync($@"groups/{name}", accessToken);
+            var response = await client.PostAsJsonAsync($@"groups/{name}", accessToken);
             if (!response.IsSuccessStatusCode)
                 throw new HttpRequestException(response.StatusCode.ToString() + "\n" + response.ReasonPhrase);
             return await response.Content.ReadAsAsync<Group>();
@@ -32,7 +32,7 @@ namespace myNote.ClientService
         /// <param name="accessToken">user's access token</param>
         public void DeleteGroup(Guid id, Token accessToken)
         {
-            var response =  client.PutAsJsonAsync($@"groups/{id}", accessToken).Result;
+            var response =  client.PutAsJsonAsync($@"groups/deletebyid/{id}", accessToken).Result;
             if (!response.IsSuccessStatusCode)
                 throw new HttpRequestException(response.StatusCode.ToString() + "\n" + response.ReasonPhrase);
         }
@@ -43,7 +43,7 @@ namespace myNote.ClientService
         /// <param name="accessToken">user's access token</param>
         public void DeleteGroup(string name, Token accessToken)
         {
-            var response = client.PutAsJsonAsync($@"groups/{name}", accessToken).Result;
+            var response = client.PutAsJsonAsync($@"groups/deletebyname/{name}", accessToken).Result;
             if (!response.IsSuccessStatusCode)
                 throw new HttpRequestException(response.StatusCode.ToString() + "\n" + response.ReasonPhrase);
         }

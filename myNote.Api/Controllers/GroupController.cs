@@ -1,4 +1,5 @@
-﻿using myNote.DataLayer;
+﻿using myNote.Api.Filters;
+using myNote.DataLayer;
 using myNote.DataLayer.Sql;
 using myNote.Model;
 using System;
@@ -33,11 +34,25 @@ namespace myNote.Api.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("api/groups/{name}")]
+        [ArgumentExceptionFilter]
         public Group Post(string name, [FromBody]Token accessToken)
         {
-            var result = groupsRepository.CreateGroup(name, accessToken);
-            Logger.Log.Instance.Info($"Создание группы с id: {result.Id}");
-            return result;
+            try
+            {
+                var result = groupsRepository.CreateGroup(name, accessToken);
+                Logger.Log.Instance.Info($"Создание группы с id: {result.Id}");
+                return result;
+            }
+            catch (ArgumentException e)
+            {
+                Logger.Log.Instance.Error(e.Message);
+                throw new ArgumentException(e.Message);
+            }
+            catch(Exception e)
+            {
+                Logger.Log.Instance.Error(e.Message);
+                throw;
+            }
         }
 
         /// <summary>
@@ -46,11 +61,20 @@ namespace myNote.Api.Controllers
         /// <param name="id">Идентификатор группы</param>
         /// <param name="accessToken">Токен доступа</param>
         [HttpPut]
-        [Route("api/groups/{id}")]
+        [Route("api/groups/deletebyid/{id}")]
+        [ArgumentExceptionFilter]
         public void DeleteById(Guid id, [FromBody]Token accessToken)
         {
-            Logger.Log.Instance.Info($"Удаление группы с id: {id}");
-            groupsRepository.DeleteGroup(id, accessToken);
+            try
+            {
+                Logger.Log.Instance.Info($"Удаление группы с id: {id}");
+                groupsRepository.DeleteGroup(id, accessToken);
+            }
+            catch (ArgumentException e)
+            {
+                Logger.Log.Instance.Error(e.Message);
+                throw new ArgumentException(e.Message);
+            }
         }
 
         /// <summary>
@@ -60,11 +84,20 @@ namespace myNote.Api.Controllers
         /// <param name="name">Название группы</param>
         /// <param name="accessToken">Токен доступа</param>
         [HttpPut]
-        [Route("api/groups/{name}")]
+        [Route("api/groups/deletebyname/{name}")]
+        [ArgumentExceptionFilter]
         public void Delete(string name, [FromBody]Token accessToken)
         {
-            Logger.Log.Instance.Info($"Удаление группы с userId: {accessToken.UserId} и именем: {name}");
-            groupsRepository.DeleteGroup(name, accessToken);
+            try
+            {
+                Logger.Log.Instance.Info($"Удаление группы с userId: {accessToken.UserId} и именем: {name}");
+                groupsRepository.DeleteGroup(name, accessToken);
+            }
+            catch (ArgumentException e)
+            {
+                Logger.Log.Instance.Error(e.Message);
+                throw new ArgumentException(e.Message);
+            }
         }
     }
 }

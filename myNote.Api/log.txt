@@ -267,3 +267,204 @@
 2017-11-29 23:01:34.3619|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
 2017-11-29 23:01:34.4199|INFO|myNote.Logger.Log|Изменение пользователя с именем: Marlock
 2017-11-29 23:01:34.4749|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:08:38.5236|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:08:39.0571|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:08:39.0946|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:08:39.1456|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:08:39.1796|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:08:39.2306|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:08:39.2626|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-29 23:08:39.3106|INFO|myNote.Logger.Log|Удаление пользователя: Max
+2017-11-29 23:08:39.3426|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:08:39.4116|INFO|myNote.Logger.Log|Создание заметки с id: 4e400a3d-8517-4b30-9942-3a50ea897280
+2017-11-29 23:08:39.4386|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:08:39.4797|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:08:39.5337|INFO|myNote.Logger.Log|Создание заметки с id: 5ac3f301-2b53-4a54-9ab8-982ef894be1f
+2017-11-29 23:08:39.5707|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:08:39.6027|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:08:39.6532|INFO|myNote.Logger.Log|Создание заметки с id: 2cf10033-d3a3-410e-9e18-85d9a3d1fd35
+2017-11-29 23:08:39.6947|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:08:39.7217|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:08:39.7807|INFO|myNote.Logger.Log|Создание заметки с id: 93e0433c-6666-41f4-8662-0ea885335599
+2017-11-29 23:08:39.8107|INFO|myNote.Logger.Log|Обновление заметки с id: 93e0433c-6666-41f4-8662-0ea885335599
+2017-11-29 23:08:39.8572|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:08:39.9654|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:08:40.0334|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:08:40.0629|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:08:40.1089|INFO|myNote.Logger.Log|Создание пользователя с логином: Enemy
+2017-11-29 23:08:40.1589|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:08:40.1879|INFO|myNote.Logger.Log|Удаление пользователя: Enemy
+2017-11-29 23:08:40.2239|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:08:40.2849|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:08:40.3209|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:08:40.3839|INFO|myNote.Logger.Log|Изменение пользователя с именем: Marlock
+2017-11-29 23:08:40.4079|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:09:07.7510|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:09:08.2280|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:09:08.2655|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:09:08.3245|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:09:08.3515|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:09:08.4055|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:09:08.4345|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-29 23:09:08.4745|INFO|myNote.Logger.Log|Удаление пользователя: Max
+2017-11-29 23:09:08.5005|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:09:08.5775|INFO|myNote.Logger.Log|Создание заметки с id: f5493082-5f09-44ce-81e7-4b2900ff3196
+2017-11-29 23:09:08.6015|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:09:08.6295|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:09:08.6765|INFO|myNote.Logger.Log|Создание заметки с id: 012d83cc-d76f-4122-b481-60930d80fed6
+2017-11-29 23:09:08.7055|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:09:08.7325|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:09:08.7755|INFO|myNote.Logger.Log|Создание заметки с id: 5e9eee1d-0ef8-401e-b9d9-6460a8db4c1e
+2017-11-29 23:09:08.8546|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:09:08.8966|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:09:08.9476|INFO|myNote.Logger.Log|Создание заметки с id: 701e12f1-d609-461a-acec-77094c070298
+2017-11-29 23:09:08.9766|INFO|myNote.Logger.Log|Обновление заметки с id: 701e12f1-d609-461a-acec-77094c070298
+2017-11-29 23:09:09.0206|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:09:09.0546|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:09:09.1311|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:09:09.1566|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:09:09.1986|INFO|myNote.Logger.Log|Создание пользователя с логином: Enemy
+2017-11-29 23:09:09.2546|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:09:09.2906|INFO|myNote.Logger.Log|Удаление пользователя: Enemy
+2017-11-29 23:09:09.3426|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:09:09.4127|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:09:09.4447|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:09:09.6148|INFO|myNote.Logger.Log|Изменение пользователя с именем: Marlock
+2017-11-29 23:09:09.6428|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:14:18.4073|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:14:18.8686|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:14:18.9117|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:14:18.9617|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:14:18.9967|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:14:19.0467|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:14:19.0777|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-29 23:14:19.1167|INFO|myNote.Logger.Log|Удаление пользователя: Max
+2017-11-29 23:14:19.1477|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:14:19.2417|INFO|myNote.Logger.Log|Создание заметки с id: 45838cb1-2e22-4302-9a14-a4cbd94768f0
+2017-11-29 23:14:19.2717|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:14:19.3177|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:14:19.3737|INFO|myNote.Logger.Log|Создание заметки с id: 8c15163b-d112-40fc-bd30-bc1d7902cdaa
+2017-11-29 23:14:19.4087|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:14:19.5207|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:14:19.5778|INFO|myNote.Logger.Log|Создание заметки с id: c4e1fd11-9ab1-4a97-9054-f0270a098892
+2017-11-29 23:14:19.6248|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:14:19.6578|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:14:19.7108|INFO|myNote.Logger.Log|Создание заметки с id: 4be13d23-e175-459f-8334-aab672d75d06
+2017-11-29 23:14:19.7363|INFO|myNote.Logger.Log|Обновление заметки с id: 4be13d23-e175-459f-8334-aab672d75d06
+2017-11-29 23:14:19.7778|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:14:19.8058|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:14:19.8718|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:14:19.8998|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:14:19.9428|INFO|myNote.Logger.Log|Создание пользователя с логином: Enemy
+2017-11-29 23:14:20.0078|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:14:20.0373|INFO|myNote.Logger.Log|Удаление пользователя: Enemy
+2017-11-29 23:14:20.0768|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:14:20.1343|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:14:20.1659|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:14:20.2354|INFO|myNote.Logger.Log|Изменение пользователя с именем: Marlock
+2017-11-29 23:14:20.2609|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:15:43.2207|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:15:43.6687|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:15:43.7117|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:15:43.7587|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:15:43.7882|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:15:43.8347|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:15:43.8627|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-29 23:15:43.9048|INFO|myNote.Logger.Log|Удаление пользователя: Max
+2017-11-29 23:15:43.9358|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:15:44.0338|INFO|myNote.Logger.Log|Создание заметки с id: dc0e2cf4-1584-48f0-89f5-bddb4812e758
+2017-11-29 23:15:44.0638|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:15:44.1088|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:15:44.1708|INFO|myNote.Logger.Log|Создание заметки с id: 4ffa974a-1e01-45d0-b8fd-153fc97ba0b4
+2017-11-29 23:15:44.2128|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:15:44.2838|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:15:44.3818|INFO|myNote.Logger.Log|Создание заметки с id: bda11095-efd0-403c-b78d-7b138de1e197
+2017-11-29 23:15:44.4288|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:15:44.4633|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:15:44.5208|INFO|myNote.Logger.Log|Создание заметки с id: f1eb7763-f5b3-4b4d-beb7-b415afd7a94b
+2017-11-29 23:15:44.5508|INFO|myNote.Logger.Log|Обновление заметки с id: f1eb7763-f5b3-4b4d-beb7-b415afd7a94b
+2017-11-29 23:15:44.6008|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:15:44.6288|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:15:44.7009|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:15:44.7308|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:15:44.7749|INFO|myNote.Logger.Log|Создание пользователя с логином: Enemy
+2017-11-29 23:15:44.8319|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:15:44.8649|INFO|myNote.Logger.Log|Удаление пользователя: Enemy
+2017-11-29 23:15:44.8999|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:15:44.9554|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:15:44.9859|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:15:45.0509|INFO|myNote.Logger.Log|Изменение пользователя с именем: Marlock
+2017-11-29 23:15:45.0769|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:17:19.1006|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-29 23:18:17.7006|INFO|myNote.Logger.Log|Создание группы с id: 470fed65-6206-44eb-ad23-4fa994625f5f
+2017-11-29 23:19:12.7457|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:19:51.8729|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:24:36.8449|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:24:37.3185|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:24:37.3565|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:24:37.4055|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:24:37.4355|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:24:37.5081|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:24:37.5401|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-29 23:24:37.5826|INFO|myNote.Logger.Log|Удаление пользователя: Max
+2017-11-29 23:24:37.6156|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:24:37.7126|INFO|myNote.Logger.Log|Создание заметки с id: 4d0f7875-6c32-47d7-9566-3c3697b10401
+2017-11-29 23:24:37.7381|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:24:37.7746|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:24:37.8296|INFO|myNote.Logger.Log|Создание заметки с id: fd6bb260-8c0d-403b-8994-1fcc4258da99
+2017-11-29 23:24:37.8626|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:24:37.8996|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:24:37.9546|INFO|myNote.Logger.Log|Создание заметки с id: f832a8c5-30c7-417d-8960-a020b4143e57
+2017-11-29 23:24:38.0026|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:24:38.0276|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:24:38.0726|INFO|myNote.Logger.Log|Создание заметки с id: c934d7f2-4cfd-4d5a-be96-325b168b7292
+2017-11-29 23:24:38.1016|INFO|myNote.Logger.Log|Обновление заметки с id: c934d7f2-4cfd-4d5a-be96-325b168b7292
+2017-11-29 23:24:38.1462|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:24:38.1827|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:24:38.2537|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:24:38.2887|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:24:38.3257|INFO|myNote.Logger.Log|Создание пользователя с логином: Enemy
+2017-11-29 23:24:38.3897|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:24:38.4187|INFO|myNote.Logger.Log|Удаление пользователя: Enemy
+2017-11-29 23:24:38.4522|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:24:38.5067|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:24:38.5397|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:24:38.6067|INFO|myNote.Logger.Log|Изменение пользователя с именем: Marlock
+2017-11-29 23:24:38.6327|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:26:00.2708|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:26:00.5818|INFO|myNote.Logger.Log|Создание группы с id: 5286ce5a-8539-400c-a10b-0051a81ec864
+2017-11-29 23:26:00.6043|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:26:00.6398|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:26:00.8007|INFO|myNote.Logger.Log|Создание группы с id: f0268188-2b02-4cda-9755-be16221642da
+2017-11-29 23:26:00.8230|INFO|myNote.Logger.Log|Удаление группы с userId: 90c02fe9-ae1e-4658-9016-3c8aa4e49a71 и именем: TestGroup
+2017-11-29 23:26:00.8740|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:26:00.9055|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:26:00.9565|INFO|myNote.Logger.Log|Создание группы с id: b7483680-a7be-4e46-a8a2-16502e564cc7
+2017-11-29 23:26:00.9785|INFO|myNote.Logger.Log|Удаление группы с id: b7483680-a7be-4e46-a8a2-16502e564cc7
+2017-11-29 23:26:01.0091|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:26:01.0376|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-29 23:26:01.0796|INFO|myNote.Logger.Log|Удаление пользователя: Max
+2017-11-29 23:26:01.1111|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:26:01.1881|INFO|myNote.Logger.Log|Создание заметки с id: 00c18698-ed45-4535-a442-1e73da546320
+2017-11-29 23:26:01.2117|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:26:01.2427|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:26:01.2942|INFO|myNote.Logger.Log|Создание заметки с id: a2c75f22-556a-4330-a118-f8a65911f4e5
+2017-11-29 23:26:01.3317|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:26:01.3787|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:26:01.4387|INFO|myNote.Logger.Log|Создание заметки с id: 9ff6c7ca-f586-4933-b7a8-5847ed76d956
+2017-11-29 23:26:01.4927|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:26:01.5267|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:26:01.5857|INFO|myNote.Logger.Log|Создание заметки с id: 15d45c12-a303-4bed-bc4c-4317dd356f24
+2017-11-29 23:26:01.6397|INFO|myNote.Logger.Log|Обновление заметки с id: 15d45c12-a303-4bed-bc4c-4317dd356f24
+2017-11-29 23:26:01.6907|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:26:01.7203|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:26:01.7803|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:26:01.8093|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:26:01.8498|INFO|myNote.Logger.Log|Создание пользователя с логином: Enemy
+2017-11-29 23:26:01.8978|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:26:01.9248|INFO|myNote.Logger.Log|Удаление пользователя: Enemy
+2017-11-29 23:26:01.9528|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:26:02.0108|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-29 23:26:02.0388|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 23:26:02.1008|INFO|myNote.Logger.Log|Изменение пользователя с именем: Marlock
+2017-11-29 23:26:02.1288|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
