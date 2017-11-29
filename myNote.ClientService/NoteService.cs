@@ -59,7 +59,7 @@ namespace myNote.ClientService
         /// </summary>
         /// <param name="noteId">note id</param>
         /// <returns></returns>
-        public async Task<Note> GetUserNote(Guid noteId)
+        public async Task<Note> GetUserNoteAsync(Guid noteId)
         {
             var response = await client.GetAsync($@"notes/{noteId}");
             if (!response.IsSuccessStatusCode)
