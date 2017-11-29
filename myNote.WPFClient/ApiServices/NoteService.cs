@@ -35,11 +35,6 @@ namespace myNote.WPFClient.ApiServices
         /// <returns></returns>
         public async Task<Note> CreateNoteAsync(Note note, Token accessToken)
         {
-            var jobj = JObject.FromObject(new
-            {
-                note,
-                accessToken
-            });
             var response = await client.PostAsJsonAsync("notes", new { note, accessToken });
             if (!response.IsSuccessStatusCode)
                 throw new HttpRequestException(response.StatusCode.ToString() + "\n" + response.ReasonPhrase);

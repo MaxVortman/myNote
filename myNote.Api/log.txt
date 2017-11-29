@@ -110,3 +110,22 @@
 2017-11-29 04:12:20.1827|INFO|myNote.Logger.Log|Удаление пользователя: Max
 2017-11-29 18:12:11.2182|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
 2017-11-29 18:17:58.0534|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-29 18:57:18.5959|INFO|myNote.Logger.Log|Создание заметки с id: e4d0d45c-717b-4d29-8f9b-f27be9cc8447
+2017-11-29 18:57:39.6326|INFO|myNote.Logger.Log|Создание заметки с id: 296606b1-d619-4929-84f2-e029b8bf0c2b
+2017-11-29 19:00:31.1409|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-29 19:00:31.3579|ERROR|myNote.Logger.Log|User with this id 123596ec-2ca8-4fc8-9c71-675e04e7c968 is note registred
+2017-11-29 19:00:31.5494|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 19:00:31.5839|ERROR|myNote.Logger.Log|User with this id a55c74e0-438f-439d-86e3-87012f734ce4 is note registred
+2017-11-29 19:01:02.0028|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-29 19:01:02.1533|ERROR|myNote.Logger.Log|User with this id b80c282a-1fdc-4abd-9b8b-68f88e150c79 is note registred
+2017-11-29 19:01:02.3358|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 19:01:02.3718|ERROR|myNote.Logger.Log|User with this id e6c260d5-4d00-4a1c-a210-d24ef6c7f7e0 is note registred
+2017-11-29 19:03:27.3891|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-29 19:03:28.0041|ERROR|myNote.Logger.Log|User with this id 7efb98b9-40af-4acb-a1a1-5b93cc8d6d7b is note registred
+2017-11-29 19:03:29.0068|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 19:03:29.3458|ERROR|myNote.Logger.Log|User with this id 20c54318-59b9-4469-b2d3-930a65847141 is note registred
+2017-11-29 19:12:52.5483|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-29 19:12:52.8822|INFO|myNote.Logger.Log|Удаление пользователя: Max
+2017-11-29 19:12:52.9407|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
+2017-11-29 19:12:53.0437|INFO|myNote.Logger.Log|Создание заметки с id: b39f99ec-765c-4548-8f16-a2c9459cd2cd
+2017-11-29 19:12:53.0752|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest

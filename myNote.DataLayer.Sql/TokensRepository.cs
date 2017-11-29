@@ -35,11 +35,19 @@ namespace myNote.DataLayer.Sql
             var tokenFromDb = (from t in db.GetTable<Token>()
                                where t.UserId == userId
                                select t).FirstOrDefault();
-            if (tokenFromDb == default(Token))
-                throw new ArgumentException($@"User with this id {userId} is note registred");
-            tokenFromDb.Key = CreateKey(userId);
-            db.SubmitChanges();
-            return tokenFromDb;
+            if (tokenFromDb != default(Token))
+            {
+                tokenFromDb.Key = CreateKey(userId);
+                db.SubmitChanges();
+                return tokenFromDb;
+            }
+            else
+            {
+                var token = new Token { Key = CreateKey(userId), UserId = userId };
+                db.GetTable<Token>().InsertOnSubmit(token);
+                db.SubmitChanges();
+                return token;
+            }
         }
 
         private string CreateKey(Guid userId)

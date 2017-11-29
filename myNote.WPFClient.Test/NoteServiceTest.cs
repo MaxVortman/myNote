@@ -17,14 +17,14 @@ namespace myNote.WPFClient.Test
         public void ShouldCreateNoteThroughApi()
         {
             //arrange
-            var credential = new Credential { Login = "Max", Password = PasswordCrypter.GetPasswordMD5Hash("kljkljkl") };
+            var credential = new Credential { Login = "MaxTest", Password = PasswordCrypter.GetPasswordMD5Hash("kljkljkl") };
             loginClient.Register(credential);
             var token = loginClient.LoginAsync(credential).Result;
             tempUser.Add(credential.Login, token);
 
             //act
             var noteClient = new NoteService(ConnectionString);
-            var note = noteClient.CreateNoteAsync(new Note { Title = "TestNote"}, token).Result;
+            var note = noteClient.CreateNoteAsync(new Note { Title = "TestNote", UserId = token.UserId}, token).Result;
         }
 
         #region Clean Up temp

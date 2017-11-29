@@ -13,17 +13,23 @@
             <i:InvokeCommandAction Command="{Binding LoadPageCommand}" />
         </i:EventTrigger>
     </i:Interaction.Triggers>
-    <StackPanel>
-        <ListView ItemsSource="{Binding Notes}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel>
-                        <TextBlock Text="{Binding Title}"/>
-                        <TextBlock Text="{Binding Content}"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-        <Button>Add new Note</Button>
-    </StackPanel>
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+        <StackPanel>
+            <ListView ItemsSource="{Binding Notes}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding Title}"/>
+                            <TextBlock Text="{Binding Content}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Command="{Binding AddNoteCommand}">Add new Note</Button>
+            <StackPanel>
+                <TextBox Tag="Title" Text="{Binding NewNoteTitle, Mode=OneWayToSource}"/>
+                <TextBox Tag="Content" Text="{Binding NewNoteContent, Mode=OneWayToSource}"/>
+            </StackPanel>
+        </StackPanel>
+    </ScrollViewer>
 </Page>

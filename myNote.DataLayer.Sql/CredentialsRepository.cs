@@ -42,7 +42,7 @@ namespace myNote.DataLayer.Sql
         public Token Login(Credential credential)
         {
             if (!CheckForAvailability(credential))
-                throw new ArgumentException($@"User with this Login {credential.Login} is not registered or password {Encoding.UTF8.GetString(credential.Password)} is invalid");
+                throw new ArgumentException($@"User with this Login {credential.Login} is not registered or password is invalid");
             return tokensRepository.CreateToken(usersRepository.GetUser(credential.Login).Id);
         }
 

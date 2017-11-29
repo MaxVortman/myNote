@@ -20,6 +20,14 @@ namespace myNote.WPFClient.ViewModel
         /// User's notes
         /// </summary>
         public ObservableCollection<Note> Notes { get; set; }
+        /// <summary>
+        /// Title note, which add
+        /// </summary>
+        public string NewNoteTitle { get; set; }
+        /// <summary>
+        /// Content note, which add
+        /// </summary>
+        public string NewNoteContent { get; set; }
 
         #endregion
 
@@ -40,9 +48,18 @@ namespace myNote.WPFClient.ViewModel
         /// </summary>
         public MainPageViewModel()
         {
-            AddNoteCommand = new RelayCommand((obj) =>
+            AddNoteCommand = new RelayCommand(async(obj) =>
             {
-
+                try
+                {
+                    var noteClient = new NoteService();
+                    var note = await noteClient.CreateNoteAsync(new Note { Title = NewNoteTitle, Content = NewNoteContent, UserId = UserData.UserDataContent.Token.UserId }, UserData.UserDataContent.Token);
+                    Notes.Add(note);
+                }
+                catch (HttpRequestException e)
+                {
+                    MessageBox.Show("Something went wrong...\n" + e.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             });
 
             LoadPageCommand = new RelayCommand(async(obj) =>
