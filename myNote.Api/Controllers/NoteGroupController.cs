@@ -1,6 +1,7 @@
 ﻿using myNote.DataLayer;
 using myNote.DataLayer.Sql;
 using myNote.Model;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,16 +26,17 @@ namespace myNote.Api.Controllers
         /// <summary>
         /// Создание группы заметок
         /// </summary>
-        /// <param name="noteId">Идентификатор заметки</param>
-        /// <param name="groupId">Идентификатор группы</param>
+        /// <param name="noteGroupAndToken"></param>
         /// <param name="accessToken">Токен доступа</param>
         /// <returns></returns>
         [HttpPost]
-        [Route("api/notegroups/group/{groupId}/note/{noteId}")]
-        public NoteGroup Post(Guid noteId, Guid groupId, [FromBody]Token accessToken)
+        [Route("api/notegroup")]
+        public NoteGroup Post([FromBody]JObject noteGroupAndToken)
         {
-            Logger.Log.Instance.Info($"Создание группы заметок с noteId: {noteId} и groupId: {groupId}");
-            return noteGroupsRepository.CreateNoteGroup(noteId, groupId, accessToken);
+            var noteGroup = noteGroupAndToken["noteGroup"].ToObject<NoteGroup>();
+            var accessToken = noteGroupAndToken["accessToken"].ToObject<Token>();
+            Logger.Log.Instance.Info($"Создание группы заметок с noteId: {noteGroup.NoteId} и groupId: {noteGroup.GroupId}");
+            return noteGroupsRepository.CreateNoteGroup(noteGroup, accessToken);
         }
         /// <summary>
         /// Получение группы заметки
@@ -52,25 +54,26 @@ namespace myNote.Api.Controllers
         /// Получение всех заметок в группе
         /// </summary>
         /// <param name="groupId">Идентификатор группы</param>
+        /// <param name="accessToken">Токен доступа</param>
         /// <returns></returns>
-        [HttpGet]
+        [HttpPut]
         [Route("api/notegroups/group/{groupId}")]
-        public IEnumerable<Note> GetAllNotesBy(Guid groupId)
+        public IEnumerable<Note> GetAllNotesBy(Guid groupId, [FromBody]Token accessToken)
         {
-            return noteGroupsRepository.GetAllNoteBy(groupId);
+            return noteGroupsRepository.GetAllNoteBy(groupId, accessToken);
         }
 
         /// <summary>
         /// Получение всех заметок в группе
         /// </summary>
-        /// <param name="userId">Идентификатор пользователя</param>
+        /// <param name="accessToken">Токен доступа</param>
         /// <param name="name">Название группы</param>
         /// <returns></returns>
-        [HttpGet]
-        [Route("api/notegroups/user/{userId}/group/{name}")]
-        public IEnumerable<Note> GetAlNotesBy(Guid userId, string name)
+        [HttpPut]
+        [Route("api/notegroups/user/group/{name}")]
+        public IEnumerable<Note> GetAllNotesBy(string name, [FromBody]Token accessToken)
         {
-            return noteGroupsRepository.GetAllNoteBy(userId, name);
+            return noteGroupsRepository.GetAllNoteBy(name, accessToken);
         }
     }
 }

@@ -18,7 +18,7 @@ namespace myNote.ClientService
         /// <param name="name">group name</param>
         /// <param name="accessToken"></param>  
         /// <returns></returns>
-        public async Task<Group> CreateGroup(string name, Token accessToken)
+        public async Task<Group> CreateGroupAsync(string name, Token accessToken)
         {
             var response = await client.PostAsJsonAsync($@"groups/{name}", accessToken);
             if (!response.IsSuccessStatusCode)

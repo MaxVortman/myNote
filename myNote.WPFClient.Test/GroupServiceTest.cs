@@ -25,7 +25,7 @@ namespace myNote.ClientService.Test
 
             //act
             var groupService = new GroupService(ConnectionString);
-            var group = groupService.CreateGroup(NAME, token).Result;
+            var group = groupService.CreateGroupAsync(NAME, token).Result;
         }
 
         [TestMethod]
@@ -40,7 +40,7 @@ namespace myNote.ClientService.Test
 
             //act
             var groupService = new GroupService(ConnectionString);
-            var group = groupService.CreateGroup(NAME, token).Result;
+            var group = groupService.CreateGroupAsync(NAME, token).Result;
             groupService.DeleteGroup(NAME, token);
         }
 
@@ -56,7 +56,7 @@ namespace myNote.ClientService.Test
 
             //act
             var groupService = new GroupService(ConnectionString);
-            var group = groupService.CreateGroup(NAME, token).Result;
+            var group = groupService.CreateGroupAsync(NAME, token).Result;
             groupService.DeleteGroup(group.Id, token);
         }
 

@@ -87,7 +87,7 @@ namespace myNote.DataLayer.Sql
             new TokensRepository(connectionString).CompareToken(accessToken, GetGroup(id).UserId);
 
             var noteGroupsRepository = new NoteGroupsRepository(connectionString);
-            if (noteGroupsRepository.GetAllNoteBy(id).Count() != 0)
+            if (noteGroupsRepository.GetAllNoteBy(id, accessToken).Count() != 0)
                 throw new InvalidOperationException("Невозможно удалить группу, в которой есть записи");
             using (var sqlConnection = new SqlConnection(connectionString))
             {
@@ -106,7 +106,7 @@ namespace myNote.DataLayer.Sql
             new TokensRepository(connectionString).CompareToken(accessToken);
 
             var noteGroupsRepository = new NoteGroupsRepository(connectionString);
-            if (noteGroupsRepository.GetAllNoteBy(accessToken.UserId, name).Count() != 0)
+            if (noteGroupsRepository.GetAllNoteBy(name, accessToken).Count() != 0)
                 throw new InvalidOperationException("Невозможно удалить группу, в которой есть записи");
             using (var sqlConnection = new SqlConnection(connectionString))
             {

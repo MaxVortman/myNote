@@ -30,7 +30,7 @@ namespace myNote.DataLayer.Sql.Test
 
             //act
             var noteGroupsRepository = new NoteGroupsRepository(ConnectionString);
-            var noteGroups = noteGroupsRepository.CreateNoteGroup(note.Id, group.Id, token);
+            var noteGroups = noteGroupsRepository.CreateNoteGroup(new NoteGroup { NoteId = note.Id, GroupId = group.Id }, token);
             var groupFromDb = noteGroupsRepository.GetGroupBy(noteGroups.NoteId);
 
             //asserts
@@ -52,6 +52,7 @@ namespace myNote.DataLayer.Sql.Test
             var notes = new Note[CountOfNotesGroups];
             var groupsRepository = new GroupsRepository(ConnectionString);            
             var notesRepository = new NotesRepository(ConnectionString);
+            var group = groupsRepository.CreateGroup(groupName, token);
             for (int i = 0; i < CountOfNotesGroups; i++)
             {
                 notes[i] = new Note
@@ -61,15 +62,14 @@ namespace myNote.DataLayer.Sql.Test
                 };
                 notes[i] = notesRepository.CreateNote(notes[i], token);
             }
-            var group = groupsRepository.CreateGroup(groupName, token);
 
             //act
             var noteGroupsRepository = new NoteGroupsRepository(ConnectionString);
             for (int i = 0; i < CountOfNotesGroups; i++)
             {
-                noteGroupsRepository.CreateNoteGroup(notes[i].Id, group.Id, token);
+                noteGroupsRepository.CreateNoteGroup(new NoteGroup { NoteId = notes[i].Id, GroupId = group.Id }, token);
             }
-            var notesFromDb = noteGroupsRepository.GetAllNoteBy(group.Id).ToArray();
+            var notesFromDb = noteGroupsRepository.GetAllNoteBy(group.Id, token).ToArray();
 
             //asserts
             Assert.AreEqual(CountOfNotesGroups, notesFromDb.Length);
@@ -107,7 +107,7 @@ namespace myNote.DataLayer.Sql.Test
             var group = groupsRepository.CreateGroup(GroupName, token);
             //act
             var noteGroupsRepository = new NoteGroupsRepository(ConnectionString);
-            var notes = noteGroupsRepository.GetAllNoteBy(group.Id);
+            var notes = noteGroupsRepository.GetAllNoteBy(group.Id, token);
 
             //asserts
             Assert.AreEqual(Zero, notes.Count());

@@ -19,9 +19,9 @@ namespace myNote.ClientService
         /// <param name="groupId"></param>
         /// <param name="accessToken">user's access token</param>
         /// <returns></returns>
-        public async Task<NoteGroup> CreateNoteGroup(Guid noteId, Guid groupId, Token accessToken)
+        public async Task<NoteGroup> CreateNoteGroup(NoteGroup noteGroup,Token accessToken)
         {
-            var response = await client.PostAsJsonAsync($@"notegroups/group/{groupId}/note/{noteId}", accessToken);
+            var response = await client.PostAsJsonAsync($@"notegroup", new { noteGroup, accessToken });
             if (!response.IsSuccessStatusCode)
                 throw new HttpRequestException(response.StatusCode.ToString() + "\n" + response.ReasonPhrase);
             return await response.Content.ReadAsAsync<NoteGroup>();
@@ -31,21 +31,21 @@ namespace myNote.ClientService
         /// </summary>
         /// <param name="id">note id</param>
         /// <returns>note group</returns>
-        public async Task<NoteGroup> GetNoteGroup(Guid id)
+        public async Task<Group> GetGroupAsync(Guid id)
         {
             var response = await client.GetAsync($@"notegroups/notes/{id}");
             if (!response.IsSuccessStatusCode)
                 throw new HttpRequestException(response.StatusCode.ToString() + "\n" + response.ReasonPhrase);
-            return await response.Content.ReadAsAsync<NoteGroup>();
+            return await response.Content.ReadAsAsync<Group>();
         }
         /// <summary>
         /// Get all note contains in group
         /// </summary>
         /// <param name="groupId"></param>
         /// <returns>notes enumarable</returns>
-        public async Task<IEnumerable<Note>> GetNotesInGroup(Guid groupId)
+        public async Task<IEnumerable<Note>> GetNotesInGroupAsync(Guid groupId, Token accessToken)
         {
-            var response = await client.GetAsync($@"notegroups/group/{groupId}");
+            var response = await client.PutAsJsonAsync($@"notegroups/group/{groupId}", accessToken);
             if (!response.IsSuccessStatusCode)
                 throw new HttpRequestException(response.StatusCode.ToString() + "\n" + response.ReasonPhrase);
             return await response.Content.ReadAsAsync<IEnumerable<Note>>();
@@ -56,9 +56,9 @@ namespace myNote.ClientService
         /// <param name="userId"></param>
         /// <param name="name">group name</param>
         /// <returns>notes enumerable</returns>
-        public async Task<IEnumerable<Note>> GetNotesInGroup(Guid userId, string name)
+        public async Task<IEnumerable<Note>> GetNotesInGroupAsync(string name, Token accessToken)
         {
-            var response = await client.GetAsync($@"notegroups/user/{userId}/group/{name}");
+            var response = await client.PutAsJsonAsync($@"notegroups/user/group/{name}", accessToken);
             if (!response.IsSuccessStatusCode)
                 throw new HttpRequestException(response.StatusCode.ToString() + "\n" + response.ReasonPhrase);
             return await response.Content.ReadAsAsync<IEnumerable<Note>>();

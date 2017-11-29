@@ -25,21 +25,20 @@ namespace myNote.DataLayer.Sql
 
         #endregion
 
-        #region Create Token
+        #region Create Note Group
 
-        public NoteGroup CreateNoteGroup(Guid noteId, Guid groupId, Token accessToken)
+        public NoteGroup CreateNoteGroup(NoteGroup noteGroup, Token accessToken)
         {
             #region Compare userId from note and from group
-            var userIdFormNote = new NotesRepository(connectionString).GetNote(noteId).UserId;
-            var userIdFromGroup = new GroupsRepository(connectionString).GetGroup(groupId).UserId;
+            var userIdFormNote = new NotesRepository(connectionString).GetNote(noteGroup.NoteId).UserId;
+            var userIdFromGroup = new GroupsRepository(connectionString).GetGroup(noteGroup.GroupId).UserId;
             if (userIdFormNote != userIdFromGroup)
                 throw new ArgumentException("The note and group do not belong to the same user");
             #endregion
 
-            new TokensRepository(connectionString).CompareToken(accessToken, new NotesRepository(connectionString).GetNote(noteId).UserId);
+            new TokensRepository(connectionString).CompareToken(accessToken, new NotesRepository(connectionString).GetNote(noteGroup.NoteId).UserId);
 
-            var db = new DataContext(connectionString);
-            var noteGroup = new NoteGroup { GroupId = groupId, NoteId = noteId };
+            var db = new DataContext(connectionString);            
             db.GetTable<NoteGroup>().InsertOnSubmit(noteGroup);
             db.SubmitChanges();
             return noteGroup;
@@ -49,8 +48,10 @@ namespace myNote.DataLayer.Sql
 
         #region Get All Note
 
-        public IEnumerable<Note> GetAllNoteBy(Guid groupId)
+        public IEnumerable<Note> GetAllNoteBy(Guid groupId, Token accessToken)
         {
+            new TokensRepository(connectionString).CompareToken(accessToken, new GroupsRepository(connectionString).GetGroup(groupId).UserId);
+
             var db = new DataContext(connectionString);
             var notesRepository = new NotesRepository(connectionString);
             return from ng in db.GetTable<NoteGroup>()
@@ -58,12 +59,12 @@ namespace myNote.DataLayer.Sql
                    select notesRepository.GetNote(ng.NoteId);
         }
 
-        public IEnumerable<Note> GetAllNoteBy(Guid userId, string name)
+        public IEnumerable<Note> GetAllNoteBy(string name, Token accessToken)
         {
             var db = new DataContext(connectionString);
             var notesRepository = new NotesRepository(connectionString);
             var groupsRepository = new GroupsRepository(connectionString);
-            var groupFromDb = groupsRepository.GetGroup(userId, name);
+            var groupFromDb = groupsRepository.GetGroup(accessToken.UserId, name);
             return from ng in db.GetTable<NoteGroup>()
                    where ng.GroupId == groupFromDb.Id
                    select notesRepository.GetNote(ng.NoteId);

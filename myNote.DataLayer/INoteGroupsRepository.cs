@@ -9,9 +9,9 @@ namespace myNote.DataLayer
 {
     public interface INoteGroupsRepository
     {
-        NoteGroup CreateNoteGroup(Guid noteId, Guid groupId, Token accessToken);
+        NoteGroup CreateNoteGroup(NoteGroup noteGroup, Token accessToken);
         Group GetGroupBy(Guid noteId);
-        IEnumerable<Note> GetAllNoteBy(Guid groupId);
-        IEnumerable<Note> GetAllNoteBy(Guid userId, string name);
+        IEnumerable<Note> GetAllNoteBy(Guid groupId, Token accessToken);
+        IEnumerable<Note> GetAllNoteBy(string name, Token accessToken);
     }
 }

@@ -147,7 +147,7 @@ namespace myNote.DataLayer.Sql.Test
             var notesRepository = new NotesRepository(ConnectionString);
             note = notesRepository.CreateNote(note, token);
             var noteGroupsRepository = new NoteGroupsRepository(ConnectionString);
-            noteGroupsRepository.CreateNoteGroup(note.Id, group.Id, token);
+            noteGroupsRepository.CreateNoteGroup(new NoteGroup { NoteId = note.Id, GroupId = group.Id }, token);
 
             //act
             groupsRepository.DeleteGroup(group.Name, token);
@@ -169,7 +169,7 @@ namespace myNote.DataLayer.Sql.Test
             var notesRepository = new NotesRepository(ConnectionString);
             note = notesRepository.CreateNote(note, token);
             var noteGroupsRepository = new NoteGroupsRepository(ConnectionString);
-            noteGroupsRepository.CreateNoteGroup(note.Id, group.Id, token);
+            noteGroupsRepository.CreateNoteGroup(new NoteGroup { NoteId = note.Id, GroupId = group.Id }, token);
 
             //act
             groupsRepository.DeleteGroup(group.Id, token);
