@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using myNote.ClientService;
 using myNote.Model;
 
-namespace myNote.WPFClient.Test
+namespace myNote.ClientService.Test
 {
     [TestClass]
     public class LoginServiceTest

@@ -28,3 +28,7 @@
 2017-11-29 19:01:02.3718|ERROR|myNote.Logger.Log|User with this id e6c260d5-4d00-4a1c-a210-d24ef6c7f7e0 is note registred
 2017-11-29 19:03:28.0041|ERROR|myNote.Logger.Log|User with this id 7efb98b9-40af-4acb-a1a1-5b93cc8d6d7b is note registred
 2017-11-29 19:03:29.3458|ERROR|myNote.Logger.Log|User with this id 20c54318-59b9-4469-b2d3-930a65847141 is note registred
+2017-11-29 22:20:14.3916|ERROR|myNote.Logger.Log|User with this Login MaxTest already registered
+2017-11-29 22:21:46.3953|ERROR|myNote.Logger.Log|User with this Login MaxTest already registered
+2017-11-29 22:23:26.7881|ERROR|myNote.Logger.Log|User with this Login MaxTest already registered
+2017-11-29 22:23:51.5067|ERROR|myNote.Logger.Log|User with this Login MaxTest already registered
