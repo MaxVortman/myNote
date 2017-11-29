@@ -51,7 +51,7 @@ namespace myNote.WPFClient.ViewModel
             {
                 try
                 {
-                    new LoginService(IoC.IoC.ConnectionString).Register(PasswordCrypter.GetCredential(Login, Password));
+                    new LoginService().Register(PasswordCrypter.GetCredential(Login, Password));
                     IoC.IoC.Application.GoToPage(DataModels.ApplicationPage.Login);
                 }
                 catch (HttpRequestException e)

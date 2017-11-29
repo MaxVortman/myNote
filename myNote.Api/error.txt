@@ -14,3 +14,11 @@
 2017-11-29 01:27:39.5315|ERROR|myNote.Logger.Log|User with this Login Max is not registered or password VG??H??;?%??x-? is invalid
 2017-11-29 01:29:49.4679|ERROR|myNote.Logger.Log|User with this Login Max is not registered or password s4Qs?4??l?,yOX? is invalid
 2017-11-29 01:30:29.0683|ERROR|myNote.Logger.Log|User with this Login Max already registered
+2017-11-29 03:48:20.0087|ERROR|myNote.Logger.Log|User with this Login Max already registered
+2017-11-29 03:50:22.3670|ERROR|myNote.Logger.Log|User with this Login Max already registered
+2017-11-29 03:59:43.4289|ERROR|myNote.Logger.Log|User with this Login Max already registered
+2017-11-29 03:59:43.8784|ERROR|myNote.Logger.Log|User with this Login Max already registered
+2017-11-29 04:06:18.0166|ERROR|myNote.Logger.Log|Cannot cast Newtonsoft.Json.Linq.JObject to Newtonsoft.Json.Linq.JToken.
+2017-11-29 04:07:12.5454|ERROR|myNote.Logger.Log|Cannot cast Newtonsoft.Json.Linq.JObject to Newtonsoft.Json.Linq.JToken.
+2017-11-29 04:08:48.8270|ERROR|myNote.Logger.Log|You don't have access
+2017-11-29 04:12:20.0402|ERROR|myNote.Logger.Log|You don't have access

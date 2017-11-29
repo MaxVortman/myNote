@@ -7,22 +7,24 @@ using myNote.WPFClient.ApiServices;
 namespace myNote.WPFClient.Test
 {
     [TestClass]
-    public class LoginServiceTest
+    public class NoteServiceTest
     {
         const string ConnectionString = @"http://localhost:64625/api/";
-        private LoginService client = new LoginService(ConnectionString);
+        private LoginService loginClient = new LoginService(ConnectionString);
         private Dictionary<string, Token> tempUser = new Dictionary<string, Token>();
 
         [TestMethod]
-        public void ShouldRegisterUserThroughApi()
+        public void ShouldCreateNoteThroughApi()
         {
             //arrange
             var credential = new Credential { Login = "Max", Password = PasswordCrypter.GetPasswordMD5Hash("kljkljkl") };
+            loginClient.Register(credential);
+            var token = loginClient.LoginAsync(credential).Result;
+            tempUser.Add(credential.Login, token);
 
             //act
-            client.Register(credential);
-            var token = client.LoginAsync(credential).Result;
-            tempUser.Add(credential.Login, token);
+            var noteClient = new NoteService(ConnectionString);
+            var note = noteClient.CreateNoteAsync(new Note { Title = "TestNote"}, token).Result;
         }
 
         #region Clean Up temp
@@ -32,12 +34,10 @@ namespace myNote.WPFClient.Test
         {
             foreach (var keyvalue in tempUser)
             {
-                client.Delete(keyvalue.Key, keyvalue.Value);
+                loginClient.Delete(keyvalue.Key, keyvalue.Value);
             }
         }
 
         #endregion
-
     }
 }
-

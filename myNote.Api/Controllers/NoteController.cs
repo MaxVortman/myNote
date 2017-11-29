@@ -2,6 +2,7 @@
 using myNote.DataLayer;
 using myNote.DataLayer.Sql;
 using myNote.Model;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,17 +44,31 @@ namespace myNote.Api.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("api/notes")]
-        public Note Post([FromBody] Note note, [FromBody]Token accessToken)
+        [ArgumentExceptionFilter]
+        public Note Post([FromBody] JObject noteAndToken)
         {
-            var result = notesRepository.CreateNote(note, accessToken);
-            Logger.Log.Instance.Info($"Создание заметки с id: {result.Id}");
-            return result;
+            try
+            {
+                var result = notesRepository.CreateNote(noteAndToken["note"].ToObject<Note>(), noteAndToken["accessToken"].ToObject<Token>());
+                Logger.Log.Instance.Info($"Создание заметки с id: {result.Id}");
+                return result;
+            }
+            catch (ArgumentException e)
+            {
+                Logger.Log.Instance.Error(e.Message);
+                throw new ArgumentException(e.Message);
+            }
+            catch(Exception ex)
+            {
+                Logger.Log.Instance.Error(ex.Message);
+                throw;
+            }
         }
         /// <summary>
         /// Удаление заметки
         /// </summary>
         /// <param name="id">Идентификатор пользователя</param>
-        [HttpDelete]
+        [HttpPut]
         [Route("api/notes/{id}")]
         public void Delete(Guid id, [FromBody]Token accessToken)
         {
@@ -67,7 +82,7 @@ namespace myNote.Api.Controllers
         /// <param name="note">Заметка</param>
         /// <returns></returns>
         [HttpPut]
-        [Route("api/notes/{id}")]
+        [Route("api/notes/update")]
         [ArgumentExceptionFilter]
         public Note Put([FromBody] Note note, [FromBody]Token accessToken)
         {

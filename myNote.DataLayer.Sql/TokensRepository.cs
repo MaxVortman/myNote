@@ -32,10 +32,14 @@ namespace myNote.DataLayer.Sql
         public Token CreateToken(Guid userId)
         {
             var db = new DataContext(connectionString);
-            var token = new Token { UserId = userId, Key = CreateKey(userId) };
-            db.GetTable<Token>().InsertOnSubmit(token);
+            var tokenFromDb = (from t in db.GetTable<Token>()
+                               where t.UserId == userId
+                               select t).FirstOrDefault();
+            if (tokenFromDb == default(Token))
+                throw new ArgumentException($@"User with this id {userId} is note registred");
+            tokenFromDb.Key = CreateKey(userId);
             db.SubmitChanges();
-            return token;
+            return tokenFromDb;
         }
 
         private string CreateKey(Guid userId)

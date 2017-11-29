@@ -63,3 +63,50 @@
 2017-11-29 01:33:40.9823|INFO|myNote.Logger.Log|Удаление пользователя: Max
 2017-11-29 02:09:42.8903|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
 2017-11-29 02:11:37.6184|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-29 02:55:58.4896|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-29 02:55:59.4949|INFO|myNote.Logger.Log|Удаление пользователя: Max
+2017-11-29 02:59:05.8299|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-29 02:59:06.1309|INFO|myNote.Logger.Log|Удаление пользователя: Max
+2017-11-29 03:04:51.4368|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-29 03:04:51.9733|INFO|myNote.Logger.Log|Удаление пользователя: Max
+2017-11-29 03:26:14.3266|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-29 03:26:14.8310|INFO|myNote.Logger.Log|Удаление пользователя: Max
+2017-11-29 03:26:14.8710|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-29 03:26:15.0890|INFO|myNote.Logger.Log|Удаление пользователя: Max
+2017-11-29 03:27:03.8920|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-29 03:43:42.0949|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-29 03:43:42.6221|INFO|myNote.Logger.Log|Удаление пользователя: Max
+2017-11-29 03:43:42.6671|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-29 03:43:43.2144|INFO|myNote.Logger.Log|Удаление пользователя: Max
+2017-11-29 03:44:34.9546|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-29 03:48:19.8832|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-29 03:48:20.0087|ERROR|myNote.Logger.Log|User with this Login Max already registered
+2017-11-29 03:48:44.1615|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-29 03:50:22.2195|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-29 03:50:22.3670|ERROR|myNote.Logger.Log|User with this Login Max already registered
+2017-11-29 03:50:45.6547|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-29 03:59:43.3279|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-29 03:59:43.4289|ERROR|myNote.Logger.Log|User with this Login Max already registered
+2017-11-29 03:59:43.8569|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-29 03:59:43.8784|ERROR|myNote.Logger.Log|User with this Login Max already registered
+2017-11-29 04:00:01.9836|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-29 04:00:02.4250|INFO|myNote.Logger.Log|Удаление пользователя: Max
+2017-11-29 04:00:02.4680|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-29 04:00:02.7853|INFO|myNote.Logger.Log|Удаление пользователя: Max
+2017-11-29 04:01:54.8743|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-29 04:06:17.6101|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-29 04:06:18.0166|ERROR|myNote.Logger.Log|Cannot cast Newtonsoft.Json.Linq.JObject to Newtonsoft.Json.Linq.JToken.
+2017-11-29 04:06:18.2084|INFO|myNote.Logger.Log|Удаление пользователя: Max
+2017-11-29 04:07:12.1719|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-29 04:07:12.5454|ERROR|myNote.Logger.Log|Cannot cast Newtonsoft.Json.Linq.JObject to Newtonsoft.Json.Linq.JToken.
+2017-11-29 04:07:12.7289|INFO|myNote.Logger.Log|Удаление пользователя: Max
+2017-11-29 04:08:48.3299|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-29 04:08:48.8270|ERROR|myNote.Logger.Log|You don't have access
+2017-11-29 04:08:49.1200|INFO|myNote.Logger.Log|Удаление пользователя: Max
+2017-11-29 04:12:19.3767|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-29 04:12:19.8347|INFO|myNote.Logger.Log|Удаление пользователя: Max
+2017-11-29 04:12:19.8977|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-29 04:12:20.0402|ERROR|myNote.Logger.Log|You don't have access
+2017-11-29 04:12:20.1827|INFO|myNote.Logger.Log|Удаление пользователя: Max
+2017-11-29 18:12:11.2182|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-29 18:17:58.0534|INFO|myNote.Logger.Log|Создание пользователя с логином: Max

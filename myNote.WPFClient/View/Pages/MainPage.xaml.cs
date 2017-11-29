@@ -1,4 +1,5 @@
-﻿using System;
+﻿using myNote.WPFClient.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,8 @@ namespace myNote.WPFClient.View.Pages
         public MainPage()
         {
             InitializeComponent();
+
+            DataContext = new MainPageViewModel();
         }
     }
 }
