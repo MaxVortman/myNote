@@ -108,6 +108,33 @@ namespace myNote.DataLayer.Sql.Test
             Assert.AreEqual(Zero, notes.Count());
         }
 
+        [TestMethod]
+        public void ShouldGetSomeShares()
+        {
+            //arrange
+            const int COUNT = 10;
+            var factory = new CreatingUserClass("Test");
+            var user = factory.User;
+            var token = factory.Token;
+            tempUsersLogin.Add(user.Login, token);
+
+            var sharesRepository = new SharesRepository(ConnectionString);
+            var notesRepository = new NotesRepository(ConnectionString);
+            Note note;
+            for (int i = 0; i < COUNT; i++)
+            {
+
+                note = notesRepository.CreateNote(new Note { UserId = token.UserId, Title = i.ToString() }, token);
+                sharesRepository.CreateShare(note, token); 
+            }
+
+            //act
+            var notesFromShares = sharesRepository.GetSomeShares(COUNT);
+
+            //assert
+            Assert.AreEqual(COUNT, notesFromShares.Count());
+        }
+
         [TestCleanup]
         public void CleanData()
         {
