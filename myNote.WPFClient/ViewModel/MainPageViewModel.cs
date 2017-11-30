@@ -1,6 +1,7 @@
 ﻿using myNote.ClientService;
 using myNote.Model;
 using myNote.WPFClient.DataModels;
+using myNote.WPFClient.View.Pages.MainFrameContent;
 using myNote.WPFClient.ViewModel.Base;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace myNote.WPFClient.ViewModel
@@ -37,7 +39,7 @@ namespace myNote.WPFClient.ViewModel
         /// <summary>
         /// Frame content page
         /// </summary>
-        public ContentPage CurrentContentPage { get; set; }
+        public Page CurrentContentPage { get; set; }
 
         #endregion
 
@@ -56,6 +58,11 @@ namespace myNote.WPFClient.ViewModel
         /// Add note button click command
         /// </summary>
         public ICommand AddNoteCommand { get; set; }
+        /// <summary>
+        /// The command execute when shared tab item is selected
+        /// </summary>
+        public ICommand SharedNoteEnterCommand { get; set; }
+
         #endregion
 
         #region Constructor
@@ -66,12 +73,12 @@ namespace myNote.WPFClient.ViewModel
         {
             AddNoteCommand = new RelayCommand((obj) =>
             {
-                CurrentContentPage = ContentPage.NoteContent;
+                CurrentContentPage = new NoteContentPage(new Note { UserId = UserData.UserDataContent.Token.UserId });
             });
 
             SelectedNoteCommand = new RelayCommand((obj) =>
             {
-                CurrentContentPage = ContentPage.NoteContent;
+                CurrentContentPage = new NoteContentPage(SelectedNote);
             });
 
             LoadPageCommand = new RelayCommand(async(obj) =>
@@ -86,6 +93,11 @@ namespace myNote.WPFClient.ViewModel
                 {
                     MessageBox.Show("Something went wrong...\n" + e.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
+            });
+
+            SharedNoteEnterCommand = new RelayCommand(async (obj) =>
+            {
+
             });
         }
         #endregion
