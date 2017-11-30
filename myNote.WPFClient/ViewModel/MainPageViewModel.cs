@@ -1,5 +1,6 @@
 ﻿using myNote.ClientService;
 using myNote.Model;
+using myNote.WPFClient.DataModels;
 using myNote.WPFClient.ViewModel.Base;
 using System;
 using System.Collections.Generic;
@@ -16,26 +17,37 @@ namespace myNote.WPFClient.ViewModel
     public class MainPageViewModel : BaseViewModel
     {
         #region Public Properties
+
+        #region ListViews properties
         /// <summary>
         /// User's notes
         /// </summary>
         public ObservableCollection<Note> Notes { get; set; }
         /// <summary>
-        /// Title note, which add
+        /// Shared notes
         /// </summary>
-        public string NewNoteTitle { get; set; }
+        public ObservableCollection<Note> SharedNotes { get; set; }
         /// <summary>
-        /// Content note, which add
+        /// Selected listview note
         /// </summary>
-        public string NewNoteContent { get; set; }
+        public Note SelectedNote { get; set; }
+        #endregion
+
+        #region Frame properties
+        /// <summary>
+        /// Frame content page
+        /// </summary>
+        public ContentPage CurrentContentPage { get; set; }
+
+        #endregion
 
         #endregion
 
         #region Commands
         /// <summary>
-        /// Add new note command
+        /// Select note command
         /// </summary>
-        public ICommand AddNoteCommand { get; set; }
+        public ICommand SelectedNoteCommand { get; set; }
         /// <summary>
         /// This command execute when page loaded
         /// </summary>
@@ -48,18 +60,9 @@ namespace myNote.WPFClient.ViewModel
         /// </summary>
         public MainPageViewModel()
         {
-            AddNoteCommand = new RelayCommand(async(obj) =>
+            SelectedNoteCommand = new RelayCommand((obj) =>
             {
-                try
-                {
-                    var noteClient = new NoteService(IoC.IoC.ConnectionString);
-                    var note = await noteClient.CreateNoteAsync(new Note { Title = NewNoteTitle, Content = NewNoteContent, UserId = UserData.UserDataContent.Token.UserId }, UserData.UserDataContent.Token);
-                    Notes.Add(note);
-                }
-                catch (HttpRequestException e)
-                {
-                    MessageBox.Show("Something went wrong...\n" + e.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
+                CurrentContentPage = ContentPage.NoteContent;
             });
 
             LoadPageCommand = new RelayCommand(async(obj) =>

@@ -717,3 +717,6 @@
 2017-11-30 00:26:57.0244|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
 2017-11-30 00:26:57.0919|INFO|myNote.Logger.Log|Изменение пользователя с именем: Marlock
 2017-11-30 00:26:57.1199|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-11-30 13:55:17.5645|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-30 13:56:10.4195|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-11-30 13:56:10.5205|ERROR|myNote.Logger.Log|User with this Login Max already registered

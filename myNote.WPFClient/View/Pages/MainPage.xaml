@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:myNote.WPFClient.View.Pages"
       xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+      xmlns:converters="clr-namespace:myNote.WPFClient.ValueConverters"
       mc:Ignorable="d" 
       d:DesignHeight="500" d:DesignWidth="700"
       Title="MainPage">
@@ -13,23 +14,70 @@
             <i:InvokeCommandAction Command="{Binding LoadPageCommand}" />
         </i:EventTrigger>
     </i:Interaction.Triggers>
-    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-        <StackPanel>
-            <ListView ItemsSource="{Binding Notes}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel>
-                            <TextBlock Text="{Binding Title}"/>
-                            <TextBlock Text="{Binding Content}"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-            <Button Command="{Binding AddNoteCommand}">Add new Note</Button>
-            <StackPanel>
-                <TextBox Tag="Title" Text="{Binding NewNoteTitle, Mode=OneWayToSource}"/>
-                <TextBox Tag="Content" Text="{Binding NewNoteContent, Mode=OneWayToSource}"/>
-            </StackPanel>
-        </StackPanel>
-    </ScrollViewer>
+    <Grid>
+        <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="1*"/>
+        <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        
+        <!--Tab Control-->
+        
+        <TabControl Grid.Column="0">
+            <TabItem Header="Your notes">
+                <!--#region Your notes listview-->
+                <ListView ItemsSource="{Binding Notes}" SelectedItem="{Binding SelectedNote, Mode=OneWayToSource, Converter={converters:NoteValueConverter}}">
+                    <!--#region Event handle-->
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding SelectedNoteCommand}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                    <!--#endregion-->
+                    
+                    <!--#region Item view-->
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ListViewItem>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Tag="Title" Text="{Binding Title}"/>
+                                    <TextBlock Tag="CreationDate" Text="{Binding CreationDate}"/>
+                                </StackPanel>
+                            </ListViewItem>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    <!--#endregion-->
+                </ListView>
+                <!--#endregion-->
+            </TabItem>
+            <TabItem Header="Shared notes">
+                <!--#region Shared notes listview-->
+                <ListView ItemsSource="{Binding SharedNotes}" SelectedItem="{Binding SelectedNote, Mode=OneWayToSource, Converter={converters:NoteValueConverter}}">
+                    <!--#region Event handle-->
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding SelectedNoteCommand}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                    <!--#endregion-->
+
+                    <!--#region Item view-->
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ListViewItem>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Tag="Title" Text="{Binding Title}"/>
+                                    <TextBlock Tag="CreationDate" Text="{Binding CreationDate}"/>
+                                </StackPanel>
+                            </ListViewItem>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    <!--#endregion-->
+                </ListView>
+                <!--#endregion-->
+            </TabItem>
+        </TabControl>
+        
+        <!--Frame for another page-->
+        <Frame Grid.Column="1" Content="{Binding CurrentContentPage, Converter={converters:ContentPageValueConverter}}"/>
+    </Grid>
 </Page>
