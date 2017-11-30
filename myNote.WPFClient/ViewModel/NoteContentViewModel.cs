@@ -12,7 +12,7 @@ using System.Windows.Input;
 
 namespace myNote.WPFClient.ViewModel
 {
-    public class NoteContentViewModel
+    public class NoteContentViewModel : BaseViewModel
     {
 
         #region Constructor
@@ -22,16 +22,7 @@ namespace myNote.WPFClient.ViewModel
         /// <param name="note"></param>
         public NoteContentViewModel(Note note)
         {
-            Note = note;
-            try
-            {
-
-                User = new UserService(IoC.IoC.ConnectionString).GetUserAsync(note.UserId, UserData.UserDataContent.Token).Result;
-            }
-            catch (HttpRequestException e)
-            {
-                MessageBox.Show("Something went wrong...\n" + e.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+            InitializeProperty(note);
 
             UnloadPageCommand = new RelayCommand(async (obj) =>
             {
@@ -44,6 +35,19 @@ namespace myNote.WPFClient.ViewModel
                     MessageBox.Show("Something went wrong...\n" + e.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             });
+        }
+
+        private async void InitializeProperty(Note note)
+        {
+            try
+            {
+                Note = await new NoteService(IoC.IoC.ConnectionString).CreateNoteAsync(note, UserData.UserDataContent.Token);
+                User = await new UserService(IoC.IoC.ConnectionString).GetUserAsync(Note.UserId, UserData.UserDataContent.Token);
+            }
+            catch (HttpRequestException e)
+            {
+                MessageBox.Show("Something went wrong...\n" + e.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         #endregion

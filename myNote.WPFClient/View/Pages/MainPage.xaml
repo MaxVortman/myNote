@@ -31,13 +31,6 @@
                               SelectedItem="{Binding SelectedNote,
                         Mode=OneWayToSource,
                         Converter={converters:NoteValueConverter}}">
-                        <!--#region Event handle-->
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="SelectionChanged">
-                                <i:InvokeCommandAction Command="{Binding SelectedNoteCommand}"/>
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>
-                        <!--#endregion-->
 
                         <!--#region Item view-->
                         <ListView.ItemTemplate>
@@ -47,6 +40,17 @@
                                         <TextBlock Tag="Title" Text="{Binding Title}"/>
                                         <TextBlock Tag="CreationDate" Text="{Binding CreationDate}"/>
                                     </StackPanel>
+                                    
+                                    <!--#region Event handle-->
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="MouseDoubleClick">
+                                            <i:InvokeCommandAction Command="{Binding RelativeSource=
+                                                {RelativeSource TemplatedParent}, 
+                                                Path=SelectedNoteCommand}" />
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                    <!--#endregion-->
+
                                 </ListViewItem>
                             </DataTemplate>
                         </ListView.ItemTemplate>

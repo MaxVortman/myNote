@@ -97,7 +97,14 @@ namespace myNote.WPFClient.ViewModel
 
             SharedNoteEnterCommand = new RelayCommand(async (obj) =>
             {
-                //TO DO
+                try
+                {
+                    SharedNotes = new ObservableCollection<Note>(await new ShareService(IoC.IoC.ConnectionString).GetSomeShares());
+                }
+                catch (HttpRequestException e)
+                {
+                    MessageBox.Show("Something went wrong...\n" + e.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             });
         }
         #endregion

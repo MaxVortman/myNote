@@ -15,30 +15,30 @@
         </i:EventTrigger>
     </i:Interaction.Triggers>    
 
-    <GroupBox Header="{Binding Title}">
+    <GroupBox Header="{Binding Note.Title}">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="3*"/>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="9*"/>
             </Grid.RowDefinitions>
-            <GroupBox Margin="0" Header="{Binding Login, Source=User}">
+            <GroupBox Margin="0" Header="{Binding User.Login}">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="C:\Users\User\Source\Repos\myNote\myNote.WPFClient\Image\user-blue.jpg"/>
                     <StackPanel Margin="10 0 0 0">
-                        <TextBlock Tag="UserName" Text="{Binding Name, Source=User}" />
-                        <TextBlock Tag="Email" Text="{Binding Email, Source=User}"/>
-                        <TextBlock Tag="RegisterDate" Text="{Binding RegisterDate, Source=User}"/>
+                        <TextBlock Tag="UserName" Text="{Binding User.Name}" />
+                        <TextBlock Tag="Email" Text="{Binding User.Email}"/>
+                        <TextBlock Tag="RegisterDate" Text="{Binding User.RegisterDate}"/>
                     </StackPanel>
                 </StackPanel>
             </GroupBox>
             <TextBox Grid.Row="1" BorderBrush="AliceBlue"
                      BorderThickness="0 0 0 2" 
                      Tag="Title" 
-                     Text="{Binding Title, Source=Note}"/>
+                     Text="{Binding Note.Title, UpdateSourceTrigger=PropertyChanged}"/>
             <TextBox Grid.Row="2" TextWrapping="Wrap"
                      Tag="Content"
-                     Text="{Binding Content, Source=Note}"
+                     Text="{Binding Note.Content, UpdateSourceTrigger=PropertyChanged}"
                      VerticalAlignment="Stretch"
                      VerticalScrollBarVisibility="Auto" />
         </Grid>

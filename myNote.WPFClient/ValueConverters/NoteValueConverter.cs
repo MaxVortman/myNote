@@ -12,7 +12,7 @@ namespace myNote.WPFClient.ValueConverters
     {
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            throw new NotImplementedException();
+            return value as Note;
         }
 
         public override object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

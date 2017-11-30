@@ -43,7 +43,7 @@ namespace myNote.ClientService
         /// </summary>
         /// <param name="count">that much</param>
         /// <returns>shared notes enumerable</returns>
-        public async Task<IEnumerable<Note>> GetSomeShares(int count)
+        public async Task<IEnumerable<Note>> GetSomeShares(int count = 10)
         {
             var response = await client.GetAsync($@"shares/{count}");
             if (!response.IsSuccessStatusCode)
