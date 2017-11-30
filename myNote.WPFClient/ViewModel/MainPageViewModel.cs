@@ -52,6 +52,10 @@ namespace myNote.WPFClient.ViewModel
         /// This command execute when page loaded
         /// </summary>
         public ICommand LoadPageCommand { get; set; }
+        /// <summary>
+        /// Add note button click command
+        /// </summary>
+        public ICommand AddNoteCommand { get; set; }
         #endregion
 
         #region Constructor
@@ -60,6 +64,11 @@ namespace myNote.WPFClient.ViewModel
         /// </summary>
         public MainPageViewModel()
         {
+            AddNoteCommand = new RelayCommand((obj) =>
+            {
+                CurrentContentPage = ContentPage.NoteContent;
+            });
+
             SelectedNoteCommand = new RelayCommand((obj) =>
             {
                 CurrentContentPage = ContentPage.NoteContent;

@@ -24,30 +24,33 @@
         
         <TabControl Grid.Column="0">
             <TabItem Header="Your notes">
-                <!--#region Your notes listview-->
-                <ListView ItemsSource="{Binding Notes}" SelectedItem="{Binding SelectedNote, Mode=OneWayToSource, Converter={converters:NoteValueConverter}}">
-                    <!--#region Event handle-->
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="SelectionChanged">
-                            <i:InvokeCommandAction Command="{Binding SelectedNoteCommand}"/>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
+                <StackPanel>
+                    <Button Content="Add Note" Command="{Binding AddNoteCommand}"/>
+                    <!--#region Your notes listview-->
+                    <ListView ItemsSource="{Binding Notes}" SelectedItem="{Binding SelectedNote, Mode=OneWayToSource, Converter={converters:NoteValueConverter}}">
+                        <!--#region Event handle-->
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding SelectedNoteCommand}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <!--#endregion-->
+
+                        <!--#region Item view-->
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ListViewItem>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Tag="Title" Text="{Binding Title}"/>
+                                        <TextBlock Tag="CreationDate" Text="{Binding CreationDate}"/>
+                                    </StackPanel>
+                                </ListViewItem>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                        <!--#endregion-->
+                    </ListView>
                     <!--#endregion-->
-                    
-                    <!--#region Item view-->
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ListViewItem>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Tag="Title" Text="{Binding Title}"/>
-                                    <TextBlock Tag="CreationDate" Text="{Binding CreationDate}"/>
-                                </StackPanel>
-                            </ListViewItem>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                    <!--#endregion-->
-                </ListView>
-                <!--#endregion-->
+                </StackPanel>
             </TabItem>
             <TabItem Header="Shared notes">
                 <!--#region Shared notes listview-->
