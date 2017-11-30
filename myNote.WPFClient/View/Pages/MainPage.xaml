@@ -78,6 +78,6 @@
         </TabControl>
         
         <!--Frame for another page-->
-        <Frame Grid.Column="1" Content="{Binding CurrentContentPage, Converter={converters:ContentPageValueConverter}}"/>
+        <Frame Grid.Column="1" NavigationUIVisibility="Hidden" Content="{Binding CurrentContentPage, Converter={converters:ContentPageValueConverter}}"/>
     </Grid>
 </Page>

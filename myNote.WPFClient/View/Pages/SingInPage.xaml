@@ -7,7 +7,6 @@
       mc:Ignorable="d" 
       d:DesignHeight="500" d:DesignWidth="700"
       Title="SingInPage">
-
     <Grid>
         <Border CornerRadius="10" HorizontalAlignment="Center" VerticalAlignment="Center" Width="330">
             <StackPanel>
