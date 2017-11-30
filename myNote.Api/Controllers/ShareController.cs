@@ -50,5 +50,17 @@ namespace myNote.Api.Controllers
         {
             return sharesRepository.GetAllUserSharesNotes(id);
         }   
+
+        /// <summary>
+        /// Получение определенного колличества "раздач"
+        /// </summary>
+        /// <param name="count">необходимое число раздач</param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("api/shares/{count}")]
+        public IEnumerable<Note> GetSomeShares(int count)
+        {
+            return sharesRepository.GetSomeShares(count);
+        }
     }
 }

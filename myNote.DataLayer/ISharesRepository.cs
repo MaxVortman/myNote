@@ -12,5 +12,6 @@ namespace myNote.DataLayer
         Share CreateShare(Note note, Token accessToken);
         IEnumerable<Note> GetAllUserSharesNotes(Guid userId);
         bool IsNoteShared(Guid noteId);
+        IEnumerable<Note> GetSomeShares(int count);
     }
 }

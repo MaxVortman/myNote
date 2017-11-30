@@ -51,6 +51,19 @@ namespace myNote.DataLayer.Sql
                    select notesRepository.GetNote(s.NoteId);
         }
 
+        public IEnumerable<Note> GetSomeShares(int count)
+        {
+            var db = new DataContext(connectionString);
+            var shares = db.GetTable<Share>().Take(count);
+            var notesRepository = new NotesRepository(connectionString);
+            var notes = new List<Note>();
+            foreach (var share in shares)
+            {
+                notes.Add(notesRepository.GetNote(share.NoteId));
+            }
+            return notes;
+        }
+
         #endregion
 
         #region Helping methods

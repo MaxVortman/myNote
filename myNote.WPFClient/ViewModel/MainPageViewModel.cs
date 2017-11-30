@@ -97,7 +97,7 @@ namespace myNote.WPFClient.ViewModel
 
             SharedNoteEnterCommand = new RelayCommand(async (obj) =>
             {
-
+                //TO DO
             });
         }
         #endregion
