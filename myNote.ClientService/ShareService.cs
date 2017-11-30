@@ -29,10 +29,23 @@ namespace myNote.ClientService
         /// Get all user's share note
         /// </summary>
         /// <param name="id">user's id</param>
-        /// <returns>shares enumerable</returns>
+        /// <returns>shared notes enumerable</returns>
         public async Task<IEnumerable<Note>> GetUserSharesAsync(Guid id)
         {
             var response = await client.GetAsync($@"shares/user/{id}");
+            if (!response.IsSuccessStatusCode)
+                throw new HttpRequestException(response.StatusCode.ToString() + "\n" + response.ReasonPhrase);
+            return await response.Content.ReadAsAsync<IEnumerable<Note>>();
+        }
+
+        /// <summary>
+        /// Get some shared note
+        /// </summary>
+        /// <param name="count">that much</param>
+        /// <returns>shared notes enumerable</returns>
+        public async Task<IEnumerable<Note>> GetSomeShares(int count)
+        {
+            var response = await client.GetAsync($@"shares/{count}");
             if (!response.IsSuccessStatusCode)
                 throw new HttpRequestException(response.StatusCode.ToString() + "\n" + response.ReasonPhrase);
             return await response.Content.ReadAsAsync<IEnumerable<Note>>();
