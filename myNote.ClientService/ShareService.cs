@@ -11,7 +11,7 @@ namespace myNote.ClientService
 {
     public class ShareService : BaseService
     {
-        public ShareService(string connectionString) : base(connectionString) { }
+        internal ShareService(string connectionString) : base(connectionString) { }
         /// <summary>
         /// Create note share
         /// </summary>

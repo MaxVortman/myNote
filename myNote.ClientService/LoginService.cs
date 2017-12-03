@@ -9,7 +9,7 @@ namespace myNote.ClientService
 {
     public class LoginService : BaseService
     {
-        public LoginService(string connectionString) : base(connectionString) { }
+        internal LoginService(string connectionString) : base(connectionString) { }
         /// <summary>
         /// Register new user
         /// </summary>

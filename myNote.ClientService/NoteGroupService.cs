@@ -11,7 +11,7 @@ namespace myNote.ClientService
 {
     public class NoteGroupService : BaseService
     {
-        public NoteGroupService(string connectionString) : base(connectionString) { }
+        internal NoteGroupService(string connectionString) : base(connectionString) { }
         /// <summary>
         /// Create group of note
         /// </summary>

@@ -13,7 +13,7 @@ namespace myNote.ClientService
 {
     public class NoteService : BaseService
     {
-        public NoteService(string connectionString) : base(connectionString) { }
+        internal NoteService(string connectionString) : base(connectionString) { }
         /// <summary>
         /// Creating new note
         /// </summary>

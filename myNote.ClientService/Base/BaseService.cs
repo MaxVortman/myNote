@@ -16,7 +16,7 @@ namespace myNote.ClientService.Base
         /// Default Constructor
         /// </summary>
         /// <param name="connectionString">Lint of connection to server</param>
-        public BaseService(string connectionString)
+        protected BaseService(string connectionString)
         {
             client = new HttpClient
             {

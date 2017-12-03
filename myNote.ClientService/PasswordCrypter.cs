@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace myNote.ClientService
 {
-    public static class PasswordCrypter
+    internal static class PasswordCrypter
     {
         /// <summary>
         /// Counting md5 hash of password

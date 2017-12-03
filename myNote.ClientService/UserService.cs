@@ -11,7 +11,7 @@ namespace myNote.ClientService
 {
     public class UserService : BaseService
     {
-        public UserService(string connectionString) : base(connectionString) { }
+        internal UserService(string connectionString) : base(connectionString) { }
         /// <summary>
         /// Get User by id
         /// </summary>

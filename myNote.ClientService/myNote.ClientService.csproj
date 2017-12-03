@@ -61,6 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api.cs" />
     <Compile Include="Base\BaseService.cs" />
     <Compile Include="GroupService.cs" />
     <Compile Include="LoginService.cs" />
