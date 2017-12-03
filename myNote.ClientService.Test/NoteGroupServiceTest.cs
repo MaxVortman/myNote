@@ -11,7 +11,7 @@ namespace myNote.ClientService.Test
     {
 
         const string ConnectionString = @"http://localhost:64625/api/";
-        private LoginService loginClient = new LoginService(ConnectionString);
+        private ApiClient api = ApiClient.CreateInstance(ConnectionString);
         private Dictionary<string, Token> tempUser = new Dictionary<string, Token>();
 
         [TestMethod]
@@ -20,19 +20,15 @@ namespace myNote.ClientService.Test
             //arrange
             const string NAME = "TestGroup";
             var credential = new Credential { Login = "MaxTest", Password = PasswordCrypter.GetPasswordMD5Hash("kljkljkl") };
-            loginClient.Register(credential);
-            var token = loginClient.LoginAsync(credential).Result;
+            api.LoginService.Register(credential);
+            var token = api.LoginService.LoginAsync(credential).Result;
             tempUser.Add(credential.Login, token);
-
-            var noteService = new NoteService(ConnectionString);
-            var groupService = new GroupService(ConnectionString);
-
-            var note = noteService.CreateNoteAsync(new Note { UserId = token.UserId }, token).Result;
-            var group = groupService.CreateGroupAsync(NAME, token).Result;
+            
+            var note = api.NoteService.CreateNoteAsync(new Note { UserId = token.UserId }, token).Result;
+            var group = api.GroupService.CreateGroupAsync(NAME, token).Result;
 
             //act
-            var noteGroupService = new NoteGroupService(ConnectionString);
-            var noteGroup = noteGroupService.CreateNoteGroupAsync(new NoteGroup { NoteId = note.Id, GroupId = group.Id }, token).Result;
+            var noteGroup = api.NoteGroupService.CreateNoteGroupAsync(new NoteGroup { NoteId = note.Id, GroupId = group.Id }, token).Result;
         }
 
         [TestMethod]
@@ -41,21 +37,17 @@ namespace myNote.ClientService.Test
             //arrange
             const string NAME = "TestGroup";
             var credential = new Credential { Login = "MaxTest", Password = PasswordCrypter.GetPasswordMD5Hash("kljkljkl") };
-            loginClient.Register(credential);
-            var token = loginClient.LoginAsync(credential).Result;
+            api.LoginService.Register(credential);
+            var token = api.LoginService.LoginAsync(credential).Result;
             tempUser.Add(credential.Login, token);
-
-            var noteService = new NoteService(ConnectionString);
-            var groupService = new GroupService(ConnectionString);
-
-            var note = noteService.CreateNoteAsync(new Note { UserId = token.UserId }, token).Result;
-            var group = groupService.CreateGroupAsync(NAME, token).Result;
-
-            var noteGroupService = new NoteGroupService(ConnectionString);
-            var noteGroup = noteGroupService.CreateNoteGroupAsync(new NoteGroup { NoteId = note.Id, GroupId = group.Id }, token).Result;
+            
+            var note = api.NoteService.CreateNoteAsync(new Note { UserId = token.UserId }, token).Result;
+            var group = api.GroupService.CreateGroupAsync(NAME, token).Result;
+            
+            var noteGroup = api.NoteGroupService.CreateNoteGroupAsync(new NoteGroup { NoteId = note.Id, GroupId = group.Id }, token).Result;
 
             //act
-            var groupFromApi = noteGroupService.GetGroupAsync(note.Id).Result;
+            var groupFromApi = api.NoteGroupService.GetGroupAsync(note.Id).Result;
 
             //assert
             Assert.AreEqual(group.Id, groupFromApi.Id);
@@ -67,21 +59,17 @@ namespace myNote.ClientService.Test
             //arrange
             const string NAME = "TestGroup";
             var credential = new Credential { Login = "MaxTest", Password = PasswordCrypter.GetPasswordMD5Hash("kljkljkl") };
-            loginClient.Register(credential);
-            var token = loginClient.LoginAsync(credential).Result;
+            api.LoginService.Register(credential);
+            var token = api.LoginService.LoginAsync(credential).Result;
             tempUser.Add(credential.Login, token);
-
-            var noteService = new NoteService(ConnectionString);
-            var groupService = new GroupService(ConnectionString);
-
-            var note = noteService.CreateNoteAsync(new Note { UserId = token.UserId }, token).Result;
-            var group = groupService.CreateGroupAsync(NAME, token).Result;
-
-            var noteGroupService = new NoteGroupService(ConnectionString);
-            var noteGroup = noteGroupService.CreateNoteGroupAsync(new NoteGroup { NoteId = note.Id, GroupId = group.Id }, token).Result;
+            
+            var note = api.NoteService.CreateNoteAsync(new Note { UserId = token.UserId }, token).Result;
+            var group = api.GroupService.CreateGroupAsync(NAME, token).Result;
+            
+            var noteGroup = api.NoteGroupService.CreateNoteGroupAsync(new NoteGroup { NoteId = note.Id, GroupId = group.Id }, token).Result;
 
             //act
-            var notesFromApi = noteGroupService.GetNotesInGroupAsync(group.Id, token).Result;
+            var notesFromApi = api.NoteGroupService.GetNotesInGroupAsync(group.Id, token).Result;
 
             //assert
             Assert.AreEqual(note.Id, notesFromApi.First().Id);
@@ -94,21 +82,17 @@ namespace myNote.ClientService.Test
             //arrange
             const string NAME = "TestGroup";
             var credential = new Credential { Login = "MaxTest", Password = PasswordCrypter.GetPasswordMD5Hash("kljkljkl") };
-            loginClient.Register(credential);
-            var token = loginClient.LoginAsync(credential).Result;
+            api.LoginService.Register(credential);
+            var token = api.LoginService.LoginAsync(credential).Result;
             tempUser.Add(credential.Login, token);
-
-            var noteService = new NoteService(ConnectionString);
-            var groupService = new GroupService(ConnectionString);
-
-            var note = noteService.CreateNoteAsync(new Note { UserId = token.UserId }, token).Result;
-            var group = groupService.CreateGroupAsync(NAME, token).Result;
-
-            var noteGroupService = new NoteGroupService(ConnectionString);
-            var noteGroup = noteGroupService.CreateNoteGroupAsync(new NoteGroup { NoteId = note.Id, GroupId = group.Id }, token).Result;
+            
+            var note = api.NoteService.CreateNoteAsync(new Note { UserId = token.UserId }, token).Result;
+            var group = api.GroupService.CreateGroupAsync(NAME, token).Result;
+            
+            var noteGroup = api.NoteGroupService.CreateNoteGroupAsync(new NoteGroup { NoteId = note.Id, GroupId = group.Id }, token).Result;
 
             //act
-            var notesFromApi = noteGroupService.GetNotesInGroupAsync(NAME, token).Result;
+            var notesFromApi = api.NoteGroupService.GetNotesInGroupAsync(NAME, token).Result;
 
             //assert
             Assert.AreEqual(note.Id, notesFromApi.First().Id);
@@ -122,7 +106,7 @@ namespace myNote.ClientService.Test
         {
             foreach (var keyvalue in tempUser)
             {
-                loginClient.Delete(keyvalue.Key, keyvalue.Value);
+                api.LoginService.Delete(keyvalue.Key, keyvalue.Value);
             }
         }
 

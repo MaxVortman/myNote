@@ -10,7 +10,7 @@ namespace myNote.ClientService.Test
     public class LoginServiceTest
     {
         const string ConnectionString = @"http://localhost:64625/api/";
-        private LoginService client = new LoginService(ConnectionString);
+        private ApiClient api = ApiClient.CreateInstance(ConnectionString);
         private Dictionary<string, Token> tempUser = new Dictionary<string, Token>();
 
         [TestMethod]
@@ -20,8 +20,8 @@ namespace myNote.ClientService.Test
             var credential = new Credential { Login = "Max", Password = PasswordCrypter.GetPasswordMD5Hash("kljkljkl") };
 
             //act
-            client.Register(credential);
-            var token = client.LoginAsync(credential).Result;
+            api.LoginService.Register(credential);
+            var token = api.LoginService.LoginAsync(credential).Result;
             tempUser.Add(credential.Login, token);
         }
 
@@ -32,7 +32,7 @@ namespace myNote.ClientService.Test
         {
             foreach (var keyvalue in tempUser)
             {
-                client.Delete(keyvalue.Key, keyvalue.Value);
+                api.LoginService.Delete(keyvalue.Key, keyvalue.Value);
             }
         }
 

@@ -23,12 +23,12 @@ namespace myNote.WPFClient.ViewModel
         public NoteContentViewModel(Note note)
         {
             InitializeProperty(note);
-
+            var api = ClientService.ApiClient.CreateInstance(IoC.IoC.ConnectionString);
             UnloadPageCommand = new RelayCommand(async (obj) =>
             {
                 try
                 {
-                    await new NoteService(IoC.IoC.ConnectionString).UpdateNoteAsync(Note, UserData.UserDataContent.Token);
+                    await api.NoteService.UpdateNoteAsync(Note, UserData.UserDataContent.Token);
                 }
                 catch (HttpRequestException e)
                 {
@@ -39,10 +39,14 @@ namespace myNote.WPFClient.ViewModel
 
         private async void InitializeProperty(Note note)
         {
+            var api = ClientService.ApiClient.CreateInstance(IoC.IoC.ConnectionString);
             try
             {
-                Note = await new NoteService(IoC.IoC.ConnectionString).CreateNoteAsync(note, UserData.UserDataContent.Token);
-                User = await new UserService(IoC.IoC.ConnectionString).GetUserAsync(Note.UserId, UserData.UserDataContent.Token);
+                if (note.Id == default(Guid))
+                    Note = await api.NoteService.CreateNoteAsync(note, UserData.UserDataContent.Token);
+                else
+                    Note = note;
+                User = await api.UserService.GetUserAsync(Note.UserId, UserData.UserDataContent.Token);
             }
             catch (HttpRequestException e)
             {

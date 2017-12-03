@@ -10,7 +10,7 @@ namespace myNote.ClientService.Test
     {
 
         const string ConnectionString = @"http://localhost:64625/api/";
-        private LoginService loginClient = new LoginService(ConnectionString);
+        private ApiClient api = ApiClient.CreateInstance(ConnectionString);
         private Dictionary<string, Token> tempUser = new Dictionary<string, Token>();
 
         [TestMethod]
@@ -19,13 +19,12 @@ namespace myNote.ClientService.Test
             //arrange
             const string NAME = "TestGroup";
             var credential = new Credential { Login = "MaxTest", Password = PasswordCrypter.GetPasswordMD5Hash("kljkljkl") };
-            loginClient.Register(credential);
-            var token = loginClient.LoginAsync(credential).Result;
+            api.LoginService.Register(credential);
+            var token = api.LoginService.LoginAsync(credential).Result;
             tempUser.Add(credential.Login, token);
 
             //act
-            var groupService = new GroupService(ConnectionString);
-            var group = groupService.CreateGroupAsync(NAME, token).Result;
+            var group = api.GroupService.CreateGroupAsync(NAME, token).Result;
         }
 
         [TestMethod]
@@ -34,14 +33,13 @@ namespace myNote.ClientService.Test
             //arrange
             const string NAME = "TestGroup";
             var credential = new Credential { Login = "MaxTest", Password = PasswordCrypter.GetPasswordMD5Hash("kljkljkl") };
-            loginClient.Register(credential);
-            var token = loginClient.LoginAsync(credential).Result;
+            api.LoginService.Register(credential);
+            var token = api.LoginService.LoginAsync(credential).Result;
             tempUser.Add(credential.Login, token);
 
             //act
-            var groupService = new GroupService(ConnectionString);
-            var group = groupService.CreateGroupAsync(NAME, token).Result;
-            groupService.DeleteGroup(NAME, token);
+            var group = api.GroupService.CreateGroupAsync(NAME, token).Result;
+            api.GroupService.DeleteGroup(NAME, token);
         }
 
         [TestMethod]
@@ -50,14 +48,13 @@ namespace myNote.ClientService.Test
             //arrange
             const string NAME = "TestGroup";
             var credential = new Credential { Login = "MaxTest", Password = PasswordCrypter.GetPasswordMD5Hash("kljkljkl") };
-            loginClient.Register(credential);
-            var token = loginClient.LoginAsync(credential).Result;
+            api.LoginService.Register(credential);
+            var token = api.LoginService.LoginAsync(credential).Result;
             tempUser.Add(credential.Login, token);
 
             //act
-            var groupService = new GroupService(ConnectionString);
-            var group = groupService.CreateGroupAsync(NAME, token).Result;
-            groupService.DeleteGroup(group.Id, token);
+            var group = api.GroupService.CreateGroupAsync(NAME, token).Result;
+            api.GroupService.DeleteGroup(group.Id, token);
         }
 
         #region Clean Up temp
@@ -67,7 +64,7 @@ namespace myNote.ClientService.Test
         {
             foreach (var keyvalue in tempUser)
             {
-                loginClient.Delete(keyvalue.Key, keyvalue.Value);
+                api.LoginService.Delete(keyvalue.Key, keyvalue.Value);
             }
         }
 

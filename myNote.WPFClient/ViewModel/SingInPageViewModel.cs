@@ -37,11 +37,12 @@ namespace myNote.WPFClient.ViewModel
         /// </summary>
         public SingInPageViewModel()
         {
+            var api = ApiClient.CreateInstance(IoC.IoC.ConnectionString);
             LoginButtonClickCommand = new RelayCommand(async(obj) =>
             {
                 try
                 {
-                    UserData.UserDataContent.Token = await new LoginService(IoC.IoC.ConnectionString).LoginAsync(PasswordCrypter.GetCredential(Login, Password));
+                    UserData.UserDataContent.Token = await api.LoginService.LoginAsync(PasswordCrypter.GetCredential(Login, Password));
                     IoC.IoC.Application.GoToPage(DataModels.ApplicationPage.Main);
                 }
                 catch (HttpRequestException e)

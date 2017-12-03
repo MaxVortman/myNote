@@ -46,12 +46,13 @@ namespace myNote.WPFClient.ViewModel
         /// </summary>
         public SingUpPageViewModel()
         {
+            var api = ApiClient.CreateInstance(IoC.IoC.ConnectionString);
             //Initialize Sing Up Command
             SingUpButtonClickCommand = new RelayCommand((obj) =>
             {
                 try
                 {
-                    new LoginService(IoC.IoC.ConnectionString).Register(PasswordCrypter.GetCredential(Login, Password));
+                    api.LoginService.Register(PasswordCrypter.GetCredential(Login, Password));
                     IoC.IoC.Application.GoToPage(DataModels.ApplicationPage.Login);
                 }
                 catch (HttpRequestException e)

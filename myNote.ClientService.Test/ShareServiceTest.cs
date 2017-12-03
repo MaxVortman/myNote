@@ -11,7 +11,7 @@ namespace myNote.ClientService.Test
     {
 
         const string ConnectionString = @"http://localhost:64625/api/";
-        private LoginService loginClient = new LoginService(ConnectionString);
+        private ApiClient api = ApiClient.CreateInstance(ConnectionString);
         private Dictionary<string, Token> tempUser = new Dictionary<string, Token>();
 
         [TestMethod]
@@ -19,16 +19,13 @@ namespace myNote.ClientService.Test
         {
             //arrange
             var credential = new Credential { Login = "MaxTest", Password = PasswordCrypter.GetPasswordMD5Hash("kljkljkl") };
-            loginClient.Register(credential);
-            var token = loginClient.LoginAsync(credential).Result;
+            api.LoginService.Register(credential);
+            var token = api.LoginService.LoginAsync(credential).Result;
             tempUser.Add(credential.Login, token);
 
             //act
-            var noteService = new NoteService(ConnectionString);
-            var shareService = new ShareService(ConnectionString);
-
-            var note = noteService.CreateNoteAsync(new Note { UserId = token.UserId }, token).Result;
-            var share = shareService.CreateShareAsync(note, token).Result;
+            var note = api.NoteService.CreateNoteAsync(new Note { UserId = token.UserId }, token).Result;
+            var share = api.ShareService.CreateShareAsync(note, token).Result;
         }
 
 
@@ -37,18 +34,15 @@ namespace myNote.ClientService.Test
         {
             //arrange
             var credential = new Credential { Login = "MaxTest", Password = PasswordCrypter.GetPasswordMD5Hash("kljkljkl") };
-            loginClient.Register(credential);
-            var token = loginClient.LoginAsync(credential).Result;
+            api.LoginService.Register(credential);
+            var token = api.LoginService.LoginAsync(credential).Result;
             tempUser.Add(credential.Login, token);
-
-            var noteService = new NoteService(ConnectionString);
-            var shareService = new ShareService(ConnectionString);
-
-            var note = noteService.CreateNoteAsync(new Note { UserId = token.UserId }, token).Result;
-            var share = shareService.CreateShareAsync(note, token).Result;
+            
+            var note = api.NoteService.CreateNoteAsync(new Note { UserId = token.UserId }, token).Result;
+            var share = api.ShareService.CreateShareAsync(note, token).Result;
 
             //act
-            var userSharesFromApi = shareService.GetUserSharesAsync(token.UserId).Result;
+            var userSharesFromApi = api.ShareService.GetUserSharesAsync(token.UserId).Result;
 
             //assert
             Assert.AreEqual(share.NoteId, userSharesFromApi.First().Id);
@@ -60,23 +54,20 @@ namespace myNote.ClientService.Test
             //arrange
             const int COUNT = 10;
             var credential = new Credential { Login = "MaxTest", Password = PasswordCrypter.GetPasswordMD5Hash("kljkljkl") };
-            loginClient.Register(credential);
-            var token = loginClient.LoginAsync(credential).Result;
+            api.LoginService.Register(credential);
+            var token = api.LoginService.LoginAsync(credential).Result;
             tempUser.Add(credential.Login, token);
-
-            var noteService = new NoteService(ConnectionString);
-            var shareService = new ShareService(ConnectionString);
-
+            
             Note note;
             Share share;
             for (int i = 0; i < COUNT; i++)
             {
-                note = noteService.CreateNoteAsync(new Note { UserId = token.UserId }, token).Result;
-                share = shareService.CreateShareAsync(note, token).Result; 
+                note = api.NoteService.CreateNoteAsync(new Note { UserId = token.UserId }, token).Result;
+                share = api.ShareService.CreateShareAsync(note, token).Result; 
             }
 
             //act
-            var sharesFromApi = shareService.GetSomeShares(COUNT).Result;
+            var sharesFromApi = api.ShareService.GetSomeShares(COUNT).Result;
 
             //assert
             Assert.AreEqual(COUNT, sharesFromApi.Count());
@@ -89,7 +80,7 @@ namespace myNote.ClientService.Test
         {
             foreach (var keyvalue in tempUser)
             {
-                loginClient.Delete(keyvalue.Key, keyvalue.Value);
+                api.LoginService.Delete(keyvalue.Key, keyvalue.Value);
             }
         }
 

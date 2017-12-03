@@ -9,7 +9,7 @@ namespace myNote.ClientService.Test
     public class UserServiceTest
     {
         const string ConnectionString = @"http://localhost:64625/api/";
-        private LoginService loginClient = new LoginService(ConnectionString);
+        private ApiClient api = ApiClient.CreateInstance(ConnectionString);
         private Dictionary<string, Token> tempUser = new Dictionary<string, Token>();
 
         [TestMethod]
@@ -17,13 +17,12 @@ namespace myNote.ClientService.Test
         {
             //arrange
             var credential = new Credential { Login = "MaxTest", Password = PasswordCrypter.GetPasswordMD5Hash("kljkljkl") };
-            loginClient.Register(credential);
-            var token = loginClient.LoginAsync(credential).Result;
+            api.LoginService.Register(credential);
+            var token = api.LoginService.LoginAsync(credential).Result;
             tempUser.Add(credential.Login, token);
-
+            
             //act
-            var userService = new UserService(ConnectionString);
-            var ourUser = userService.GetUserAsync(token.UserId, token).Result;
+            var ourUser = api.UserService.GetUserAsync(token.UserId, token).Result;
         }
 
         [TestMethod]
@@ -33,18 +32,17 @@ namespace myNote.ClientService.Test
 
             //I
             var credential = new Credential { Login = "MaxTest", Password = PasswordCrypter.GetPasswordMD5Hash("kljkljkl") };
-            loginClient.Register(credential);
-            var token = loginClient.LoginAsync(credential).Result;
+            api.LoginService.Register(credential);
+            var token = api.LoginService.LoginAsync(credential).Result;
             tempUser.Add(credential.Login, token);
             //enemy
             var enemyCredential = new Credential { Login = "Enemy", Password = PasswordCrypter.GetPasswordMD5Hash("degwd") };
-            loginClient.Register(enemyCredential);
-            var enemyToken = loginClient.LoginAsync(enemyCredential).Result;
+            api.LoginService.Register(enemyCredential);
+            var enemyToken = api.LoginService.LoginAsync(enemyCredential).Result;
             tempUser.Add(enemyCredential.Login, enemyToken);
 
             //act
-            var userService = new UserService(ConnectionString);
-            var emenyUser = userService.GetUserAsync(enemyToken.UserId, token).Result;
+            var emenyUser = api.UserService.GetUserAsync(enemyToken.UserId, token).Result;
         }
 
         [TestMethod]
@@ -52,13 +50,12 @@ namespace myNote.ClientService.Test
         {
             //arrange
             var credential = new Credential { Login = "MaxTest", Password = PasswordCrypter.GetPasswordMD5Hash("kljkljkl") };
-            loginClient.Register(credential);
-            var token = loginClient.LoginAsync(credential).Result;
+            api.LoginService.Register(credential);
+            var token = api.LoginService.LoginAsync(credential).Result;
             tempUser.Add(credential.Login, token);
 
             //act
-            var userService = new UserService(ConnectionString);
-            var ourGroup = userService.GetUserGroupsAsync(token.UserId, token).Result;
+            var ourGroup = api.UserService.GetUserGroupsAsync(token.UserId, token).Result;
         }
 
         [TestMethod]
@@ -66,15 +63,14 @@ namespace myNote.ClientService.Test
         {
             //arrange
             var credential = new Credential { Login = "MaxTest", Password = PasswordCrypter.GetPasswordMD5Hash("kljkljkl") };
-            loginClient.Register(credential);
-            var token = loginClient.LoginAsync(credential).Result;
+            api.LoginService.Register(credential);
+            var token = api.LoginService.LoginAsync(credential).Result;
             tempUser.Add(credential.Login, token);
 
             //act
-            var userService = new UserService(ConnectionString);
-            var ourUser = userService.GetUserAsync(token.UserId, token).Result;
+            var ourUser = api.UserService.GetUserAsync(token.UserId, token).Result;
             ourUser.Name = "Marlock";
-            ourUser = userService.UpdateUserAsync(ourUser, token).Result;
+            ourUser = api.UserService.UpdateUserAsync(ourUser, token).Result;
         }
 
         #region Clean Up temp
@@ -84,7 +80,7 @@ namespace myNote.ClientService.Test
         {
             foreach (var keyvalue in tempUser)
             {
-                loginClient.Delete(keyvalue.Key, keyvalue.Value);
+                api.LoginService.Delete(keyvalue.Key, keyvalue.Value);
             }
         }
 

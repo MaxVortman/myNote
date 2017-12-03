@@ -15,50 +15,81 @@
         </i:EventTrigger>
     </i:Interaction.Triggers>
     <Grid>
+        <!--#region Grid defenition-->
         <Grid.ColumnDefinitions>
         <ColumnDefinition Width="1*"/>
         <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
+        <!--#endregion-->
         
-        <!--Tab Control-->
-        
+        <!--Tab Control-->        
         <TabControl Grid.Column="0">
-            <TabItem Header="Your notes">
+            <!--#region Your notes tab-->
+            <TabItem Header="Your notes" ScrollViewer.VerticalScrollBarVisibility="Visible">
                 <StackPanel>
-                    <Button Content="Add Note" Command="{Binding AddNoteCommand}"/>
-                    <!--#region Your notes listview-->
-                    <ListView ItemsSource="{Binding Notes}" 
-                              SelectedItem="{Binding SelectedNote,
-                        Mode=OneWayToSource,
-                        Converter={converters:NoteValueConverter}}">
-
-                        <!--#region Item view-->
+                    <TextBlock HorizontalAlignment="Center">Groups</TextBlock>
+                    <Button Command="{Binding ShowAllNote}">All</Button>
+                    <!--#region Groups List-->
+                    <ListView ItemsSource="{Binding Groups}" 
+                             Margin="0 0 0 10">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ListViewItem>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Tag="Title" Text="{Binding Title}"/>
-                                        <TextBlock Tag="CreationDate" Text="{Binding CreationDate}"/>
-                                    </StackPanel>
-                                    
-                                    <!--#region Event handle-->
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="MouseDoubleClick">
-                                            <i:InvokeCommandAction Command="{Binding RelativeSource=
-                                                {RelativeSource TemplatedParent}, 
-                                                Path=SelectedNoteCommand}" />
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
-                                    <!--#endregion-->
-
+                                    <Button Content="{Binding Name}" 
+                                            Command="{Binding ChooseGroupCommand}" 
+                                            CommandParameter="{Binding Name}"
+                                            Margin="5"/>
                                 </ListViewItem>
                             </DataTemplate>
                         </ListView.ItemTemplate>
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel/>
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
+                    </ListView>
+                    <!--#endregion-->
+                    <!--#region Notes List-->
+                    <ListView ItemsSource="{Binding Notes}" 
+                             SelectedItem="{Binding SelectedNote, 
+                             Mode=OneWayToSource,
+                             Converter={converters:NoteValueConverter}}">
+                        
+                        <!--#region Event handle-->
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding SelectedNoteCommand}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <!--#endregion-->
+                        <!--#region Item template-->
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ListViewItem>
+                                    <Label Content="{Binding Title}" BorderThickness="0" />
+                                </ListViewItem>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                        <!--#endregion-->
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <!--TO DO-->
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                        <!--#region Context Menu-->
+                        <ListView.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Add Note" Command="{Binding AddNoteCommand}"/>
+                                <MenuItem Header="Add Group" Command="{Binding AddGroupCommand}"/>
+                            </ContextMenu>
+                        </ListView.ContextMenu>
                         <!--#endregion-->
                     </ListView>
                     <!--#endregion-->
                 </StackPanel>
             </TabItem>
+            <!--#endregion-->
+            <!--#region Shared notes tab-->
             <TabItem Header="Shared notes">
                 <!--#region Enter shared notes command-->
                 <i:Interaction.Triggers>
@@ -96,11 +127,13 @@
                 </ListView>
                 <!--#endregion-->
             </TabItem>
+            <!--#endregion-->
         </TabControl>
         
-        <!--Frame for another page-->
+        <!--#region Frame for another page-->
         <Frame Grid.Column="1" 
                NavigationUIVisibility="Hidden" 
                Content="{Binding CurrentContentPage}"/>
+        <!--#endregion-->
     </Grid>
 </Page>
