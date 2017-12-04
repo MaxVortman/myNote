@@ -28,6 +28,12 @@
             <!--#region Your notes tab-->
             <TabItem Header="Your notes" ScrollViewer.VerticalScrollBarVisibility="Visible">
                 <StackPanel>
+                    <Border BorderBrush="Aqua" BorderThickness="0 3">
+                        <StackPanel>
+                            <Image Source="C:\Users\User\Source\Repos\myNote\myNote.WPFClient\Image\user-blue.jpg" Width="50"/>
+                            <TextBlock Tag="Login" Text="{Binding User.Login}" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Border>
                     <TextBlock HorizontalAlignment="Center">Groups</TextBlock>
                     <Button Command="{Binding ShowAllNote}">All</Button>
                     <!--#region Groups List-->

@@ -42,6 +42,10 @@ namespace myNote.WPFClient.ViewModel
         /// Selected listview note
         /// </summary>
         public Note SelectedNote { get; set; }
+        /// <summary>
+        /// Current user
+        /// </summary>
+        public User User { get; set; }
         #endregion
 
         #region Frame properties
@@ -93,7 +97,9 @@ namespace myNote.WPFClient.ViewModel
         {
             var api = ClientService.ApiClient.CreateInstance(IoC.IoC.ConnectionString);
 
-            AddGroupCommand = new RelayCommand(async(obj) =>
+            InitializeProperty(api);
+
+            AddGroupCommand = new RelayCommand(async (obj) =>
             {
                 string name;
                 var dialog = new InputWindow();
@@ -114,7 +120,7 @@ namespace myNote.WPFClient.ViewModel
             ShowAllNote = new RelayCommand(async (obj) =>
             {
                 try
-                {                    
+                {
                     Notes = new ObservableCollection<Note>(await api.NoteService.GetUserNotesAsync(UserData.UserDataContent.Token.UserId));
                 }
                 catch (HttpRequestException e)
@@ -146,11 +152,11 @@ namespace myNote.WPFClient.ViewModel
                     CurrentContentPage = new NoteContentPage(SelectedNote);
             });
 
-            LoadPageCommand = new RelayCommand(async(obj) =>
+            LoadPageCommand = new RelayCommand(async (obj) =>
             {
                 try
                 {
-                    Groups = new ObservableCollection<Group>(await api.UserService.GetUserGroupsAsync(UserData.UserDataContent.Token.UserId, UserData.UserDataContent.Token));                    
+                    Groups = new ObservableCollection<Group>(await api.UserService.GetUserGroupsAsync(UserData.UserDataContent.Token.UserId, UserData.UserDataContent.Token));
                 }
                 catch (HttpRequestException e)
                 {
@@ -170,6 +176,22 @@ namespace myNote.WPFClient.ViewModel
                 }
             });
         }
+
+
+        #endregion
+
+        #region Help method
+        private async void InitializeProperty(ApiClient api)
+        {
+            try
+            {
+                User = await api.UserService.GetUserAsync(UserData.UserDataContent.Token.UserId, UserData.UserDataContent.Token);
+            }
+            catch (HttpRequestException e)
+            {
+                MessageBox.Show("Something went wrong...\n" + e.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        } 
         #endregion
     }
 }
