@@ -25,7 +25,7 @@ namespace myNote.WPFClient.View.Pages
         {
             InitializeComponent();
 
-            DataContext = new MainPageViewModel();
+            DataContext = IoC.IoC.MainViewModel;
         }
     }
 }

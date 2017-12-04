@@ -21,9 +21,13 @@ namespace myNote.WPFClient.IoC
         public static IKernel Kernel { get; private set; } = new StandardKernel();
 
         /// <summary>
-        /// A shortcut to access the <see cref="ApplicationViewModel"/>
+        /// A shortcut to access the <see cref="WindowViewModel"/>
         /// </summary>
-        public static WindowViewModel Application => IoC.Get<WindowViewModel>();
+        public static WindowViewModel WindowViewModel => IoC.Get<WindowViewModel>();
+        /// <summary>
+        /// A shortcut to access the <see cref="MainPageViewModel"/>
+        /// </summary>
+        public static MainPageViewModel MainViewModel => IoC.Get<MainPageViewModel>();
         /// <summary>
         /// Link of api resources
         /// </summary>
@@ -36,21 +40,37 @@ namespace myNote.WPFClient.IoC
         /// NOTE: Must be called as soon as your application starts up to ensure all 
         ///       services can be found
         /// </summary>
-        public static void Setup()
+        public static void SetupWindow()
         {
-            // Bind all required view models
-            BindViewModels();
+            // Bind window view model
+            BindWindowViewModel();
+        }
+        /// <summary>
+        /// Sets up the IoC container, binds all information required and is ready for use
+        /// NOTE: Must be called before login
+        /// </summary>
+        public static void SetupMainPage()
+        {
+            // Bind main page view model
+            BindMainPageViewModel();
         }
 
         /// <summary>
-        /// Binds all singleton view models
+        /// Binds all singleton window view model
         /// </summary>
-        private static void BindViewModels()
+        private static void BindWindowViewModel()
         {
-            // Bind to a single instance of Application view model
+            // Bind to a single instance of window view model
             Kernel.Bind<WindowViewModel>().ToConstant(new WindowViewModel());
         }
-
+        /// <summary>
+        /// Binds all singleton main page view model
+        /// </summary>
+        private static void BindMainPageViewModel()
+        {
+            //Bind to a single instance of main view model
+            Kernel.Bind<MainPageViewModel>().ToConstant(new MainPageViewModel());
+        }
         /// <summary>
         /// Get's a service from the IoC, of the specified type
         /// </summary>

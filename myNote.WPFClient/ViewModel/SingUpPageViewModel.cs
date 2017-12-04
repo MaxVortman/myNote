@@ -35,7 +35,7 @@ namespace myNote.WPFClient.ViewModel
         /// </summary>
         public ICommand LoginButtonClickCommand { get; set; } = new RelayCommand((obj) =>
         {
-            IoC.IoC.Application.GoToPage(DataModels.ApplicationPage.Login);
+            IoC.IoC.WindowViewModel.GoToPage(DataModels.ApplicationPage.Login);
         });
 
         #endregion
@@ -53,7 +53,7 @@ namespace myNote.WPFClient.ViewModel
                 try
                 {
                     api.LoginService.Register(PasswordCrypter.GetCredential(Login, Password));
-                    IoC.IoC.Application.GoToPage(DataModels.ApplicationPage.Login);
+                    IoC.IoC.WindowViewModel.GoToPage(DataModels.ApplicationPage.Login);
                 }
                 catch (HttpRequestException e)
                 {

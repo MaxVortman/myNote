@@ -43,7 +43,8 @@ namespace myNote.WPFClient.ViewModel
                 try
                 {
                     UserData.UserDataContent.Token = await api.LoginService.LoginAsync(PasswordCrypter.GetCredential(Login, Password));
-                    IoC.IoC.Application.GoToPage(DataModels.ApplicationPage.Main);
+                    IoC.IoC.SetupMainPage();
+                    IoC.IoC.WindowViewModel.GoToPage(DataModels.ApplicationPage.Main);
                 }
                 catch (HttpRequestException e)
                 {

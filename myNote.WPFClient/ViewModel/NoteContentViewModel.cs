@@ -1,6 +1,7 @@
 ﻿using myNote.ClientService;
 using myNote.Model;
 using myNote.WPFClient.DataModels;
+using myNote.WPFClient.View.Pages.MainFrameContent;
 using myNote.WPFClient.ViewModel.Base;
 using System;
 using System.Collections.Generic;
@@ -68,6 +69,11 @@ namespace myNote.WPFClient.ViewModel
                     group.IsEnabled = false;
                 }
             }
+
+            ClickImageCommand = new RelayCommand((obj) =>
+            {
+                IoC.IoC.MainViewModel.CurrentContentPage = new UserContentPage(User);
+            });
         }
 
         private async void InitializeProperty(Note note)
@@ -123,6 +129,10 @@ namespace myNote.WPFClient.ViewModel
         /// Execute when checkboxs status change
         /// </summary>
         public ICommand CheckCommand { get; set; }
+        /// <summary>
+        /// Execute when click to user's image
+        /// </summary>
+        public ICommand ClickImageCommand { get; set; }
 
         #endregion
     }

@@ -18,7 +18,7 @@ namespace myNote.WPFClient
         {
             base.OnStartup(e);
             // Setup IoC
-            IoC.IoC.Setup();
+            IoC.IoC.SetupWindow();
         }
     }
 }

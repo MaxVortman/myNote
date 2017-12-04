@@ -27,7 +27,13 @@
             <!--#endregion-->
             <GroupBox Margin="0" Header="{Binding User.Login}">
                 <StackPanel Orientation="Horizontal">
-                    <Image Source="C:\Users\User\Source\Repos\myNote\myNote.WPFClient\Image\user-blue.jpg"/>
+                    <Image Source="C:\Users\User\Source\Repos\myNote\myNote.WPFClient\Image\user-blue.jpg">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseDown">
+                                <i:InvokeCommandAction Command="{Binding ClickImageCommand}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Image>
                     <StackPanel Margin="10 0 0 0">
                         <TextBlock Tag="UserName" Text="{Binding User.Name}" />
                         <TextBlock Tag="Email" Text="{Binding User.Email}"/>
