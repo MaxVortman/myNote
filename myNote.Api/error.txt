@@ -102,3 +102,6 @@
 2017-12-04 12:21:35.6319|ERROR|myNote.Logger.Log|Группы с заметкой ba6d236d-ea6a-46d4-b274-401b9942c15e нет.
 2017-12-04 12:21:49.4170|ERROR|myNote.Logger.Log|Группы с заметкой ba6d236d-ea6a-46d4-b274-401b9942c15e нет.
 2017-12-04 12:55:23.1671|ERROR|myNote.Logger.Log|Группы с заметкой 01d01b4b-aad1-46d8-888e-93f2baf12900 нет.
+2017-12-04 14:14:22.5733|ERROR|myNote.Logger.Log|Группы с заметкой 01d01b4b-aad1-46d8-888e-93f2baf12900 нет.
+2017-12-04 14:14:27.2619|ERROR|myNote.Logger.Log|Группы с заметкой 01d01b4b-aad1-46d8-888e-93f2baf12900 нет.
+2017-12-04 14:14:31.7664|ERROR|myNote.Logger.Log|Группы с заметкой 01d01b4b-aad1-46d8-888e-93f2baf12900 нет.

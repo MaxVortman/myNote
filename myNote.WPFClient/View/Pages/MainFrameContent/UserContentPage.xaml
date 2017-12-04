@@ -7,7 +7,9 @@
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
       Title="UserContentPage">
-
+    <Page.InputBindings>
+        <KeyBinding Key="S" Modifiers="Ctrl" Command="{Binding SaveCommand}"/>
+    </Page.InputBindings>
     <GroupBox Header="{Binding User.Login}">
         <Grid>
             <!--#region Grid definitions-->
@@ -30,26 +32,33 @@
                     <StackPanel Grid.Column="0">
                         <WrapPanel Orientation="Vertical">
                             <TextBlock Text="Name"/>
-                            <TextBox Text="{Binding User.Name}"/>
+                            <TextBox Text="{Binding User.Name, Mode=TwoWay}" 
+                                     IsEnabled="{Binding RelativeSource={RelativeSource 
+                                Mode=FindAncestor, AncestorType={x:Type Page}}, 
+                                Path=DataContext.IsEnabled}"/>
                         </WrapPanel>
                         <WrapPanel Orientation="Vertical">
                             <TextBlock Text="Email"/>
-                            <TextBox Text="{Binding User.Email}"/>
+                            <TextBox Text="{Binding User.Email, Mode=TwoWay}"
+                                     IsEnabled="{Binding RelativeSource={RelativeSource 
+                                Mode=FindAncestor, AncestorType={x:Type Page}}, 
+                                Path=DataContext.IsEnabled}"/>
                         </WrapPanel>
 
                     </StackPanel>
                     <StackPanel Grid.Column="1">
                         <WrapPanel Orientation="Vertical">
                             <TextBlock Text="Birthday"/>
-                            <DatePicker IsDropDownOpen="True" 
+                            <DatePicker Focusable="False"                                
                                     SelectedDateFormat="Short" 
-                                    SelectedDate="{Binding User.Birthday}"/>
+                                    SelectedDate="{Binding User.Birthday, Mode=TwoWay}"
+                                        IsEnabled="{Binding RelativeSource={RelativeSource 
+                                Mode=FindAncestor, AncestorType={x:Type Page}}, 
+                                Path=DataContext.IsEnabled}"/>
                         </WrapPanel>
                         <WrapPanel Orientation="Vertical">
                             <TextBlock Text="Register Date"/>
-                            <DatePicker IsDropDownOpen="True"
-                                    SelectedDateFormat="Short"
-                                    SelectedDate="{Binding User.RegisterDate}"/>
+                            <TextBlock Text="{Binding User.RegisterDate}" />
                         </WrapPanel>
                     </StackPanel>
                 </Grid>

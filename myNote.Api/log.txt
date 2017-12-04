@@ -1336,3 +1336,8 @@
 2017-12-04 12:44:53.8908|INFO|myNote.Logger.Log|Создание группы заметок с noteId: 7fb780a3-5654-4003-8ddb-40c7e5ea66bd и groupId: ac1f4ff2-1710-412c-86e5-2cd781752043
 2017-12-04 12:55:18.5803|INFO|myNote.Logger.Log|Обновление заметки с id: 01d01b4b-aad1-46d8-888e-93f2baf12900
 2017-12-04 12:55:23.1671|ERROR|myNote.Logger.Log|Группы с заметкой 01d01b4b-aad1-46d8-888e-93f2baf12900 нет.
+2017-12-04 14:13:53.7964|INFO|myNote.Logger.Log|Изменение пользователя с именем: Maxim
+2017-12-04 14:14:22.5733|ERROR|myNote.Logger.Log|Группы с заметкой 01d01b4b-aad1-46d8-888e-93f2baf12900 нет.
+2017-12-04 14:14:27.2619|ERROR|myNote.Logger.Log|Группы с заметкой 01d01b4b-aad1-46d8-888e-93f2baf12900 нет.
+2017-12-04 14:14:31.7664|ERROR|myNote.Logger.Log|Группы с заметкой 01d01b4b-aad1-46d8-888e-93f2baf12900 нет.
+2017-12-04 14:17:42.7343|INFO|myNote.Logger.Log|Изменение пользователя с именем: Maxim
