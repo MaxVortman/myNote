@@ -9,6 +9,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="500" d:DesignWidth="700"
       Title="MainPage">
+  
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding LoadPageCommand}" />
@@ -36,7 +37,10 @@
                             <DataTemplate>
                                 <ListViewItem>
                                     <Button Content="{Binding Name}" 
-                                            Command="{Binding ChooseGroupCommand}" 
+                                            Command="{Binding RelativeSource={RelativeSource
+                                        Mode=FindAncestor, 
+                                        AncestorType={x:Type Page}}, 
+                                        Path=DataContext.ChooseGroupCommand}"
                                             CommandParameter="{Binding Name}"
                                             Margin="5"/>
                                 </ListViewItem>

@@ -99,8 +99,15 @@ namespace myNote.WPFClient.ViewModel
                 var dialog = new InputWindow();
                 if (dialog.ShowDialog() == true)
                 {
-                    name = dialog.Result;
-                    Groups.Add(await api.GroupService.CreateGroupAsync(name, UserData.UserDataContent.Token));
+                    name = dialog.Result; try
+                    {
+
+                        Groups.Add(await api.GroupService.CreateGroupAsync(name, UserData.UserDataContent.Token));
+                    }
+                    catch (HttpRequestException e)
+                    {
+                        MessageBox.Show("Something went wrong...\n" + e.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
                 }
             });
 
