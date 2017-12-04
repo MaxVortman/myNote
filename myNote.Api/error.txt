@@ -56,3 +56,5 @@
 2017-12-04 11:45:30.2597|ERROR|myNote.Logger.Log|Группы с заметкой 86dde97a-d708-4852-ae55-154660412659 нет.
 2017-12-04 11:51:10.2949|ERROR|myNote.Logger.Log|Группы с заметкой 86dde97a-d708-4852-ae55-154660412659 нет.
 2017-12-04 11:51:13.0080|ERROR|myNote.Logger.Log|Группы с заметкой ffb2fd0d-af98-4ba4-94ba-192a1d2c2274 нет.
+2017-12-04 11:52:32.7778|ERROR|myNote.Logger.Log|User with this Login Max already registered
+2017-12-04 11:52:46.1105|ERROR|myNote.Logger.Log|Группы с заметкой 86dde97a-d708-4852-ae55-154660412659 нет.

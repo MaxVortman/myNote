@@ -1233,3 +1233,7 @@
 2017-12-04 11:51:10.5545|INFO|myNote.Logger.Log|Создание группы заметок с noteId: 8b87a557-e9ea-4568-9192-0a8754501f80 и groupId: 0bca94ec-2c37-42d0-b939-3d822c13a941
 2017-12-04 11:51:12.9780|INFO|myNote.Logger.Log|Обновление заметки с id: 86dde97a-d708-4852-ae55-154660412659
 2017-12-04 11:51:13.0080|ERROR|myNote.Logger.Log|Группы с заметкой ffb2fd0d-af98-4ba4-94ba-192a1d2c2274 нет.
+2017-12-04 11:52:32.7203|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-12-04 11:52:32.7778|ERROR|myNote.Logger.Log|User with this Login Max already registered
+2017-12-04 11:52:46.1105|ERROR|myNote.Logger.Log|Группы с заметкой 86dde97a-d708-4852-ae55-154660412659 нет.
+2017-12-04 11:52:49.0693|INFO|myNote.Logger.Log|Обновление заметки с id: 86dde97a-d708-4852-ae55-154660412659

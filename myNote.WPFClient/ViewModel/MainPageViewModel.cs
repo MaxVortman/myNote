@@ -142,7 +142,8 @@ namespace myNote.WPFClient.ViewModel
 
             SelectedNoteCommand = new RelayCommand((obj) =>
             {
-                CurrentContentPage = new NoteContentPage(SelectedNote);
+                if (SelectedNote != null)
+                    CurrentContentPage = new NoteContentPage(SelectedNote);
             });
 
             LoadPageCommand = new RelayCommand(async(obj) =>
