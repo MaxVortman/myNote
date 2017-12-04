@@ -119,9 +119,10 @@
                 
                 <!--#region Shared notes listview-->
                 <ListView ItemsSource="{Binding SharedNotes}" 
-                          SelectedItem="{Binding SelectedNote, 
-                    Mode=OneWayToSource,
-                    Converter={converters:NoteValueConverter}}">
+                             SelectedItem="{Binding SelectedNote, 
+                             Mode=OneWayToSource,
+                             Converter={converters:NoteValueConverter}}">
+
                     <!--#region Event handle-->
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="SelectionChanged">
@@ -129,19 +130,20 @@
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                     <!--#endregion-->
-
-                    <!--#region Item view-->
+                    <!--#region Item template-->
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ListViewItem>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Tag="Title" Text="{Binding Title}"/>
-                                    <TextBlock Tag="CreationDate" Text="{Binding CreationDate}"/>
-                                </StackPanel>
+                                <Label Content="{Binding Title}" BorderThickness="0" />
                             </ListViewItem>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                     <!--#endregion-->
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <!--TO DO-->
+                        </Style>
+                    </ListView.ItemContainerStyle>
                 </ListView>
                 <!--#endregion-->
             </TabItem>
