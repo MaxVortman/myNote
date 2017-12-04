@@ -9,6 +9,9 @@
         mc:Ignorable="d"
         Title="myNote" Height="500" Width="700">
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="C:\Users\User\source\repos\myNote\myNote.WPFClient\Image\background.png"/>
+        </Grid.Background>
         <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Content="{Binding CurrentPage, Converter={converters:ApplicationPageValueConverter}}" />
     </Grid>
 </Controls:MetroWindow>
