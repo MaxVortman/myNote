@@ -8,20 +8,23 @@
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
       Title="NoteContentPage">
-
+    
+    <!--#region Input bindings-->
     <Page.InputBindings>
         <KeyBinding Key="S" Modifiers="Ctrl" Command="{Binding UpdatePageCommand}" /> 
     </Page.InputBindings>
-    
+    <!--#endregion-->
    
     <GroupBox Header="{Binding Note.Title}">
         <Grid>
+            <!--#region Grid definitions-->
             <Grid.RowDefinitions>
                 <RowDefinition Height="3*"/>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="9*"/>
                 <RowDefinition Height="3*"/>
             </Grid.RowDefinitions>
+            <!--#endregion-->
             <GroupBox Margin="0" Header="{Binding User.Login}">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="C:\Users\User\Source\Repos\myNote\myNote.WPFClient\Image\user-blue.jpg"/>
@@ -41,18 +44,19 @@
                      Text="{Binding Note.Content, UpdateSourceTrigger=PropertyChanged}"
                      VerticalAlignment="Stretch"
                      VerticalScrollBarVisibility="Auto" />
+            <!--#region Groups-->
             <GroupBox Grid.Row="3" Margin="0" Header="Groups">
-                <ListView ItemsSource = "{Binding Groups}">
+                <ListView ItemsSource = "{Binding Groups, UpdateSourceTrigger=PropertyChanged}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <CheckBox Content="{Binding Group.Name}" 
                                       IsChecked="{Binding IsChecked, Mode=TwoWay}"
+                                      CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}"  
                                       Command="{Binding RelativeSource={RelativeSource 
                                 Mode=FindAncestor, 
                                 AncestorType={x:Type Page}}, 
-                                Path=DataContex.CheckCommand}"
-                                      CommandParameter="IsChecked"                                      
-                                      IsEnabled="{Binding IsEnabled, Mode=TwoWay}"/>
+                                Path=DataContext.CheckCommand}"                                                                          
+                                      IsEnabled="{Binding IsEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                     <ListView.ItemsPanel>
@@ -62,6 +66,7 @@
                     </ListView.ItemsPanel>
                 </ListView>
             </GroupBox>
+            <!--#endregion-->
         </Grid>
     </GroupBox>
 </Page>

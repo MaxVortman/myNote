@@ -1,4 +1,5 @@
 ﻿using myNote.Model;
+using myNote.WPFClient.ViewModel.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace myNote.WPFClient.DataModels
 {
-    public class CheckBoxGroupModel
+    public class CheckBoxGroupModel : BaseViewModel
     {
         /// <summary>
         /// Group
