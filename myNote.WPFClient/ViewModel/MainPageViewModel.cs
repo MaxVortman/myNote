@@ -1,6 +1,7 @@
 ﻿using myNote.ClientService;
 using myNote.Model;
 using myNote.WPFClient.DataModels;
+using myNote.WPFClient.View;
 using myNote.WPFClient.View.Pages.MainFrameContent;
 using myNote.WPFClient.ViewModel.Base;
 using System;
@@ -91,9 +92,16 @@ namespace myNote.WPFClient.ViewModel
         public MainPageViewModel()
         {
             var api = ClientService.ApiClient.CreateInstance(IoC.IoC.ConnectionString);
-            AddGroupCommand = new RelayCommand((obj) =>
+
+            AddGroupCommand = new RelayCommand(async(obj) =>
             {
-                //TODO
+                string name;
+                var dialog = new InputWindow();
+                if (dialog.ShowDialog() == true)
+                {
+                    name = dialog.Result;
+                    Groups.Add(await api.GroupService.CreateGroupAsync(name, UserData.UserDataContent.Token));
+                }
             });
 
             ShowAllNote = new RelayCommand(async (obj) =>

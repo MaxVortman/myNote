@@ -1135,3 +1135,4 @@
 2017-12-04 01:50:02.9810|INFO|myNote.Logger.Log|Создание пользователя с логином: MaxTest
 2017-12-04 01:50:03.0510|INFO|myNote.Logger.Log|Изменение пользователя с именем: Marlock
 2017-12-04 01:50:03.0835|INFO|myNote.Logger.Log|Удаление пользователя: MaxTest
+2017-12-04 03:16:21.6247|INFO|myNote.Logger.Log|Создание группы с id: 0bca94ec-2c37-42d0-b939-3d822c13a941

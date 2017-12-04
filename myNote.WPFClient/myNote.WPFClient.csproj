@@ -116,11 +116,15 @@
     <Compile Include="ValueConverters\NoteValueConverter.cs" />
     <Compile Include="ViewModel\Base\BaseViewModel.cs" />
     <Compile Include="ViewModel\Base\RelayCommand.cs" />
+    <Compile Include="ViewModel\InputWindowViewModel.cs" />
     <Compile Include="ViewModel\MainPageViewModel.cs" />
     <Compile Include="ViewModel\NoteContentViewModel.cs" />
     <Compile Include="ViewModel\SingInPageViewModel.cs" />
     <Compile Include="ViewModel\SingUpPageViewModel.cs" />
     <Compile Include="ViewModel\WindowViewModel.cs" />
+    <Compile Include="View\InputWindow.xaml.cs">
+      <DependentUpon>InputWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Pages\MainFrameContent\NoteContentPage.xaml.cs">
       <DependentUpon>NoteContentPage.xaml</DependentUpon>
     </Compile>
@@ -133,6 +137,10 @@
     <Compile Include="View\Pages\SingInPage.xaml.cs">
       <DependentUpon>SingInPage.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\InputWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
