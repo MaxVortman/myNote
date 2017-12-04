@@ -49,7 +49,7 @@
                     <StackPanel Grid.Column="1">
                         <WrapPanel Orientation="Vertical">
                             <TextBlock Text="Birthday"/>
-                            <DatePicker Focusable="False"                                
+                            <DatePicker                                
                                     SelectedDateFormat="Short" 
                                     SelectedDate="{Binding User.Birthday, Mode=TwoWay}"
                                         IsEnabled="{Binding RelativeSource={RelativeSource 

@@ -1363,3 +1363,15 @@
 2017-12-04 14:57:18.9832|INFO|myNote.Logger.Log|Обновление заметки с id: 199b3287-f2bc-4e21-9e03-f07bb8721d14
 2017-12-04 14:57:19.5507|INFO|myNote.Logger.Log|Создание группы заметок с noteId: 199b3287-f2bc-4e21-9e03-f07bb8721d14 и groupId: ac1f4ff2-1710-412c-86e5-2cd781752043
 2017-12-04 14:57:28.9564|INFO|myNote.Logger.Log|Создание раздачи заметки с id: 199b3287-f2bc-4e21-9e03-f07bb8721d14
+2017-12-04 15:49:10.0782|INFO|myNote.Logger.Log|Создание заметки с id: 3bf86e04-ac4f-48b5-917b-beb0d7638acc
+2017-12-04 15:49:10.3740|ERROR|myNote.Logger.Log|Группы с заметкой 3bf86e04-ac4f-48b5-917b-beb0d7638acc нет.
+2017-12-04 15:49:30.0902|INFO|myNote.Logger.Log|Обновление заметки с id: 3bf86e04-ac4f-48b5-917b-beb0d7638acc
+2017-12-04 15:49:32.7359|ERROR|myNote.Logger.Log|Группы с заметкой 3bf86e04-ac4f-48b5-917b-beb0d7638acc нет.
+2017-12-04 15:49:45.8060|INFO|myNote.Logger.Log|Создание группы с id: f3f8f567-3534-4c71-b062-0bcc0abd6df2
+2017-12-04 15:49:56.0294|ERROR|myNote.Logger.Log|Группы с заметкой 3bf86e04-ac4f-48b5-917b-beb0d7638acc нет.
+2017-12-04 15:49:58.8812|INFO|myNote.Logger.Log|Обновление заметки с id: 3bf86e04-ac4f-48b5-917b-beb0d7638acc
+2017-12-04 15:49:58.9812|INFO|myNote.Logger.Log|Создание группы заметок с noteId: 3bf86e04-ac4f-48b5-917b-beb0d7638acc и groupId: f3f8f567-3534-4c71-b062-0bcc0abd6df2
+2017-12-04 15:50:47.0383|ERROR|myNote.Logger.Log|Группы с заметкой 01d01b4b-aad1-46d8-888e-93f2baf12900 нет.
+2017-12-04 15:50:52.9328|ERROR|myNote.Logger.Log|Группы с заметкой 01d01b4b-aad1-46d8-888e-93f2baf12900 нет.
+2017-12-04 15:50:55.2005|ERROR|myNote.Logger.Log|Группы с заметкой 01d01b4b-aad1-46d8-888e-93f2baf12900 нет.
+2017-12-04 15:51:04.0592|ERROR|myNote.Logger.Log|Группы с заметкой 01d01b4b-aad1-46d8-888e-93f2baf12900 нет.
