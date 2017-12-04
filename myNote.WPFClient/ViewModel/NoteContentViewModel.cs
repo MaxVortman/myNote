@@ -25,11 +25,12 @@ namespace myNote.WPFClient.ViewModel
         public NoteContentViewModel(Note note)
         {
             InitializeProperty(note);
+
             var api = ClientService.ApiClient.CreateInstance(IoC.IoC.ConnectionString);
             if (note.UserId == UserData.UserDataContent.Token.UserId)
             {
                 //don't need update, when its not our note
-                UnloadPageCommand = new RelayCommand(async (obj) =>
+                UpdatePageCommand = new RelayCommand(async (obj) =>
                 {
                     try
                     {
@@ -40,7 +41,7 @@ namespace myNote.WPFClient.ViewModel
                             {
                                 await api.NoteGroupService.CreateNoteGroupAsync(new NoteGroup { NoteId = Note.Id, GroupId = group.Group.Id }, UserData.UserDataContent.Token);
                             }
-                        }
+                        }                        
                     }
                     catch (HttpRequestException e)
                     {
@@ -113,9 +114,10 @@ namespace myNote.WPFClient.ViewModel
 
         #region Command
         /// <summary>
-        /// Command, which execute when page unloaded
+        /// Command, which execute when page need update
+        /// enter key down
         /// </summary>
-        public ICommand UnloadPageCommand { get; set; }
+        public ICommand UpdatePageCommand { get; set; }
         /// <summary>
         /// Execute when checkboxs status change
         /// </summary>

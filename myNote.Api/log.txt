@@ -1237,3 +1237,94 @@
 2017-12-04 11:52:32.7778|ERROR|myNote.Logger.Log|User with this Login Max already registered
 2017-12-04 11:52:46.1105|ERROR|myNote.Logger.Log|Группы с заметкой 86dde97a-d708-4852-ae55-154660412659 нет.
 2017-12-04 11:52:49.0693|INFO|myNote.Logger.Log|Обновление заметки с id: 86dde97a-d708-4852-ae55-154660412659
+2017-12-04 11:58:56.0510|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-12-04 11:59:23.2449|INFO|myNote.Logger.Log|Создание заметки с id: cafdaf2d-35d5-468a-8c70-78802885d3a9
+2017-12-04 11:59:23.3789|ERROR|myNote.Logger.Log|Группы с заметкой cafdaf2d-35d5-468a-8c70-78802885d3a9 нет.
+2017-12-04 11:59:43.1083|INFO|myNote.Logger.Log|Обновление заметки с id: cafdaf2d-35d5-468a-8c70-78802885d3a9
+2017-12-04 11:59:43.1318|ERROR|myNote.Logger.Log|Группы с заметкой cafdaf2d-35d5-468a-8c70-78802885d3a9 нет.
+2017-12-04 12:00:04.4588|INFO|myNote.Logger.Log|Обновление заметки с id: cafdaf2d-35d5-468a-8c70-78802885d3a9
+2017-12-04 12:00:04.4768|ERROR|myNote.Logger.Log|Группы с заметкой cafdaf2d-35d5-468a-8c70-78802885d3a9 нет.
+2017-12-04 12:00:20.1945|INFO|myNote.Logger.Log|Обновление заметки с id: cafdaf2d-35d5-468a-8c70-78802885d3a9
+2017-12-04 12:00:20.2150|ERROR|myNote.Logger.Log|Группы с заметкой cafdaf2d-35d5-468a-8c70-78802885d3a9 нет.
+2017-12-04 12:00:26.7917|INFO|myNote.Logger.Log|Обновление заметки с id: cafdaf2d-35d5-468a-8c70-78802885d3a9
+2017-12-04 12:00:26.8107|ERROR|myNote.Logger.Log|Группы с заметкой cafdaf2d-35d5-468a-8c70-78802885d3a9 нет.
+2017-12-04 12:00:44.2372|INFO|myNote.Logger.Log|Создание группы с id: ec02b1c8-0b81-481c-9559-0af8213e5d75
+2017-12-04 12:00:48.1696|INFO|myNote.Logger.Log|Обновление заметки с id: cafdaf2d-35d5-468a-8c70-78802885d3a9
+2017-12-04 12:00:48.1866|ERROR|myNote.Logger.Log|Группы с заметкой cafdaf2d-35d5-468a-8c70-78802885d3a9 нет.
+2017-12-04 12:00:58.2571|INFO|myNote.Logger.Log|Обновление заметки с id: cafdaf2d-35d5-468a-8c70-78802885d3a9
+2017-12-04 12:00:58.2941|ERROR|myNote.Logger.Log|Группы с заметкой cafdaf2d-35d5-468a-8c70-78802885d3a9 нет.
+2017-12-04 12:00:58.3256|INFO|myNote.Logger.Log|Создание группы заметок с noteId: cafdaf2d-35d5-468a-8c70-78802885d3a9 и groupId: ec02b1c8-0b81-481c-9559-0af8213e5d75
+2017-12-04 12:01:05.9091|INFO|myNote.Logger.Log|Обновление заметки с id: cafdaf2d-35d5-468a-8c70-78802885d3a9
+2017-12-04 12:01:11.9846|INFO|myNote.Logger.Log|Обновление заметки с id: cafdaf2d-35d5-468a-8c70-78802885d3a9
+2017-12-04 12:01:12.0551|INFO|myNote.Logger.Log|Создание группы заметок с noteId: cafdaf2d-35d5-468a-8c70-78802885d3a9 и groupId: ec02b1c8-0b81-481c-9559-0af8213e5d75
+2017-12-04 12:01:15.2094|INFO|myNote.Logger.Log|Обновление заметки с id: cafdaf2d-35d5-468a-8c70-78802885d3a9
+2017-12-04 12:01:15.2494|INFO|myNote.Logger.Log|Создание группы заметок с noteId: cafdaf2d-35d5-468a-8c70-78802885d3a9 и groupId: ec02b1c8-0b81-481c-9559-0af8213e5d75
+2017-12-04 12:01:29.9575|INFO|myNote.Logger.Log|Обновление заметки с id: cafdaf2d-35d5-468a-8c70-78802885d3a9
+2017-12-04 12:01:30.1225|INFO|myNote.Logger.Log|Создание группы заметок с noteId: cafdaf2d-35d5-468a-8c70-78802885d3a9 и groupId: ec02b1c8-0b81-481c-9559-0af8213e5d75
+2017-12-04 12:01:33.7555|INFO|myNote.Logger.Log|Обновление заметки с id: cafdaf2d-35d5-468a-8c70-78802885d3a9
+2017-12-04 12:01:33.8105|INFO|myNote.Logger.Log|Создание группы заметок с noteId: cafdaf2d-35d5-468a-8c70-78802885d3a9 и groupId: ec02b1c8-0b81-481c-9559-0af8213e5d75
+2017-12-04 12:01:41.7535|INFO|myNote.Logger.Log|Обновление заметки с id: cafdaf2d-35d5-468a-8c70-78802885d3a9
+2017-12-04 12:01:41.8080|INFO|myNote.Logger.Log|Создание группы заметок с noteId: cafdaf2d-35d5-468a-8c70-78802885d3a9 и groupId: ec02b1c8-0b81-481c-9559-0af8213e5d75
+2017-12-04 12:04:27.8253|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-12-04 12:04:42.7009|INFO|myNote.Logger.Log|Создание заметки с id: 7fb780a3-5654-4003-8ddb-40c7e5ea66bd
+2017-12-04 12:04:42.8594|ERROR|myNote.Logger.Log|Группы с заметкой 7fb780a3-5654-4003-8ddb-40c7e5ea66bd нет.
+2017-12-04 12:05:07.2619|INFO|myNote.Logger.Log|Обновление заметки с id: 7fb780a3-5654-4003-8ddb-40c7e5ea66bd
+2017-12-04 12:05:07.2834|ERROR|myNote.Logger.Log|Группы с заметкой 7fb780a3-5654-4003-8ddb-40c7e5ea66bd нет.
+2017-12-04 12:05:10.2401|INFO|myNote.Logger.Log|Обновление заметки с id: 7fb780a3-5654-4003-8ddb-40c7e5ea66bd
+2017-12-04 12:05:10.2576|ERROR|myNote.Logger.Log|Группы с заметкой 7fb780a3-5654-4003-8ddb-40c7e5ea66bd нет.
+2017-12-04 12:05:14.8038|INFO|myNote.Logger.Log|Обновление заметки с id: 7fb780a3-5654-4003-8ddb-40c7e5ea66bd
+2017-12-04 12:05:14.8098|ERROR|myNote.Logger.Log|Группы с заметкой 7fb780a3-5654-4003-8ddb-40c7e5ea66bd нет.
+2017-12-04 12:05:16.4840|INFO|myNote.Logger.Log|Обновление заметки с id: 7fb780a3-5654-4003-8ddb-40c7e5ea66bd
+2017-12-04 12:05:16.4980|ERROR|myNote.Logger.Log|Группы с заметкой 7fb780a3-5654-4003-8ddb-40c7e5ea66bd нет.
+2017-12-04 12:05:25.7372|INFO|myNote.Logger.Log|Обновление заметки с id: 7fb780a3-5654-4003-8ddb-40c7e5ea66bd
+2017-12-04 12:05:25.7517|ERROR|myNote.Logger.Log|Группы с заметкой 7fb780a3-5654-4003-8ddb-40c7e5ea66bd нет.
+2017-12-04 12:05:28.1194|INFO|myNote.Logger.Log|Обновление заметки с id: 7fb780a3-5654-4003-8ddb-40c7e5ea66bd
+2017-12-04 12:05:28.1369|ERROR|myNote.Logger.Log|Группы с заметкой 7fb780a3-5654-4003-8ddb-40c7e5ea66bd нет.
+2017-12-04 12:18:39.7631|INFO|myNote.Logger.Log|Создание заметки с id: 01d01b4b-aad1-46d8-888e-93f2baf12900
+2017-12-04 12:18:40.1743|ERROR|myNote.Logger.Log|Группы с заметкой 01d01b4b-aad1-46d8-888e-93f2baf12900 нет.
+2017-12-04 12:18:55.8915|INFO|myNote.Logger.Log|Обновление заметки с id: 01d01b4b-aad1-46d8-888e-93f2baf12900
+2017-12-04 12:18:58.9836|ERROR|myNote.Logger.Log|Группы с заметкой 01d01b4b-aad1-46d8-888e-93f2baf12900 нет.
+2017-12-04 12:19:00.1005|ERROR|myNote.Logger.Log|Группы с заметкой 7fb780a3-5654-4003-8ddb-40c7e5ea66bd нет.
+2017-12-04 12:19:01.3305|ERROR|myNote.Logger.Log|Группы с заметкой 01d01b4b-aad1-46d8-888e-93f2baf12900 нет.
+2017-12-04 12:19:02.2265|ERROR|myNote.Logger.Log|Группы с заметкой 7fb780a3-5654-4003-8ddb-40c7e5ea66bd нет.
+2017-12-04 12:19:02.9950|ERROR|myNote.Logger.Log|Группы с заметкой 01d01b4b-aad1-46d8-888e-93f2baf12900 нет.
+2017-12-04 12:19:03.8908|ERROR|myNote.Logger.Log|Группы с заметкой 7fb780a3-5654-4003-8ddb-40c7e5ea66bd нет.
+2017-12-04 12:19:04.6927|ERROR|myNote.Logger.Log|Группы с заметкой 01d01b4b-aad1-46d8-888e-93f2baf12900 нет.
+2017-12-04 12:19:06.5217|ERROR|myNote.Logger.Log|Группы с заметкой 7fb780a3-5654-4003-8ddb-40c7e5ea66bd нет.
+2017-12-04 12:19:12.3325|INFO|myNote.Logger.Log|Обновление заметки с id: 7fb780a3-5654-4003-8ddb-40c7e5ea66bd
+2017-12-04 12:19:13.4012|ERROR|myNote.Logger.Log|Группы с заметкой 01d01b4b-aad1-46d8-888e-93f2baf12900 нет.
+2017-12-04 12:19:14.4792|ERROR|myNote.Logger.Log|Группы с заметкой 7fb780a3-5654-4003-8ddb-40c7e5ea66bd нет.
+2017-12-04 12:19:16.1723|ERROR|myNote.Logger.Log|Группы с заметкой 01d01b4b-aad1-46d8-888e-93f2baf12900 нет.
+2017-12-04 12:19:17.0768|ERROR|myNote.Logger.Log|Группы с заметкой 7fb780a3-5654-4003-8ddb-40c7e5ea66bd нет.
+2017-12-04 12:19:19.9940|ERROR|myNote.Logger.Log|Группы с заметкой 01d01b4b-aad1-46d8-888e-93f2baf12900 нет.
+2017-12-04 12:19:20.6942|ERROR|myNote.Logger.Log|Группы с заметкой 7fb780a3-5654-4003-8ddb-40c7e5ea66bd нет.
+2017-12-04 12:19:22.5580|ERROR|myNote.Logger.Log|Группы с заметкой 01d01b4b-aad1-46d8-888e-93f2baf12900 нет.
+2017-12-04 12:19:23.1985|ERROR|myNote.Logger.Log|Группы с заметкой 7fb780a3-5654-4003-8ddb-40c7e5ea66bd нет.
+2017-12-04 12:19:25.2823|ERROR|myNote.Logger.Log|Группы с заметкой 7fb780a3-5654-4003-8ddb-40c7e5ea66bd нет.
+2017-12-04 12:19:25.8990|ERROR|myNote.Logger.Log|Группы с заметкой 01d01b4b-aad1-46d8-888e-93f2baf12900 нет.
+2017-12-04 12:19:27.4012|ERROR|myNote.Logger.Log|Группы с заметкой 7fb780a3-5654-4003-8ddb-40c7e5ea66bd нет.
+2017-12-04 12:19:30.2328|ERROR|myNote.Logger.Log|Группы с заметкой 01d01b4b-aad1-46d8-888e-93f2baf12900 нет.
+2017-12-04 12:19:31.6221|ERROR|myNote.Logger.Log|Группы с заметкой 7fb780a3-5654-4003-8ddb-40c7e5ea66bd нет.
+2017-12-04 12:19:33.0845|ERROR|myNote.Logger.Log|Группы с заметкой 01d01b4b-aad1-46d8-888e-93f2baf12900 нет.
+2017-12-04 12:19:38.5434|INFO|myNote.Logger.Log|Создание группы с id: 2c85d079-78fb-47cb-bba4-23b28e73fba6
+2017-12-04 12:19:44.2256|ERROR|myNote.Logger.Log|Группы с заметкой 7fb780a3-5654-4003-8ddb-40c7e5ea66bd нет.
+2017-12-04 12:19:46.9552|INFO|myNote.Logger.Log|Обновление заметки с id: 7fb780a3-5654-4003-8ddb-40c7e5ea66bd
+2017-12-04 12:19:47.0532|INFO|myNote.Logger.Log|Создание группы заметок с noteId: 7fb780a3-5654-4003-8ddb-40c7e5ea66bd и groupId: 2c85d079-78fb-47cb-bba4-23b28e73fba6
+2017-12-04 12:19:51.6612|ERROR|myNote.Logger.Log|Группы с заметкой 01d01b4b-aad1-46d8-888e-93f2baf12900 нет.
+2017-12-04 12:19:56.1324|ERROR|myNote.Logger.Log|Группы с заметкой 01d01b4b-aad1-46d8-888e-93f2baf12900 нет.
+2017-12-04 12:20:06.0967|ERROR|myNote.Logger.Log|Группы с заметкой 01d01b4b-aad1-46d8-888e-93f2baf12900 нет.
+2017-12-04 12:20:08.6312|INFO|myNote.Logger.Log|Обновление заметки с id: 01d01b4b-aad1-46d8-888e-93f2baf12900
+2017-12-04 12:20:08.7662|INFO|myNote.Logger.Log|Создание группы заметок с noteId: 01d01b4b-aad1-46d8-888e-93f2baf12900 и groupId: 2c85d079-78fb-47cb-bba4-23b28e73fba6
+2017-12-04 12:21:15.8875|INFO|myNote.Logger.Log|Обновление заметки с id: 7fb780a3-5654-4003-8ddb-40c7e5ea66bd
+2017-12-04 12:21:25.0742|INFO|myNote.Logger.Log|Обновление заметки с id: 7fb780a3-5654-4003-8ddb-40c7e5ea66bd
+2017-12-04 12:21:25.4212|INFO|myNote.Logger.Log|Обновление заметки с id: 7fb780a3-5654-4003-8ddb-40c7e5ea66bd
+2017-12-04 12:21:25.6095|INFO|myNote.Logger.Log|Обновление заметки с id: 7fb780a3-5654-4003-8ddb-40c7e5ea66bd
+2017-12-04 12:21:25.7855|INFO|myNote.Logger.Log|Обновление заметки с id: 7fb780a3-5654-4003-8ddb-40c7e5ea66bd
+2017-12-04 12:21:25.9490|INFO|myNote.Logger.Log|Обновление заметки с id: 7fb780a3-5654-4003-8ddb-40c7e5ea66bd
+2017-12-04 12:21:35.4452|INFO|myNote.Logger.Log|Создание заметки с id: ba6d236d-ea6a-46d4-b274-401b9942c15e
+2017-12-04 12:21:35.6319|ERROR|myNote.Logger.Log|Группы с заметкой ba6d236d-ea6a-46d4-b274-401b9942c15e нет.
+2017-12-04 12:21:47.0905|INFO|myNote.Logger.Log|Обновление заметки с id: ba6d236d-ea6a-46d4-b274-401b9942c15e
+2017-12-04 12:21:49.4170|ERROR|myNote.Logger.Log|Группы с заметкой ba6d236d-ea6a-46d4-b274-401b9942c15e нет.
+2017-12-04 12:21:52.8271|INFO|myNote.Logger.Log|Обновление заметки с id: ba6d236d-ea6a-46d4-b274-401b9942c15e
+2017-12-04 12:21:52.8861|INFO|myNote.Logger.Log|Создание группы заметок с noteId: ba6d236d-ea6a-46d4-b274-401b9942c15e и groupId: 2c85d079-78fb-47cb-bba4-23b28e73fba6
+2017-12-04 12:22:01.0498|INFO|myNote.Logger.Log|Обновление заметки с id: ba6d236d-ea6a-46d4-b274-401b9942c15e

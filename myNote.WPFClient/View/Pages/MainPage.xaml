@@ -57,7 +57,8 @@
                     <ListView ItemsSource="{Binding Notes}" 
                              SelectedItem="{Binding SelectedNote, 
                              Mode=OneWayToSource,
-                             Converter={converters:NoteValueConverter}}">
+                             Converter={converters:NoteValueConverter}}"
+                              MinHeight="100">
                         
                         <!--#region Event handle-->
                         <i:Interaction.Triggers>
