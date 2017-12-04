@@ -1347,3 +1347,19 @@
 2017-12-04 14:41:17.0349|ERROR|myNote.Logger.Log|Группы с заметкой 01d01b4b-aad1-46d8-888e-93f2baf12900 нет.
 2017-12-04 14:41:18.4563|INFO|myNote.Logger.Log|Создание раздачи заметки с id: 01d01b4b-aad1-46d8-888e-93f2baf12900
 2017-12-04 14:45:08.2723|ERROR|myNote.Logger.Log|Группы с заметкой 01d01b4b-aad1-46d8-888e-93f2baf12900 нет.
+2017-12-04 14:46:32.5453|INFO|myNote.Logger.Log|Создание пользователя с логином: Vortman
+2017-12-04 14:49:16.2000|ERROR|myNote.Logger.Log|Группы с заметкой 01d01b4b-aad1-46d8-888e-93f2baf12900 нет.
+2017-12-04 14:49:39.7885|ERROR|myNote.Logger.Log|Группы с заметкой 01d01b4b-aad1-46d8-888e-93f2baf12900 нет.
+2017-12-04 14:49:44.0098|ERROR|myNote.Logger.Log|Группы с заметкой 01d01b4b-aad1-46d8-888e-93f2baf12900 нет.
+2017-12-04 14:49:50.5946|ERROR|myNote.Logger.Log|Группы с заметкой 01d01b4b-aad1-46d8-888e-93f2baf12900 нет.
+2017-12-04 14:49:54.9661|ERROR|myNote.Logger.Log|Группы с заметкой 01d01b4b-aad1-46d8-888e-93f2baf12900 нет.
+2017-12-04 14:50:03.6119|ERROR|myNote.Logger.Log|Группы с заметкой 01d01b4b-aad1-46d8-888e-93f2baf12900 нет.
+2017-12-04 14:56:02.9357|ERROR|myNote.Logger.Log|Группы с заметкой 01d01b4b-aad1-46d8-888e-93f2baf12900 нет.
+2017-12-04 14:56:18.7161|ERROR|myNote.Logger.Log|Группы с заметкой 01d01b4b-aad1-46d8-888e-93f2baf12900 нет.
+2017-12-04 14:56:52.7369|ERROR|myNote.Logger.Log|Группы с заметкой 01d01b4b-aad1-46d8-888e-93f2baf12900 нет.
+2017-12-04 14:56:57.9477|ERROR|myNote.Logger.Log|Группы с заметкой 01d01b4b-aad1-46d8-888e-93f2baf12900 нет.
+2017-12-04 14:56:59.9199|INFO|myNote.Logger.Log|Создание заметки с id: 199b3287-f2bc-4e21-9e03-f07bb8721d14
+2017-12-04 14:57:00.1113|ERROR|myNote.Logger.Log|Группы с заметкой 199b3287-f2bc-4e21-9e03-f07bb8721d14 нет.
+2017-12-04 14:57:18.9832|INFO|myNote.Logger.Log|Обновление заметки с id: 199b3287-f2bc-4e21-9e03-f07bb8721d14
+2017-12-04 14:57:19.5507|INFO|myNote.Logger.Log|Создание группы заметок с noteId: 199b3287-f2bc-4e21-9e03-f07bb8721d14 и groupId: ac1f4ff2-1710-412c-86e5-2cd781752043
+2017-12-04 14:57:28.9564|INFO|myNote.Logger.Log|Создание раздачи заметки с id: 199b3287-f2bc-4e21-9e03-f07bb8721d14

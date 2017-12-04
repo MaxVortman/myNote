@@ -43,7 +43,7 @@ namespace myNote.WPFClient.ViewModel
                             {
                                 await api.NoteGroupService.CreateNoteGroupAsync(new NoteGroup { NoteId = Note.Id, GroupId = group.Group.Id }, UserData.UserDataContent.Token);
                             }
-                        }                        
+                        }
                     }
                     catch (HttpRequestException e)
                     {
@@ -62,12 +62,14 @@ namespace myNote.WPFClient.ViewModel
             }
             else
             {
-                //if its not our note
-                //we don't need enable it
-                foreach (var group in Groups)
-                {
-                    group.IsEnabled = false;
-                }
+                if (Groups != null)
+
+                    //if its not our note
+                    //we don't need enable it
+                    foreach (var group in Groups)
+                    {
+                        group.IsEnabled = false;
+                    }
             }
 
             ClickImageCommand = new RelayCommand((obj) =>
@@ -86,12 +88,13 @@ namespace myNote.WPFClient.ViewModel
                 else
                     Note = note;
                 User = await api.UserService.GetUserAsync(Note.UserId, UserData.UserDataContent.Token);
-                var groups = await api.UserService.GetUserGroupsAsync(UserData.UserDataContent.Token.UserId, UserData.UserDataContent.Token);
+                IsEnabled = User.Id == UserData.UserDataContent.Token.UserId;
+                var groups = await api.UserService.GetUserGroupsAsync(User.Id, UserData.UserDataContent.Token);
                 //group of this note
                 var group = await api.NoteGroupService.GetGroupAsync(Note.Id);
                 Groups = new ObservableCollection<CheckBoxGroupModel>(from g in groups.AsParallel()
                                                                       let isChecked = @group != null ? (g.Id == @group.Id) : false
-                                                                      let isEnabled = @group != null ? (g.Id == @group.Id) : true
+                                                                      let isEnabled = (@group != null ? (g.Id == @group.Id) : true)&&(User.Id == UserData.UserDataContent.Token.UserId)
                                                                       select new CheckBoxGroupModel { Group = g, IsChecked = isChecked, IsEnabled = isEnabled });
             }
             catch (HttpRequestException e)
@@ -116,6 +119,10 @@ namespace myNote.WPFClient.ViewModel
         /// Collection of user's groups
         /// </summary>
         public ObservableCollection<CheckBoxGroupModel> Groups { get; set; }
+        /// <summary>
+        /// Shows enable textboxes or not
+        /// </summary>
+        public bool IsEnabled { get; set; }
         
         #endregion
 

@@ -44,12 +44,18 @@
             <TextBox Grid.Row="1" BorderBrush="AliceBlue"
                      BorderThickness="0 0 0 2" 
                      Tag="Title" 
-                     Text="{Binding Note.Title, UpdateSourceTrigger=PropertyChanged}"/>
+                     Text="{Binding Note.Title, UpdateSourceTrigger=PropertyChanged}"
+                     IsEnabled="{Binding RelativeSource={RelativeSource 
+                                Mode=FindAncestor, AncestorType={x:Type Page}}, 
+                                Path=DataContext.IsEnabled}"/>
             <TextBox Grid.Row="2" TextWrapping="Wrap"
                      Tag="Content"
                      Text="{Binding Note.Content, UpdateSourceTrigger=PropertyChanged}"
                      VerticalAlignment="Stretch"
-                     VerticalScrollBarVisibility="Auto" />
+                     VerticalScrollBarVisibility="Auto"
+                     IsEnabled="{Binding RelativeSource={RelativeSource 
+                                Mode=FindAncestor, AncestorType={x:Type Page}}, 
+                                Path=DataContext.IsEnabled}"/>
             <!--#region Groups-->
             <GroupBox Grid.Row="3" Margin="0" Header="Groups">
                 <ListView ItemsSource = "{Binding Groups, UpdateSourceTrigger=PropertyChanged}">
