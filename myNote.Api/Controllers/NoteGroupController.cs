@@ -85,5 +85,17 @@ namespace myNote.Api.Controllers
         {
             return noteGroupsRepository.GetAllNoteBy(name, accessToken);
         }
+
+        /// <summary>
+        /// Удаление заметки из группы
+        /// </summary>
+        /// <param name="noteId"></param>
+        /// <param name="accessToken"></param>
+        [HttpPut]
+        [Route("api/notegroup/delete/{noteId}")]
+        public void Delete(Guid noteId, [FromBody]Token accessToken)
+        {
+            noteGroupsRepository.Delete(noteId, accessToken);
+        }
     }
 }

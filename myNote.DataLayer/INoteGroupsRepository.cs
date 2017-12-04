@@ -13,5 +13,6 @@ namespace myNote.DataLayer
         Group GetGroupBy(Guid noteId);
         IEnumerable<Note> GetAllNoteBy(Guid groupId, Token accessToken);
         IEnumerable<Note> GetAllNoteBy(string name, Token accessToken);
+        void Delete(Guid noteId, Token accessToken);
     }
 }

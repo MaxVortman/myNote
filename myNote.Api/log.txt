@@ -1334,3 +1334,5 @@
 2017-12-04 12:44:27.0772|INFO|myNote.Logger.Log|Создание группы заметок с noteId: 7fb780a3-5654-4003-8ddb-40c7e5ea66bd и groupId: ac1f4ff2-1710-412c-86e5-2cd781752043
 2017-12-04 12:44:53.8414|INFO|myNote.Logger.Log|Обновление заметки с id: 7fb780a3-5654-4003-8ddb-40c7e5ea66bd
 2017-12-04 12:44:53.8908|INFO|myNote.Logger.Log|Создание группы заметок с noteId: 7fb780a3-5654-4003-8ddb-40c7e5ea66bd и groupId: ac1f4ff2-1710-412c-86e5-2cd781752043
+2017-12-04 12:55:18.5803|INFO|myNote.Logger.Log|Обновление заметки с id: 01d01b4b-aad1-46d8-888e-93f2baf12900
+2017-12-04 12:55:23.1671|ERROR|myNote.Logger.Log|Группы с заметкой 01d01b4b-aad1-46d8-888e-93f2baf12900 нет.

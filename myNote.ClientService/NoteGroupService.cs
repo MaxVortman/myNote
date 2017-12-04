@@ -63,5 +63,16 @@ namespace myNote.ClientService
                 throw new HttpRequestException(response.StatusCode.ToString() + "\n" + response.ReasonPhrase);
             return await response.Content.ReadAsAsync<IEnumerable<Note>>();
         }
+        /// <summary>
+        /// Delete note in group
+        /// </summary>
+        /// <param name="noteId">note id</param>
+        /// <param name="accessToken">user's token</param>
+        public void DeleteNoteGroup(Guid noteId, Token accessToken)
+        {
+            var response = client.PutAsJsonAsync($@"notegroup/delete/{noteId}", accessToken).Result;
+            if (!response.IsSuccessStatusCode)
+                throw new HttpRequestException(response.StatusCode.ToString() + "\n" + response.ReasonPhrase);
+        }
     }
 }

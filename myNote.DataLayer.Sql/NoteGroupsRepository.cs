@@ -38,7 +38,7 @@ namespace myNote.DataLayer.Sql
 
             new TokensRepository(connectionString).CompareToken(accessToken, new NotesRepository(connectionString).GetNote(noteGroup.NoteId).UserId);
 
-            CheckForContains(noteGroup);
+            CheckForContains(noteGroup.NoteId);
 
             var db = new DataContext(connectionString);            
             db.GetTable<NoteGroup>().InsertOnSubmit(noteGroup);
@@ -46,11 +46,14 @@ namespace myNote.DataLayer.Sql
             return noteGroup;
         }
 
-        private void CheckForContains(NoteGroup noteGroup)
+        #endregion
+
+        #region Help method
+        private void CheckForContains(Guid noteId)
         {
             var db = new DataContext(connectionString);
             var noteGroupsFromDb = (from ng in db.GetTable<NoteGroup>()
-                                   where ng.NoteId == noteGroup.NoteId
+                                   where ng.NoteId == noteId
                                    select ng).AsEnumerable();
             if (noteGroupsFromDb.Count() > 0)
             {
@@ -99,6 +102,16 @@ namespace myNote.DataLayer.Sql
             if (noteGroup == default(NoteGroup))
                 throw new ArgumentException($"Группы с заметкой {noteId} нет.");
             return groupsRepository.GetGroup(noteGroup.GroupId);
+        }
+        #endregion
+
+        #region Delete
+
+        public void Delete(Guid noteId, Token accessToken)
+        {
+            new TokensRepository(connectionString).CompareToken(accessToken, new NotesRepository(connectionString).GetNote(noteId).UserId);
+
+            CheckForContains(noteId);
         }
 
         #endregion

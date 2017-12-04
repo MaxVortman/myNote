@@ -35,6 +35,7 @@ namespace myNote.WPFClient.ViewModel
                     try
                     {
                         await api.NoteService.UpdateNoteAsync(Note, UserData.UserDataContent.Token);
+                        api.NoteGroupService.DeleteNoteGroup(Note.Id, UserData.UserDataContent.Token);
                         foreach (var group in Groups)
                         {
                             if (group.IsChecked)
