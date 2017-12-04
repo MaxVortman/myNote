@@ -1,4 +1,5 @@
-﻿using myNote.DataLayer;
+﻿using myNote.Api.Filters;
+using myNote.DataLayer;
 using myNote.DataLayer.Sql;
 using myNote.Model;
 using Newtonsoft.Json.Linq;
@@ -45,9 +46,18 @@ namespace myNote.Api.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("api/notegroups/notes/{id}")]
+        [ArgumentExceptionFilter]
         public Group Get(Guid id)
         {
-            return noteGroupsRepository.GetGroupBy(id);
+            try
+            {
+                return noteGroupsRepository.GetGroupBy(id);
+            }
+            catch (ArgumentException e)
+            {
+                Logger.Log.Instance.Error(e.Message);
+                return null;
+            }
         }
 
         /// <summary>

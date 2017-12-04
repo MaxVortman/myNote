@@ -38,10 +38,25 @@ namespace myNote.DataLayer.Sql
 
             new TokensRepository(connectionString).CompareToken(accessToken, new NotesRepository(connectionString).GetNote(noteGroup.NoteId).UserId);
 
+            CheckForContains(noteGroup);
+
             var db = new DataContext(connectionString);            
             db.GetTable<NoteGroup>().InsertOnSubmit(noteGroup);
             db.SubmitChanges();
             return noteGroup;
+        }
+
+        private void CheckForContains(NoteGroup noteGroup)
+        {
+            var db = new DataContext(connectionString);
+            var noteGroupsFromDb = (from ng in db.GetTable<NoteGroup>()
+                                   where ng.NoteId == noteGroup.NoteId
+                                   select ng).AsEnumerable();
+            if (noteGroupsFromDb.Count() > 0)
+            {
+                db.GetTable<NoteGroup>().DeleteAllOnSubmit(noteGroupsFromDb);
+                db.SubmitChanges();
+            }            
         }
 
         #endregion
