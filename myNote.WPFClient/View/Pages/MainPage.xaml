@@ -98,6 +98,7 @@
                             <ContextMenu>
                                 <MenuItem Header="Add Note" Command="{Binding AddNoteCommand}"/>
                                 <MenuItem Header="Add Group" Command="{Binding AddGroupCommand}"/>
+                                <MenuItem Header="Share" Command="{Binding ShareNote}"/>
                             </ContextMenu>
                         </ListView.ContextMenu>
                         <!--#endregion-->

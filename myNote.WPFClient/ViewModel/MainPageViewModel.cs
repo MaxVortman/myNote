@@ -91,6 +91,11 @@ namespace myNote.WPFClient.ViewModel
         /// Execute when mouse down event invoke in user's image
         /// </summary>
         public ICommand ClickImageCommand { get; set; }
+        /// <summary>
+        /// Shre user's note command
+        /// execute when click on context menu item
+        /// </summary>
+        public ICommand ShareNote { get; set; }
         #endregion
 
         #region Constructor
@@ -102,6 +107,18 @@ namespace myNote.WPFClient.ViewModel
             var api = ClientService.ApiClient.CreateInstance(IoC.IoC.ConnectionString);
 
             InitializeProperty(api);
+
+            ShareNote = new RelayCommand(async(obj) =>
+            {
+                try
+                {
+                    await api.ShareService.CreateShareAsync(SelectedNote, UserData.UserDataContent.Token);
+                }
+                catch (HttpRequestException e)
+                {
+                    MessageBox.Show("Something went wrong...\n" + e.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            });
 
             ClickImageCommand = new RelayCommand((obj) =>
             {

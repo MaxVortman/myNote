@@ -47,7 +47,7 @@ namespace myNote.WPFClient.IoC
         }
         /// <summary>
         /// Sets up the IoC container, binds all information required and is ready for use
-        /// NOTE: Must be called before login
+        /// NOTE: Must be called after login
         /// </summary>
         public static void SetupMainPage()
         {
