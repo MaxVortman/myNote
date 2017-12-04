@@ -87,6 +87,10 @@ namespace myNote.WPFClient.ViewModel
         /// Add group menu item click command
         /// </summary>
         public ICommand AddGroupCommand { get; set; }
+        /// <summary>
+        /// Execute when mouse down event invoke in user's image
+        /// </summary>
+        public ICommand ClickImageCommand { get; set; }
         #endregion
 
         #region Constructor
@@ -98,6 +102,11 @@ namespace myNote.WPFClient.ViewModel
             var api = ClientService.ApiClient.CreateInstance(IoC.IoC.ConnectionString);
 
             InitializeProperty(api);
+
+            ClickImageCommand = new RelayCommand((obj) =>
+            {
+                CurrentContentPage = new UserContentPage(User);
+            });
 
             AddGroupCommand = new RelayCommand(async (obj) =>
             {

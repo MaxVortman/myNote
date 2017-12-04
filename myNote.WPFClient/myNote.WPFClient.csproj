@@ -122,6 +122,7 @@
     <Compile Include="ViewModel\NoteContentViewModel.cs" />
     <Compile Include="ViewModel\SingInPageViewModel.cs" />
     <Compile Include="ViewModel\SingUpPageViewModel.cs" />
+    <Compile Include="ViewModel\UserContentViewModel.cs" />
     <Compile Include="ViewModel\WindowViewModel.cs" />
     <Compile Include="View\InputWindow.xaml.cs">
       <DependentUpon>InputWindow.xaml</DependentUpon>

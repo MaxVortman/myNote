@@ -8,7 +8,52 @@
       d:DesignHeight="300" d:DesignWidth="300"
       Title="UserContentPage">
 
-    <Grid>
-        
-    </Grid>
+    <GroupBox Header="{Binding User.Login}">
+        <Grid>
+            <!--#region Grid definitions-->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <!--#endregion-->
+
+            <Image Grid.Row="0" Source="C:\Users\User\Source\Repos\myNote\myNote.WPFClient\Image\user-blue.jpg"/>
+
+            <Border Grid.Row="1" BorderBrush="Aqua" BorderThickness="2">
+                <Grid>
+                    <!--#region Child grid definitions-->
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <!--#endregion-->
+                    <StackPanel Grid.Column="0">
+                        <WrapPanel Orientation="Vertical">
+                            <TextBlock Text="Name"/>
+                            <TextBox Text="{Binding User.Name}"/>
+                        </WrapPanel>
+                        <WrapPanel Orientation="Vertical">
+                            <TextBlock Text="Email"/>
+                            <TextBox Text="{Binding User.Email}"/>
+                        </WrapPanel>
+
+                    </StackPanel>
+                    <StackPanel Grid.Column="1">
+                        <WrapPanel Orientation="Vertical">
+                            <TextBlock Text="Birthday"/>
+                            <DatePicker IsDropDownOpen="True" 
+                                    SelectedDateFormat="Short" 
+                                    SelectedDate="{Binding User.Birthday}"/>
+                        </WrapPanel>
+                        <WrapPanel Orientation="Vertical">
+                            <TextBlock Text="Register Date"/>
+                            <DatePicker IsDropDownOpen="True"
+                                    SelectedDateFormat="Short"
+                                    SelectedDate="{Binding User.RegisterDate}"/>
+                        </WrapPanel>
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </Grid>
+    </GroupBox>
 </Page>

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using myNote.Model;
+using myNote.WPFClient.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,11 @@ namespace myNote.WPFClient.View.Pages.MainFrameContent
     /// </summary>
     public partial class UserContentPage : Page
     {
-        public UserContentPage()
+        public UserContentPage(User user)
         {
             InitializeComponent();
+
+            DataContext = new UserContentViewModel(user);
         }
     }
 }
