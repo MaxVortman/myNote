@@ -7,6 +7,9 @@
       mc:Ignorable="d" 
       d:DesignHeight="500" d:DesignWidth="700"
       Title="SingInPage">
+    <Page.InputBindings>
+        <KeyBinding Key="Enter" Command="{Binding LoginButtonClickCommand}" />
+    </Page.InputBindings>
     <Grid>
         <Border CornerRadius="10" HorizontalAlignment="Center" VerticalAlignment="Center" Width="330">
             <StackPanel>
