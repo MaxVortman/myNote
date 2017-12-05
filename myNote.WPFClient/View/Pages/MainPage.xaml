@@ -28,7 +28,7 @@
             <!--#region Your notes tab-->
             <TabItem Header="Your notes" ScrollViewer.VerticalScrollBarVisibility="Visible">
                 <StackPanel>
-                    <Border BorderBrush="Aqua" BorderThickness="0 3">
+                    <Border BorderBrush="Aqua" BorderThickness="0 0 0 2">
                         <StackPanel>
                             <Image Source="C:\Users\User\Source\Repos\myNote\myNote.WPFClient\Image\user-blue.jpg" Width="50">
                                 <i:Interaction.Triggers>
@@ -37,11 +37,11 @@
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
                             </Image>
-                                <TextBlock Tag="Login" Text="{Binding User.Login}" HorizontalAlignment="Center"/>
+                                <TextBlock Tag="Login" Text="{Binding User.Login}" Foreground="ForestGreen" FontSize="20" HorizontalAlignment="Center"/>
                         </StackPanel>
                     </Border>
-                    <TextBlock HorizontalAlignment="Center">Groups</TextBlock>
-                    <Button Command="{Binding ShowAllNote}">All</Button>
+                    <TextBlock HorizontalAlignment="Center" FontSize="15" Foreground="BlueViolet">Groups:</TextBlock>
+                    <Button Command="{Binding ShowAllNote}" MaxWidth="50">All</Button>
                     <!--#region Groups List-->
                     <ListView ItemsSource="{Binding Groups}" 
                              Margin="0 0 0 10">

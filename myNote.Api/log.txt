@@ -1379,3 +1379,12 @@
 2017-12-04 16:17:51.6462|ERROR|myNote.Logger.Log|Группы с заметкой 01d01b4b-aad1-46d8-888e-93f2baf12900 нет.
 2017-12-04 16:18:18.8064|ERROR|myNote.Logger.Log|Группы с заметкой 01d01b4b-aad1-46d8-888e-93f2baf12900 нет.
 2017-12-04 16:18:22.5435|ERROR|myNote.Logger.Log|Группы с заметкой 01d01b4b-aad1-46d8-888e-93f2baf12900 нет.
+2017-12-04 16:51:32.9868|ERROR|myNote.Logger.Log|Группы с заметкой 01d01b4b-aad1-46d8-888e-93f2baf12900 нет.
+2017-12-04 16:51:44.1887|ERROR|myNote.Logger.Log|Группы с заметкой 01d01b4b-aad1-46d8-888e-93f2baf12900 нет.
+2017-12-04 16:51:48.9267|ERROR|myNote.Logger.Log|Группы с заметкой 01d01b4b-aad1-46d8-888e-93f2baf12900 нет.
+2017-12-04 16:51:53.6813|ERROR|myNote.Logger.Log|Группы с заметкой 01d01b4b-aad1-46d8-888e-93f2baf12900 нет.
+2017-12-05 11:20:10.0991|ERROR|myNote.Logger.Log|Группы с заметкой 01d01b4b-aad1-46d8-888e-93f2baf12900 нет.
+2017-12-05 11:20:18.0341|ERROR|myNote.Logger.Log|Группы с заметкой 01d01b4b-aad1-46d8-888e-93f2baf12900 нет.
+2017-12-05 11:20:19.7356|ERROR|myNote.Logger.Log|Группы с заметкой 01d01b4b-aad1-46d8-888e-93f2baf12900 нет.
+2017-12-05 11:20:26.6687|INFO|myNote.Logger.Log|Обновление заметки с id: 01d01b4b-aad1-46d8-888e-93f2baf12900
+2017-12-05 11:20:27.0147|INFO|myNote.Logger.Log|Создание группы заметок с noteId: 01d01b4b-aad1-46d8-888e-93f2baf12900 и groupId: 2c85d079-78fb-47cb-bba4-23b28e73fba6

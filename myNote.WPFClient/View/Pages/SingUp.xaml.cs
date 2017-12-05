@@ -1,4 +1,5 @@
-﻿using myNote.WPFClient.ViewModel;
+﻿using myNote.WPFClient.IoC;
+using myNote.WPFClient.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,13 +20,18 @@ namespace myNote.WPFClient.View.Pages
     /// <summary>
     /// Логика взаимодействия для LoginPage.xaml
     /// </summary>
-    public partial class SingUpPage : Page
+    public partial class SingUpPage : Page, IPasswordSupplier
     {
         public SingUpPage()
         {
             InitializeComponent();
 
-            this.DataContext = new SingUpPageViewModel();
+            this.DataContext = new SingUpPageViewModel(this);
+        }
+
+        public string GetPassword()
+        {
+            return RegisterPassword.Password;
         }
     }
 }

@@ -7,11 +7,12 @@
         xmlns:converters="clr-namespace:myNote.WPFClient.ValueConverters"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
-        Title="myNote" Height="500" Width="700">
+        Title="myNote" Height="500" Width="700" WindowStartupLocation="CenterScreen"
+                      AllowsTransparency="True">
+    <Window.Background>
+        <ImageBrush ImageSource="C:\Users\User\source\repos\myNote\myNote.WPFClient\Image\background.png"/>
+    </Window.Background>
     <Grid>
-        <Grid.Background>
-            <ImageBrush ImageSource="C:\Users\User\source\repos\myNote\myNote.WPFClient\Image\background.png"/>
-        </Grid.Background>
         <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Content="{Binding CurrentPage, Converter={converters:ApplicationPageValueConverter}}" />
     </Grid>
 </Controls:MetroWindow>

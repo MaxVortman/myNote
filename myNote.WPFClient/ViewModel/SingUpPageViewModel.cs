@@ -1,5 +1,6 @@
 ﻿using myNote.ClientService;
 using myNote.Model;
+using myNote.WPFClient.IoC;
 using myNote.WPFClient.ViewModel.Base;
 using System;
 using System.Net.Http;
@@ -16,10 +17,6 @@ namespace myNote.WPFClient.ViewModel
         /// User's login, which entered in textbox
         /// </summary>
         public string Login { get; set; }
-        /// <summary>
-        /// User's password, which entered in textbox
-        /// </summary>
-        public string Password { get; set; }
 
         #endregion
 
@@ -44,7 +41,7 @@ namespace myNote.WPFClient.ViewModel
         /// <summary>
         /// Default Constructor
         /// </summary>
-        public SingUpPageViewModel()
+        public SingUpPageViewModel(IPasswordSupplier passwordSupplier)
         {
             var api = ApiClient.CreateInstance(IoC.IoC.ConnectionString);
             //Initialize Sing Up Command
@@ -52,7 +49,7 @@ namespace myNote.WPFClient.ViewModel
             {
                 try
                 {
-                    api.LoginService.Register(PasswordCrypter.GetCredential(Login, Password));
+                    api.LoginService.Register(PasswordCrypter.GetCredential(Login, passwordSupplier.GetPassword()));
                     IoC.IoC.WindowViewModel.GoToPage(DataModels.ApplicationPage.Login);
                 }
                 catch (HttpRequestException e)

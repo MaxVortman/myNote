@@ -1,4 +1,5 @@
-﻿using myNote.WPFClient.ViewModel;
+﻿using myNote.WPFClient.IoC;
+using myNote.WPFClient.ViewModel;
 using System.Windows.Controls;
 
 namespace myNote.WPFClient.View.Pages
@@ -6,13 +7,18 @@ namespace myNote.WPFClient.View.Pages
     /// <summary>
     /// Логика взаимодействия для SingInPage.xaml
     /// </summary>
-    public partial class SingInPage : Page
+    public partial class SingInPage : Page, IPasswordSupplier
     {
         public SingInPage()
         {
             InitializeComponent();
 
-            DataContext = new SingInPageViewModel();
+            DataContext = new SingInPageViewModel(this);
+        }
+
+        public string GetPassword()
+        {
+            return LoginPassword.Password;
         }
     }
 }

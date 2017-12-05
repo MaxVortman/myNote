@@ -1,4 +1,5 @@
 ﻿using myNote.ClientService;
+using myNote.WPFClient.IoC;
 using myNote.WPFClient.ViewModel.Base;
 using System;
 using System.Collections.Generic;
@@ -18,10 +19,6 @@ namespace myNote.WPFClient.ViewModel
         /// User's Login from textbox
         /// </summary>
         public string Login { get; set; }
-        /// <summary>
-        /// User's Password from textbox
-        /// </summary>
-        public string Password { get; set; }
         #endregion
 
         #region Commands
@@ -35,14 +32,14 @@ namespace myNote.WPFClient.ViewModel
         /// <summary>
         /// Default constructor
         /// </summary>
-        public SingInPageViewModel()
+        public SingInPageViewModel(IPasswordSupplier passwordSupplier)
         {
             var api = ApiClient.CreateInstance(IoC.IoC.ConnectionString);
             LoginButtonClickCommand = new RelayCommand(async(obj) =>
             {
                 try
                 {
-                    UserData.UserDataContent.Token = await api.LoginService.LoginAsync(PasswordCrypter.GetCredential(Login, Password));
+                    UserData.UserDataContent.Token = await api.LoginService.LoginAsync(PasswordCrypter.GetCredential(Login, passwordSupplier.GetPassword()));
                     IoC.IoC.SetupMainPage();
                     IoC.IoC.WindowViewModel.GoToPage(DataModels.ApplicationPage.Main);
                 }

@@ -1,4 +1,5 @@
-﻿using myNote.WPFClient.ViewModel;
+﻿using myNote.WPFClient.View.Pages;
+using myNote.WPFClient.ViewModel;
 using Ninject;
 using System;
 using System.Collections.Generic;
@@ -45,6 +46,7 @@ namespace myNote.WPFClient.IoC
             // Bind window view model
             BindWindowViewModel();
         }
+
         /// <summary>
         /// Sets up the IoC container, binds all information required and is ready for use
         /// NOTE: Must be called after login
