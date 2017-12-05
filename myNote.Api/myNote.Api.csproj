@@ -59,6 +59,7 @@
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <HintPath>..\packages\NLog.4.4.12\lib\net45\NLog.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="Swashbuckle.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cd1bb07a5ac7c7bc, processorArchitecture=MSIL">
       <HintPath>..\packages\Swashbuckle.Core.5.6.0\lib\net40\Swashbuckle.Core.dll</HintPath>
     </Reference>
@@ -100,6 +101,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\CredentialController.cs" />
     <Compile Include="Controllers\GroupController.cs" />
+    <Compile Include="Controllers\ImageController.cs" />
     <Compile Include="Controllers\NoteController.cs" />
     <Compile Include="Controllers\NoteGroupController.cs" />
     <Compile Include="Controllers\ShareController.cs" />
@@ -125,7 +127,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Images\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\myNote.DataLayer.Sql\myNote.DataLayer.Sql.csproj">
       <Project>{58FD7308-A1C1-4C0E-90F5-C9808943DE57}</Project>
