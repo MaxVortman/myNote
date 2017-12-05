@@ -64,6 +64,7 @@
     <Compile Include="ApiClient.cs" />
     <Compile Include="Base\BaseService.cs" />
     <Compile Include="GroupService.cs" />
+    <Compile Include="ImageService.cs" />
     <Compile Include="LoginService.cs" />
     <Compile Include="NoteGroupService.cs" />
     <Compile Include="NoteService.cs" />
