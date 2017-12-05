@@ -35,9 +35,8 @@
                         </i:Interaction.Triggers>
                     </Image>
                     <StackPanel Margin="10 0 0 0">
-                        <TextBlock Tag="UserName" Text="{Binding User.Name}" />
-                        <TextBlock Tag="Email" Text="{Binding User.Email}"/>
-                        <TextBlock Tag="RegisterDate" Text="{Binding User.RegisterDate}"/>
+                        <TextBlock Tag="UserName" Foreground="White" Text="{Binding User.Name}" />
+                        <TextBlock Tag="Email" Foreground="White" Text="{Binding User.Email}"/>
                     </StackPanel>
                 </StackPanel>
             </GroupBox>

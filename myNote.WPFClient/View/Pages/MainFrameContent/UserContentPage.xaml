@@ -31,14 +31,14 @@
                     <!--#endregion-->
                     <StackPanel Grid.Column="0">
                         <WrapPanel Orientation="Vertical">
-                            <TextBlock Text="Name"/>
+                            <TextBlock Text="Name" Foreground="White"/>
                             <TextBox Text="{Binding User.Name, Mode=TwoWay}" 
                                      IsEnabled="{Binding RelativeSource={RelativeSource 
                                 Mode=FindAncestor, AncestorType={x:Type Page}}, 
                                 Path=DataContext.IsEnabled}"/>
                         </WrapPanel>
                         <WrapPanel Orientation="Vertical">
-                            <TextBlock Text="Email"/>
+                            <TextBlock Text="Email" Foreground="White"/>
                             <TextBox Text="{Binding User.Email, Mode=TwoWay}"
                                      IsEnabled="{Binding RelativeSource={RelativeSource 
                                 Mode=FindAncestor, AncestorType={x:Type Page}}, 
@@ -48,7 +48,7 @@
                     </StackPanel>
                     <StackPanel Grid.Column="1">
                         <WrapPanel Orientation="Vertical">
-                            <TextBlock Text="Birthday"/>
+                            <TextBlock Text="Birthday" Foreground="White"/>
                             <DatePicker                                
                                     SelectedDateFormat="Short" 
                                     SelectedDate="{Binding User.Birthday, Mode=TwoWay}"
@@ -57,8 +57,8 @@
                                 Path=DataContext.IsEnabled}"/>
                         </WrapPanel>
                         <WrapPanel Orientation="Vertical">
-                            <TextBlock Text="Register Date"/>
-                            <TextBlock Text="{Binding User.RegisterDate}" />
+                            <TextBlock Text="Register Date" Foreground="White"/>
+                            <TextBlock Text="{Binding User.RegisterDate}" Foreground="White" />
                         </WrapPanel>
                     </StackPanel>
                 </Grid>
