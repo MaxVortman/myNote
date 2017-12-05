@@ -53,7 +53,7 @@ namespace myNote.DataLayer.Sql
             var db = new DataContext(connectionString);
             db.GetTable<Credential>().InsertOnSubmit(credential);
             db.SubmitChanges();
-            usersRepository.CreateUser(new User { Login = credential.Login });
+            usersRepository.CreateUser(new User { Login = credential.Login, RegisterDate = DateTime.Now });
         }
 
         private bool CheckForAvailability(Credential credential)

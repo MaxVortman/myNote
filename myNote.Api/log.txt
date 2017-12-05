@@ -1388,3 +1388,11 @@
 2017-12-05 11:20:19.7356|ERROR|myNote.Logger.Log|Группы с заметкой 01d01b4b-aad1-46d8-888e-93f2baf12900 нет.
 2017-12-05 11:20:26.6687|INFO|myNote.Logger.Log|Обновление заметки с id: 01d01b4b-aad1-46d8-888e-93f2baf12900
 2017-12-05 11:20:27.0147|INFO|myNote.Logger.Log|Создание группы заметок с noteId: 01d01b4b-aad1-46d8-888e-93f2baf12900 и groupId: 2c85d079-78fb-47cb-bba4-23b28e73fba6
+2017-12-05 12:03:23.0978|INFO|myNote.Logger.Log|Создание пользователя с логином: Alex
+2017-12-05 12:04:26.2284|INFO|myNote.Logger.Log|Создание заметки с id: 96e0406a-16ee-4b11-a200-841a34dd6dc4
+2017-12-05 12:04:26.5044|ERROR|myNote.Logger.Log|Группы с заметкой 96e0406a-16ee-4b11-a200-841a34dd6dc4 нет.
+2017-12-05 12:04:45.5079|INFO|myNote.Logger.Log|Обновление заметки с id: 96e0406a-16ee-4b11-a200-841a34dd6dc4
+2017-12-05 12:04:48.3623|ERROR|myNote.Logger.Log|Группы с заметкой 96e0406a-16ee-4b11-a200-841a34dd6dc4 нет.
+2017-12-05 12:04:50.8058|INFO|myNote.Logger.Log|Создание раздачи заметки с id: 96e0406a-16ee-4b11-a200-841a34dd6dc4
+2017-12-05 12:04:53.1560|ERROR|myNote.Logger.Log|Группы с заметкой 96e0406a-16ee-4b11-a200-841a34dd6dc4 нет.
+2017-12-05 12:04:56.4650|ERROR|myNote.Logger.Log|Группы с заметкой 96e0406a-16ee-4b11-a200-841a34dd6dc4 нет.
