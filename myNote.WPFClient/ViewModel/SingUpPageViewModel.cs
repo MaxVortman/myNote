@@ -53,6 +53,8 @@ namespace myNote.WPFClient.ViewModel
             {
                 try
                 {
+                    if (!IsEnabled)
+                        return;
                     IsEnabled = false;
                     api.LoginService.Register(PasswordCrypter.GetCredential(Login, passwordSupplier.GetPassword()));
                     IoC.IoC.WindowViewModel.GoToPage(DataModels.ApplicationPage.Login);

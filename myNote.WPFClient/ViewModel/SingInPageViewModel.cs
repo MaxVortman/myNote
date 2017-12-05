@@ -39,10 +39,13 @@ namespace myNote.WPFClient.ViewModel
         public SingInPageViewModel(IPasswordSupplier passwordSupplier)
         {
             var api = ApiClient.CreateInstance(IoC.IoC.ConnectionString);
+            
             LoginButtonClickCommand = new RelayCommand(async(obj) =>
             {
                 try
                 {
+                    if (!IsEnabled)
+                        return;
                     IsEnabled = false;
                     UserData.UserDataContent.Token = await api.LoginService.LoginAsync(PasswordCrypter.GetCredential(Login, passwordSupplier.GetPassword()));
                     IoC.IoC.SetupMainPage();
