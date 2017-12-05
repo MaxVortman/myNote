@@ -12,11 +12,15 @@ namespace myNote.WPFClient.ViewModel
 {
     public class SingUpPageViewModel : BaseViewModel
     {
-        #region Credential properties
+        #region Public properties
         /// <summary>
         /// User's login, which entered in textbox
         /// </summary>
         public string Login { get; set; }
+        /// <summary>
+        /// Show enable buttons or not
+        /// </summary>
+        public bool IsEnabled { get; set; } = true;
 
         #endregion
 
@@ -49,12 +53,14 @@ namespace myNote.WPFClient.ViewModel
             {
                 try
                 {
+                    IsEnabled = false;
                     api.LoginService.Register(PasswordCrypter.GetCredential(Login, passwordSupplier.GetPassword()));
                     IoC.IoC.WindowViewModel.GoToPage(DataModels.ApplicationPage.Login);
                 }
                 catch (HttpRequestException e)
                 {
                     MessageBox.Show("Something went wrong...\n" + e.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    IsEnabled = true;
                 }
             });
         }

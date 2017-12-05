@@ -16,8 +16,8 @@
                 <TextBlock HorizontalAlignment="Center" Margin="0 0 0 30" Text="Sing Up" Foreground="Red" FontSize="30"/>
                 <TextBox Margin="15 10" Tag="Login" Text="{Binding Login, Mode=OneWayToSource}"></TextBox>
                 <PasswordBox Margin="15 10" Tag="Password" Name="RegisterPassword"></PasswordBox>
-                <Button Margin="0 30 0 0" HorizontalAlignment="Center" Command="{Binding SingUpButtonClickCommand}">Next</Button>
-                <Button Margin="0 10 0 0" HorizontalAlignment="Center" Command="{Binding LoginButtonClickCommand}">I already have an account</Button>
+                <Button IsEnabled="{Binding IsEnabled}" Margin="0 30 0 0" HorizontalAlignment="Center" Command="{Binding SingUpButtonClickCommand}">Next</Button>
+                <Button IsEnabled="{Binding IsEnabled}" Margin="0 10 0 0" HorizontalAlignment="Center" Command="{Binding LoginButtonClickCommand}">I already have an account</Button>
             </StackPanel>
         </Border>
     </Grid>

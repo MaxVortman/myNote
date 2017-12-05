@@ -19,6 +19,10 @@ namespace myNote.WPFClient.ViewModel
         /// User's Login from textbox
         /// </summary>
         public string Login { get; set; }
+        /// <summary>
+        /// Show enable buttons or not
+        /// </summary>
+        public bool IsEnabled { get; set; } = true;
         #endregion
 
         #region Commands
@@ -39,6 +43,7 @@ namespace myNote.WPFClient.ViewModel
             {
                 try
                 {
+                    IsEnabled = false;
                     UserData.UserDataContent.Token = await api.LoginService.LoginAsync(PasswordCrypter.GetCredential(Login, passwordSupplier.GetPassword()));
                     IoC.IoC.SetupMainPage();
                     IoC.IoC.WindowViewModel.GoToPage(DataModels.ApplicationPage.Main);
@@ -46,6 +51,7 @@ namespace myNote.WPFClient.ViewModel
                 catch (HttpRequestException e)
                 {
                     MessageBox.Show("Something went wrong...\n" + e.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    IsEnabled = true;
                 }
             });
         }
