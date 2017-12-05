@@ -146,3 +146,18 @@
 2017-12-05 12:15:50.0667|ERROR|myNote.Logger.Log|Группы с заметкой 96e0406a-16ee-4b11-a200-841a34dd6dc4 нет.
 2017-12-05 12:24:33.0997|ERROR|myNote.Logger.Log|User with this Login dsafaf is not registered or password is invalid
 2017-12-05 12:24:36.2097|ERROR|myNote.Logger.Log|User with this Login dsafaf is not registered or password is invalid
+2017-12-05 16:24:03.5461|ERROR|myNote.Logger.Log|User with this Login Max is not registered or password is invalid
+2017-12-05 17:49:21.0968|ERROR|myNote.Logger.Log|User with this Login Max is not registered or password is invalid
+2017-12-05 18:01:05.4780|ERROR|myNote.Logger.Log|Группы с заметкой 5572ed51-200c-4ff2-bea8-363026e42a2f нет.
+2017-12-05 18:01:10.3124|ERROR|myNote.Logger.Log|Группы с заметкой 5572ed51-200c-4ff2-bea8-363026e42a2f нет.
+2017-12-05 18:06:42.6121|ERROR|myNote.Logger.Log|Группы с заметкой 5572ed51-200c-4ff2-bea8-363026e42a2f нет.
+2017-12-05 18:26:02.6390|ERROR|myNote.Logger.Log|User with this Login Max is not registered or password is invalid
+2017-12-05 18:28:55.5011|ERROR|myNote.Logger.Log|User with this Login Max is not registered or password is invalid
+2017-12-05 19:01:53.8437|ERROR|myNote.Logger.Log|Группы с заметкой 0a46cb05-8119-4274-b341-58230c7afb01 нет.
+2017-12-05 19:02:02.9766|ERROR|myNote.Logger.Log|Группы с заметкой 0a46cb05-8119-4274-b341-58230c7afb01 нет.
+2017-12-05 19:02:17.1873|ERROR|myNote.Logger.Log|Группы с заметкой 0a46cb05-8119-4274-b341-58230c7afb01 нет.
+2017-12-05 21:20:09.9928|ERROR|myNote.Logger.Log|Группы с заметкой 0febddf1-eebf-43ac-bad2-c2675bb7dcc2 нет.
+2017-12-05 21:20:15.5057|ERROR|myNote.Logger.Log|Группы с заметкой 0febddf1-eebf-43ac-bad2-c2675bb7dcc2 нет.
+2017-12-05 21:21:53.5331|ERROR|myNote.Logger.Log|Группы с заметкой 0febddf1-eebf-43ac-bad2-c2675bb7dcc2 нет.
+2017-12-05 21:22:08.2451|ERROR|myNote.Logger.Log|Группы с заметкой 0febddf1-eebf-43ac-bad2-c2675bb7dcc2 нет.
+2017-12-05 21:22:17.8225|ERROR|myNote.Logger.Log|Группы с заметкой 0febddf1-eebf-43ac-bad2-c2675bb7dcc2 нет.

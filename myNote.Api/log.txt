@@ -1401,3 +1401,42 @@
 2017-12-05 12:24:25.0309|INFO|myNote.Logger.Log|Создание пользователя с логином: mdadm
 2017-12-05 12:24:33.0997|ERROR|myNote.Logger.Log|User with this Login dsafaf is not registered or password is invalid
 2017-12-05 12:24:36.2097|ERROR|myNote.Logger.Log|User with this Login dsafaf is not registered or password is invalid
+2017-12-05 16:24:03.5461|ERROR|myNote.Logger.Log|User with this Login Max is not registered or password is invalid
+2017-12-05 16:24:28.8770|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-12-05 17:49:21.0968|ERROR|myNote.Logger.Log|User with this Login Max is not registered or password is invalid
+2017-12-05 18:01:05.2320|INFO|myNote.Logger.Log|Создание заметки с id: 5572ed51-200c-4ff2-bea8-363026e42a2f
+2017-12-05 18:01:05.4780|ERROR|myNote.Logger.Log|Группы с заметкой 5572ed51-200c-4ff2-bea8-363026e42a2f нет.
+2017-12-05 18:01:10.3124|ERROR|myNote.Logger.Log|Группы с заметкой 5572ed51-200c-4ff2-bea8-363026e42a2f нет.
+2017-12-05 18:02:25.3930|INFO|myNote.Logger.Log|Обновление заметки с id: 5572ed51-200c-4ff2-bea8-363026e42a2f
+2017-12-05 18:06:36.2462|INFO|myNote.Logger.Log|Создание группы с id: 154393e2-e69b-49ad-99eb-7498bb2e9fd5
+2017-12-05 18:06:42.6121|ERROR|myNote.Logger.Log|Группы с заметкой 5572ed51-200c-4ff2-bea8-363026e42a2f нет.
+2017-12-05 18:06:44.6400|INFO|myNote.Logger.Log|Обновление заметки с id: 5572ed51-200c-4ff2-bea8-363026e42a2f
+2017-12-05 18:06:44.7655|INFO|myNote.Logger.Log|Создание группы заметок с noteId: 5572ed51-200c-4ff2-bea8-363026e42a2f и groupId: 154393e2-e69b-49ad-99eb-7498bb2e9fd5
+2017-12-05 18:26:02.6390|ERROR|myNote.Logger.Log|User with this Login Max is not registered or password is invalid
+2017-12-05 18:28:55.5011|ERROR|myNote.Logger.Log|User with this Login Max is not registered or password is invalid
+2017-12-05 18:48:14.3217|INFO|myNote.Logger.Log|Изменение пользователя с именем: 
+2017-12-05 18:50:24.8414|INFO|myNote.Logger.Log|Изменение пользователя с именем: 
+2017-12-05 18:59:56.4509|INFO|myNote.Logger.Log|Изменение пользователя с именем: 
+2017-12-05 19:01:47.6277|INFO|myNote.Logger.Log|Изменение пользователя с именем: Maxim
+2017-12-05 19:01:53.5398|INFO|myNote.Logger.Log|Создание заметки с id: 0a46cb05-8119-4274-b341-58230c7afb01
+2017-12-05 19:01:53.8437|ERROR|myNote.Logger.Log|Группы с заметкой 0a46cb05-8119-4274-b341-58230c7afb01 нет.
+2017-12-05 19:01:59.6416|INFO|myNote.Logger.Log|Обновление заметки с id: 0a46cb05-8119-4274-b341-58230c7afb01
+2017-12-05 19:02:02.9766|ERROR|myNote.Logger.Log|Группы с заметкой 0a46cb05-8119-4274-b341-58230c7afb01 нет.
+2017-12-05 19:02:11.8506|INFO|myNote.Logger.Log|Создание группы с id: c3fecacd-09c2-4b21-b4d6-5e038eb04b07
+2017-12-05 19:02:17.1873|ERROR|myNote.Logger.Log|Группы с заметкой 0a46cb05-8119-4274-b341-58230c7afb01 нет.
+2017-12-05 19:02:19.7112|INFO|myNote.Logger.Log|Обновление заметки с id: 0a46cb05-8119-4274-b341-58230c7afb01
+2017-12-05 19:02:19.8928|INFO|myNote.Logger.Log|Создание группы заметок с noteId: 0a46cb05-8119-4274-b341-58230c7afb01 и groupId: 154393e2-e69b-49ad-99eb-7498bb2e9fd5
+2017-12-05 19:02:35.3281|INFO|myNote.Logger.Log|Обновление заметки с id: 0a46cb05-8119-4274-b341-58230c7afb01
+2017-12-05 19:02:35.5396|INFO|myNote.Logger.Log|Создание группы заметок с noteId: 0a46cb05-8119-4274-b341-58230c7afb01 и groupId: c3fecacd-09c2-4b21-b4d6-5e038eb04b07
+2017-12-05 19:02:44.7932|INFO|myNote.Logger.Log|Создание раздачи заметки с id: 0a46cb05-8119-4274-b341-58230c7afb01
+2017-12-05 19:03:18.9067|INFO|myNote.Logger.Log|Создание пользователя с логином: Vortman
+2017-12-05 21:19:28.6014|INFO|myNote.Logger.Log|Создание пользователя с логином: Max
+2017-12-05 21:19:55.5787|INFO|myNote.Logger.Log|Изменение пользователя с именем: 
+2017-12-05 21:20:09.7407|INFO|myNote.Logger.Log|Создание заметки с id: 0febddf1-eebf-43ac-bad2-c2675bb7dcc2
+2017-12-05 21:20:09.9928|ERROR|myNote.Logger.Log|Группы с заметкой 0febddf1-eebf-43ac-bad2-c2675bb7dcc2 нет.
+2017-12-05 21:20:15.5057|ERROR|myNote.Logger.Log|Группы с заметкой 0febddf1-eebf-43ac-bad2-c2675bb7dcc2 нет.
+2017-12-05 21:21:53.5331|ERROR|myNote.Logger.Log|Группы с заметкой 0febddf1-eebf-43ac-bad2-c2675bb7dcc2 нет.
+2017-12-05 21:22:08.2451|ERROR|myNote.Logger.Log|Группы с заметкой 0febddf1-eebf-43ac-bad2-c2675bb7dcc2 нет.
+2017-12-05 21:22:15.5565|INFO|myNote.Logger.Log|Обновление заметки с id: 0febddf1-eebf-43ac-bad2-c2675bb7dcc2
+2017-12-05 21:22:17.8225|ERROR|myNote.Logger.Log|Группы с заметкой 0febddf1-eebf-43ac-bad2-c2675bb7dcc2 нет.
+2017-12-05 21:22:53.0002|INFO|myNote.Logger.Log|Изменение пользователя с именем: 

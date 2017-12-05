@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:myNote.WPFClient.View.Pages.MainFrameContent"
+      xmlns:converters="clr-namespace:myNote.WPFClient.ValueConverters"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
       Title="UserContentPage">
@@ -19,7 +20,13 @@
             </Grid.RowDefinitions>
             <!--#endregion-->
 
-            <Image Grid.Row="0" Source="C:\Users\User\Source\Repos\myNote\myNote.WPFClient\Image\user-blue.jpg"/>
+            <Image Grid.Row="0" Source="{Binding Avatar, Converter={converters:ImageByteValueConverter}, UpdateSourceTrigger=PropertyChanged}" >
+                <Image.ContextMenu>
+                    <ContextMenu IsEnabled="{Binding IsEnabled}">
+                        <MenuItem Header="Change Avatar" Command="{Binding ChangeAvatarCommand}"/>
+                    </ContextMenu>
+                </Image.ContextMenu>
+            </Image>
 
             <Border Grid.Row="1" BorderBrush="Aqua" BorderThickness="2">
                 <Grid>

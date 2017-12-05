@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace myNote.WPFClient.ViewModel
 {
@@ -46,6 +47,10 @@ namespace myNote.WPFClient.ViewModel
         /// Current user
         /// </summary>
         public User User { get; set; }
+        /// <summary>
+        /// User's avatar bytes
+        /// </summary>
+        public byte[] Avatar { get; set; }
         #endregion
 
         #region Frame properties
@@ -210,8 +215,9 @@ namespace myNote.WPFClient.ViewModel
         private async void InitializeProperty(ApiClient api)
         {
             try
-            {
+            {                
                 User = await api.UserService.GetUserAsync(UserData.UserDataContent.Token.UserId, UserData.UserDataContent.Token);
+                Avatar = await api.ImageService.GetImageBytes(User.Id);
             }
             catch (HttpRequestException e)
             {

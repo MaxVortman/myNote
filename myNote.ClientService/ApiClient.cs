@@ -11,6 +11,7 @@
         public NoteGroupService NoteGroupService { get; }
         public LoginService LoginService { get; }
         public GroupService GroupService { get; }
+        public ImageService ImageService { get; }
 
         #endregion
         
@@ -24,6 +25,7 @@
             GroupService = new GroupService(connectionString);
             ShareService = new ShareService(connectionString);
             LoginService = new LoginService(connectionString);
+            ImageService = new ImageService(connectionString);
         }
 
         #endregion

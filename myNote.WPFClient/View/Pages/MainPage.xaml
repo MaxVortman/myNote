@@ -30,7 +30,7 @@
                 <StackPanel>
                     <Border BorderBrush="Aqua" BorderThickness="0 0 0 2">
                         <StackPanel>
-                            <Image Source="C:\Users\User\Source\Repos\myNote\myNote.WPFClient\Image\user-blue.jpg" Width="50">
+                            <Image MinHeight="50" Source="{Binding Avatar, Converter={converters:ImageByteValueConverter}, UpdateSourceTrigger=PropertyChanged}"  Width="50">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="MouseDown">
                                         <i:InvokeCommandAction Command="{Binding ClickImageCommand}"/>

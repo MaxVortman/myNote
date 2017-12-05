@@ -19,14 +19,17 @@ namespace myNote.Api.Controllers
         /// <param name="path">image path on server</param>
         /// <returns>image byte array</returns>
         [HttpGet]
-        [Route("api/image/{path}")]
-        public byte[] Get(string path)
+        [Route("api/image/{userId}")]
+        public byte[] Get(Guid userId)
         {
             try
             {
                 using (var ms = new MemoryStream())
                 {
-                    var image = Image.FromFile(path);
+                    var image = Image.FromFile(@"C:\Users\User\Source\Repos\myNote\myNote.Api\Images\user-blue.jpg");
+                    var path = Path.Combine(@"C:\Users\User\Source\Repos\myNote\myNote.Api\Images", userId.ToString() + ".bmp");
+                    if (File.Exists(path))
+                        image = Image.FromFile(path);
                     image.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
                     return ms.ToArray();
                 }
@@ -44,15 +47,16 @@ namespace myNote.Api.Controllers
         /// <param name="userId">id of user who post image</param>
         /// <returns>path of image in server file system</returns>
         [HttpPost]
-        [Route("api/image/{userId}")]
-        public string Post(byte[] imageBytes, Guid userId)
+        [Route("api/image/user/{userId}")]
+        public void Post([FromBody]byte[] imageBytes, Guid userId)
         {
             using (var ms = new MemoryStream(imageBytes))
             {
-                var path = $"pack://application:,,,/Images/{userId}.bmp";
+                var path = $@"C:\Users\User\Source\Repos\myNote\myNote.Api\Images\{userId}.bmp";
+                if (File.Exists(path))
+                    File.Delete(path);
                 var image = Image.FromStream(ms);
                 image.Save(path);
-                return path; 
             }
         }
     }

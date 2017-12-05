@@ -13,7 +13,7 @@
     <Grid>
         <Border CornerRadius="10" HorizontalAlignment="Center" VerticalAlignment="Center" Width="330">
             <StackPanel>
-                <TextBlock HorizontalAlignment="Center" Margin="0 0 0 30" Text="Sing Up" Foreground="Red" FontSize="30"/>
+                <TextBlock HorizontalAlignment="Center" Margin="0 0 0 30" Text="Sing Up" Foreground="White" FontSize="30"/>
                 <TextBox Margin="15 10" Tag="Login" Text="{Binding Login, Mode=OneWayToSource}"></TextBox>
                 <PasswordBox Margin="15 10" Tag="Password" Name="RegisterPassword"></PasswordBox>
                 <Button IsEnabled="{Binding IsEnabled}" Margin="0 30 0 0" HorizontalAlignment="Center" Command="{Binding SingUpButtonClickCommand}">Next</Button>

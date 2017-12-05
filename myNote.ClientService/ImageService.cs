@@ -19,13 +19,13 @@ namespace myNote.ClientService
         #endregion
 
         /// <summary>
-        /// Getting image bytes from server by <see cref="path"/>
+        /// Getting image bytes from server by userid
         /// </summary>
-        /// <param name="path">path of image on server</param>
+        /// <param name="userId"></param>
         /// <returns></returns>
-        public async Task<byte[]> GetImageBytes(string path)
-        {
-            var response = await client.GetAsync("image/{path}");
+        public async Task<byte[]> GetImageBytes(Guid userId)
+        {           
+            var response = await client.GetAsync($@"image/{userId}");
             if (!response.IsSuccessStatusCode)
                 throw new HttpRequestException(response.StatusCode.ToString() + "\n" + response.ReasonPhrase);
             return await response.Content.ReadAsAsync<byte[]>();
@@ -36,12 +36,11 @@ namespace myNote.ClientService
         /// <param name="imageBytes"></param>
         /// <param name="userId">id of user who post image</param>
         /// <returns>path of image on server file system</returns>
-        public async Task<string> PostImage(byte[] imageBytes, Guid userId)
+        public async void PostImage(byte[] imageBytes, Guid userId)
         {
-            var response = await client.PostAsJsonAsync("image/{userId}", imageBytes);
+            var response = await client.PostAsJsonAsync($@"image/user/{userId}", imageBytes);
             if (!response.IsSuccessStatusCode)
                 throw new HttpRequestException(response.StatusCode.ToString() + "\n" + response.ReasonPhrase);
-            return await response.Content.ReadAsAsync<string>();
         }
     }
 }

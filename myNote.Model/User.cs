@@ -19,8 +19,6 @@ namespace myNote.Model
         public string Email { get; set; }
         [Column]
         public DateTime? RegisterDate { get; set; }
-        [Column]
-        public string AvatarUri { get; set; }
 
         public IEnumerable<Group> UserGroups { get; set; }
     }

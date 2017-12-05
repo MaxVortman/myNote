@@ -88,6 +88,7 @@ namespace myNote.WPFClient.ViewModel
                 else
                     Note = note;
                 User = await api.UserService.GetUserAsync(Note.UserId, UserData.UserDataContent.Token);
+                Avatar = await api.ImageService.GetImageBytes(User.Id);
                 IsEnabled = User.Id == UserData.UserDataContent.Token.UserId;
                 var groups = await api.UserService.GetUserGroupsAsync(User.Id, UserData.UserDataContent.Token);
                 //group of this note
@@ -123,7 +124,11 @@ namespace myNote.WPFClient.ViewModel
         /// Shows enable textboxes or not
         /// </summary>
         public bool IsEnabled { get; set; }
-        
+        /// <summary>
+        /// User's avatar bytes
+        /// </summary>
+        public byte[] Avatar { get; set; }
+
         #endregion
 
         #region Command
