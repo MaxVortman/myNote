@@ -9,7 +9,7 @@ namespace myNote.DataLayer.Sql.Test
     [TestClass]
     public class SharesRepositoryTest
     {
-        private const string ConnectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=test;Integrated Security=true";
+        private const string ConnectionString = IoC.ConnectionString;
         private readonly Dictionary<string, Token> tempUsersLogin = new Dictionary<string, Token>();
 
         [TestMethod]

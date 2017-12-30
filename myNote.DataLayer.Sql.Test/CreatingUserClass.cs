@@ -13,7 +13,7 @@ namespace myNote.DataLayer.Sql.Test
 
         #region Private Members
 
-        private const string ConnectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=test;Integrated Security=true";
+        private const string ConnectionString = IoC.ConnectionString;
         private readonly string login;
         private readonly Credential credential;
         private static UsersRepository usersRepository = new UsersRepository(ConnectionString, new GroupsRepository(ConnectionString));

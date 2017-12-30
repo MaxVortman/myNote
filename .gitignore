@@ -262,3 +262,4 @@ __pycache__/
 /myNote.DataLayer.Sql/IoT.cs
 /myNote.Api/Controllers/IoT.cs
 /myNote.Api/Controllers/IoC.cs
+/myNote.DataLayer.Sql.Test/IoC.cs
