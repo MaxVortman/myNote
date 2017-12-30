@@ -16,12 +16,11 @@ namespace myNote.Api.Controllers
     /// </summary>
     public class ShareController : ApiController
     {
-        private const string ConnectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=test;Integrated Security=true";
         private ISharesRepository sharesRepository;
 
         public ShareController()
         {
-            sharesRepository = new SharesRepository(ConnectionString);
+            sharesRepository = new SharesRepository(IoC.ConnectionString);
         }
 
         /// <summary>

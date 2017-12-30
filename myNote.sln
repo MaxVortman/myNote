@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27019.1
+VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "myNote.Api", "myNote.Api\myNote.Api.csproj", "{DC2E1A68-38EB-4F18-96BB-C923BB51E77C}"
 EndProject
@@ -20,6 +20,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "myNote.ClientService", "myNote.ClientService\myNote.ClientService.csproj", "{D67BB77F-64E0-4A5E-89F3-9C964D86040E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "myNote.ClientService.Test", "myNote.ClientService.Test\myNote.ClientService.Test.csproj", "{4D4AC364-D9A7-451B-82F4-2B7F5BFCB5FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "myNote.ASPClient", "myNote.ASPClient\myNote.ASPClient.csproj", "{AE2BA00F-542D-40A3-B738-A71F35E967ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "myNote.ASPClient.Tests", "myNote.ASPClient.Tests\myNote.ASPClient.Tests.csproj", "{88DC7210-34FE-42CD-B2BB-5CA10473411B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +67,14 @@ Global
 		{4D4AC364-D9A7-451B-82F4-2B7F5BFCB5FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D4AC364-D9A7-451B-82F4-2B7F5BFCB5FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D4AC364-D9A7-451B-82F4-2B7F5BFCB5FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE2BA00F-542D-40A3-B738-A71F35E967ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE2BA00F-542D-40A3-B738-A71F35E967ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE2BA00F-542D-40A3-B738-A71F35E967ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE2BA00F-542D-40A3-B738-A71F35E967ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88DC7210-34FE-42CD-B2BB-5CA10473411B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88DC7210-34FE-42CD-B2BB-5CA10473411B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88DC7210-34FE-42CD-B2BB-5CA10473411B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88DC7210-34FE-42CD-B2BB-5CA10473411B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

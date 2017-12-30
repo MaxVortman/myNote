@@ -18,11 +18,10 @@ namespace myNote.Api.Controllers
     public class NoteGroupController : ApiController
     {
         private NoteGroupsRepository noteGroupsRepository;
-        private const string ConnectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=test;Integrated Security=true";
 
         public NoteGroupController()
         {
-            noteGroupsRepository = new NoteGroupsRepository(ConnectionString);
+            noteGroupsRepository = new NoteGroupsRepository(IoC.ConnectionString);
         }
         /// <summary>
         /// Создание группы заметок

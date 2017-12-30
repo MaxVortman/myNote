@@ -18,12 +18,11 @@ namespace myNote.Api.Controllers
     {
         private IGroupsRepository groupsRepository;
         private IUsersRepository usersRepository;
-        private const string ConnectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=test;Integrated Security=true";
 
         public GroupController()
         {
-            groupsRepository = new GroupsRepository(ConnectionString);
-            usersRepository = new UsersRepository(ConnectionString, groupsRepository);
+            groupsRepository = new GroupsRepository(IoC.ConnectionString);
+            usersRepository = new UsersRepository(IoC.ConnectionString, groupsRepository);
         }
         /// <summary>
         /// Создание группы пользователя

@@ -8,9 +8,7 @@ namespace myNote.ClientService.Test
     [TestClass]
     public class GroupServiceTest
     {
-
-        const string ConnectionString = @"http://localhost:64625/api/";
-        private ApiClient api = ApiClient.CreateInstance(ConnectionString);
+        private ApiClient api = ApiClient.CreateInstance(IoC.ConnectionString);
         private Dictionary<string, Token> tempUser = new Dictionary<string, Token>();
 
         [TestMethod]

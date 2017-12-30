@@ -19,12 +19,11 @@ namespace myNote.Api.Controllers
     {
         private IUsersRepository usersRepository;
         private INotesRepository notesRepository;
-        private const string ConnectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=test;Integrated Security=true";
 
         public NoteController()
         {
-            usersRepository = new UsersRepository(ConnectionString, new GroupsRepository(ConnectionString));
-            notesRepository = new NotesRepository(ConnectionString);
+            usersRepository = new UsersRepository(IoC.ConnectionString, new GroupsRepository(IoC.ConnectionString));
+            notesRepository = new NotesRepository(IoC.ConnectionString);
         }
         /// <summary>
         /// Получение заметки по идентификатору

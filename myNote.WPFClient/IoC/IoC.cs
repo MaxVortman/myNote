@@ -32,7 +32,7 @@ namespace myNote.WPFClient.IoC
         /// <summary>
         /// Link of api resources
         /// </summary>
-        public const string ConnectionString = @"http://localhost:64625/api/";
+        public const string ConnectionString = "http://mynoteapi.azurewebsites.net/api/";
 
         #endregion
 

@@ -259,3 +259,6 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+/myNote.DataLayer.Sql/IoT.cs
+/myNote.Api/Controllers/IoT.cs
+/myNote.Api/Controllers/IoC.cs

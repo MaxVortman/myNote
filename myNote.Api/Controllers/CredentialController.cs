@@ -15,11 +15,10 @@ namespace myNote.Api.Controllers
     public class CredentialController : ApiController
     {
         private ICredentialsRepository credentialsRepository;
-        private const string ConnectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=test;Integrated Security=true";
 
         public CredentialController()
         {
-            credentialsRepository = new CredentialsRepository(ConnectionString, new UsersRepository(ConnectionString, new GroupsRepository(ConnectionString)), new TokensRepository(ConnectionString));
+            credentialsRepository = new CredentialsRepository(IoC.ConnectionString, new UsersRepository(IoC.ConnectionString, new GroupsRepository(IoC.ConnectionString)), new TokensRepository(IoC.ConnectionString));
         }
 
         /// <summary>

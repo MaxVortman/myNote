@@ -18,11 +18,10 @@ namespace myNote.Api.Controllers
     public class UserController : ApiController
     {
         private IUsersRepository usersRepository;
-        private const string ConnectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=test;Integrated Security=true";
 
         public UserController()
         {
-            usersRepository = new UsersRepository(ConnectionString, new GroupsRepository(ConnectionString));
+            usersRepository = new UsersRepository(IoC.ConnectionString, new GroupsRepository(IoC.ConnectionString));
         }
         
         /// <summary>
